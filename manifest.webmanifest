@@ -1,0 +1,17 @@
+{
+  "name": "Leo Jugando",
+  "short_name": "Leo Jugando",
+  "description": "Aprender a leer jugando: sonidos, sílabas y palabras.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff8ec",
+  "theme_color": "#ff7aa8",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
