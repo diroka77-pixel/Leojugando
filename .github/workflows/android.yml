@@ -79,6 +79,7 @@ jobs:
       - name: Compilar APK
         working-directory: android
         run: |
+          chmod +x gradlew
           if [ "$SIGNED_BUILD" = "true" ]; then
             ./gradlew assembleRelease
             cp app/build/outputs/apk/release/app-release.apk ../LeoJugando.apk
