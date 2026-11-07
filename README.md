@@ -13,10 +13,65 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 📲 Se instala en el móvil y funciona sin internet.
 
 ## Publicarla con GitHub Pages
+
 1. En el repositorio: **Settings → Pages**.
 2. En "Source" elige **Deploy from a branch**, rama `main`, carpeta `/ (root)` y guarda.
 3. En un par de minutos estará en `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/`.
 4. Ábrela en Chrome desde el móvil y pulsa **📲 Instalar la app** (o menú ⋮ → *Añadir a pantalla de inicio*).
+
+La web sigue publicándose desde la raíz. La carpeta `www/` se genera para Android y no contiene el service worker.
+
+## Instalar en Android
+
+Cada cambio enviado a `main` compila un APK automáticamente. También se puede iniciar la compilación desde **Actions → Compilar APK Android → Run workflow**.
+
+Para descargarlo desde el móvil:
+
+1. Abre este repositorio en GitHub.
+2. Entra en **Releases** y abre la versión más reciente de **Leo Jugando**.
+3. Despliega **Assets** y pulsa **LeoJugando.apk**.
+4. Abre el archivo descargado. Si Android bloquea la instalación, pulsa **Ajustes** en el aviso y activa **Permitir desde esta fuente** para Chrome o para la aplicación desde la que abriste el APK.
+5. Vuelve atrás y pulsa **Instalar**. Puedes desactivar de nuevo ese permiso después.
+
+Si no aparece todavía en Releases, entra en **Actions**, abre la última ejecución verde de **Compilar APK Android** y descarga el artefacto **LeoJugando-APK**. GitHub lo entrega como ZIP; abre el ZIP y toca `LeoJugando.apk`.
+
+### Firma estable para instalar actualizaciones
+
+Sin secretos configurados, el workflow siempre crea un APK debug instalable. Para que las versiones de Release mantengan una firma propia y estable, crea una única clave y guarda cuatro secretos. No subas nunca el archivo `.jks` al repositorio.
+
+Desde el móvil puedes hacerlo en un Codespace:
+
+1. En el repositorio pulsa **Code → Codespaces → Create codespace on main**. Si no aparece, abre GitHub en Chrome y activa **Sitio para ordenador**.
+2. Abre el terminal del Codespace y ejecuta:
+
+   ```bash
+   keytool -genkeypair -v -keystore leo-jugando-release.jks -alias leo-jugando -keyalg RSA -keysize 2048 -validity 10000
+   base64 -w 0 leo-jugando-release.jks
+   ```
+
+3. Guarda el archivo `leo-jugando-release.jks`, su contraseña y la contraseña de la clave en un lugar privado. La cadena larga que muestra el segundo comando es el contenido del keystore codificado.
+4. En GitHub abre **Settings → Secrets and variables → Actions → New repository secret**. Crea estos secretos:
+
+   - `ANDROID_KEYSTORE_BASE64`: la cadena larga generada por `base64`.
+   - `ANDROID_KEYSTORE_PASSWORD`: la contraseña del archivo `.jks`.
+   - `ANDROID_KEY_ALIAS`: `leo-jugando`.
+   - `ANDROID_KEY_PASSWORD`: la contraseña de la clave.
+
+5. Borra el Codespace cuando hayas guardado una copia privada del `.jks`.
+6. Ve a **Actions → Compilar APK Android → Run workflow**. La nueva compilación detectará los cuatro secretos y generará un APK Release firmado.
+
+Conserva siempre ese mismo keystore. Android no permite instalar una actualización encima de otra versión si la firma cambia.
+
+## Desarrollo Android
+
+El proyecto usa Capacitor con `com.leojugando.app`, Java 17 y la voz nativa de Android. Para sincronizar la versión web con Android:
+
+```bash
+npm ci
+npm run android:sync
+```
+
+`npm run prepare:www` copia la aplicación y las fuentes locales a `www/`, omitiendo `sw.js`. El micrófono utiliza la petición de permisos del WebView de Capacitor y `RECORD_AUDIO` está declarado en el manifiesto.
 
 ## Para mayores
 Mantén pulsado ⚙️ un segundo para ver el progreso, elegir las letras que ya conoce, grabar tu voz y cambiar los ajustes.

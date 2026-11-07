@@ -1,0 +1,9 @@
+{
+  "appId": "com.leojugando.app",
+  "appName": "Leo Jugando",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#ff7aa8",
+    "allowMixedContent": false
+  }
+}

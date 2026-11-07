@@ -1,0 +1,9 @@
+node_modules/
+.gradle/
+android/.gradle/
+android/local.properties
+android/app/build/
+*.jks
+*.keystore
+LeoJugando.apk
+npm-debug.log*

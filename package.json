@@ -1,0 +1,31 @@
+{
+  "name": "leojugando",
+  "version": "1.0.0",
+  "description": "App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprenden por los sonidos de las letras.",
+  "scripts": {
+    "prepare:www": "node scripts/prepare-www.mjs",
+    "android:sync": "npm run prepare:www && cap sync android",
+    "android:debug": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "test": "node scripts/check-project.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diroka77-pixel/Leojugando.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/diroka77-pixel/Leojugando/issues"
+  },
+  "homepage": "https://github.com/diroka77-pixel/Leojugando#readme",
+  "dependencies": {
+    "@capacitor-community/text-to-speech": "5.0.0",
+    "@capacitor/android": "6.2.3",
+    "@capacitor/core": "6.2.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "6.2.3"
+  }
+}
