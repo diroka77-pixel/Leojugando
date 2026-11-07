@@ -14,6 +14,13 @@ Público: niños de 3-6 años que **todavía no leen instrucciones**. Los padres
 5. **Funciona sin internet** una vez instalada y sin cuentas ni datos personales. Todo se guarda en el propio móvil.
 6. **Móvil primero** (vertical, ~360-430 px de ancho). Probar siempre en ese tamaño.
 
+## Idiomas
+La app está en **castellano** y **catalán** (selector en Ajustes del panel de mayores).
+- Datos por idioma en `LANGS` (`es`, `ca`): orden de letras, sílabas, nombres de letras, dibujos y palabras. Textos y frases habladas en `T`.
+- El progreso (`letters`, `st`, `mast`, `voiceURI`) va por separado en `state.lp[idioma]`; las estrellas y las pegatinas son comunes.
+- Catalán: `ny` y `ll` son una sola letra (`tok()`); `j` suena /ʒ/, `x` /ʃ/ y `z` /z/ (`PHX.ca`). Las grabaciones de los padres llevan el prefijo `ca:`.
+- Para añadir un idioma: una entrada en `LANGS` y otra en `T`, sus sonidos en `PHX` si cambian, y la opción en `#langSel`.
+
 ## Estructura
 - `index.html` — toda la app (HTML + CSS + JS en un único archivo, sin dependencias ni paso de compilación).
 - `sw.js` — service worker (caché para uso sin conexión). **Sube el número de `CACHE` en cada cambio** o los móviles seguirán viendo la versión vieja.

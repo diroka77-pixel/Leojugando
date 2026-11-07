@@ -10,6 +10,7 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 🛤️ **Camino de letras** con repaso inteligente de lo que más cuesta.
 - ⭐ Estrellas y pegatinas como premio.
 - 🎙️ Los padres pueden grabar su propia voz para cada sonido.
+- 🌍 En **castellano** y **catalán**, también los sonidos (se cambia en Ajustes).
 - 📲 Se instala en el móvil y funciona sin internet.
 
 ## Publicarla con GitHub Pages
