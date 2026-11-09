@@ -12,9 +12,14 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 🎈 **Globos:** explota los globos con la sílaba que oyes.
 - 🃏 **Parejas:** juego de memoria de palabras y dibujos.
 - 🛤️ **Camino de letras** con repaso inteligente de lo que más cuesta.
+- ▶️ **Jugar ahora:** prepara automáticamente partidas cortas de 3, 5 o 7 juegos.
+- 📖 **Leo**, una mascota interactiva que guía, anima y vive en un rincón decorable.
+- 🚂 Nuevos juegos: tren de sílabas, alimentar a Leo, atrapar dibujos, leer frases y dibujar letras.
+- 🎁 Piezas, cofres, mundos visuales y cosméticos desbloqueables sin castigos ni rachas obligatorias.
 - ⭐ Estrellas, 52 pegatinas que se animan y suenan (cada animal hace su sonido) y 22 logros.
 - 🎙️ Los padres pueden grabar su propia voz para cada sonido.
 - 🌍 En **castellano** y **catalán**, también los sonidos (se cambia en Ajustes).
+- 👨‍👩‍👧 Perfiles infantiles, recomendaciones para la familia y copia/restauración del progreso.
 - 📲 Se instala en el móvil y funciona sin internet.
 
 ## Publicarla con GitHub Pages
