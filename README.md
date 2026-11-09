@@ -16,6 +16,9 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 📖 **Leo**, una mascota interactiva que guía, anima y vive en un rincón decorable.
 - 🚂 Nuevos juegos: tren de sílabas, formar palabras para alimentar a Leo, atrapar sílabas en orden y completar frases leyendo.
 - ✏️ El trazado comprueba que el dedo permanezca dentro de la letra y que se haya recorrido una parte suficiente.
+- 🔊 Paquete local de sonidos y sílabas disponible sin conexión, con opción de grabar en casa sonidos, sílabas e instrucciones.
+- 🎨 Ilustraciones OpenMoji coherentes y una nueva imagen infantil de Leo.
+- 📚 Vocabulario progresivo y cuentos cortos interactivos que obligan a leer cada palabra antes de responder.
 - 📈 Dificultad automática por progreso, con selección manual de sílabas, palabras o frases para la familia.
 - 🎁 Piezas, cofres, mundos visuales y cosméticos desbloqueables sin castigos ni rachas obligatorias.
 - ⭐ Estrellas, 52 pegatinas que se animan y suenan (cada animal hace su sonido) y 22 logros.
@@ -89,3 +92,5 @@ npm run android:sync
 Mantén pulsado ⚙️ un segundo para ver el progreso, elegir las letras que ya conoce, grabar tu voz y cambiar los ajustes.
 
 Si no se oyen las palabras: Ajustes del teléfono → Idioma → Texto a voz → descarga la voz en español.
+
+Las ilustraciones de vocabulario usan [OpenMoji](https://openmoji.org/) bajo licencia CC BY-SA 4.0. La licencia se incluye en `assets/pics/openmoji/LICENSE.txt`.

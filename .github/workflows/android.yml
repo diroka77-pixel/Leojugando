@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 30
     env:
       VERSION_CODE: ${{ github.run_number }}
-      VERSION_NAME: 1.3.${{ github.run_number }}
+      VERSION_NAME: 1.4.${{ github.run_number }}
       KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
       KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -110,6 +110,6 @@ jobs:
             gh release upload "$RELEASE_TAG" LeoJugando.apk --clobber
           else
             gh release create "$RELEASE_TAG" LeoJugando.apk \
-              --title "Leo Jugando 1.3.${{ github.run_number }}" \
-              --notes "Trazado validado dentro de la letra, juegos de sílabas, frases para completar y dificultad lectora adaptativa."
+              --title "Leo Jugando 1.4.${{ github.run_number }}" \
+              --notes "Audios y sílabas sin conexión, ilustraciones infantiles coherentes, vocabulario progresivo y cuentos interactivos en castellano y catalán."
           fi

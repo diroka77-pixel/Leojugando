@@ -1,8 +1,8 @@
 // Leo Jugando: funciona sin internet una vez instalada
-const CACHE = 'leo-jugando-v8';
+const CACHE = 'leo-jugando-v9';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './assets/fonts/andika-400.woff2', './assets/fonts/andika-700.woff2'];
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(fetch('./assets/offline-assets.json').then(r=>r.json()).then(assets=>caches.open(CACHE).then(c=>c.addAll([...FILES,...assets]))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
