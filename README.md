@@ -14,7 +14,9 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 🛤️ **Camino de letras** con repaso inteligente de lo que más cuesta.
 - ▶️ **Jugar ahora:** prepara automáticamente partidas cortas de 3, 5 o 7 juegos.
 - 📖 **Leo**, una mascota interactiva que guía, anima y vive en un rincón decorable.
-- 🚂 Nuevos juegos: tren de sílabas, alimentar a Leo, atrapar dibujos, leer frases y dibujar letras.
+- 🚂 Nuevos juegos: tren de sílabas, formar palabras para alimentar a Leo, atrapar sílabas en orden y completar frases leyendo.
+- ✏️ El trazado comprueba que el dedo permanezca dentro de la letra y que se haya recorrido una parte suficiente.
+- 📈 Dificultad automática por progreso, con selección manual de sílabas, palabras o frases para la familia.
 - 🎁 Piezas, cofres, mundos visuales y cosméticos desbloqueables sin castigos ni rachas obligatorias.
 - ⭐ Estrellas, 52 pegatinas que se animan y suenan (cada animal hace su sonido) y 22 logros.
 - 🎙️ Los padres pueden grabar su propia voz para cada sonido.

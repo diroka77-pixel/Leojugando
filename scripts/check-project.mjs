@@ -14,5 +14,8 @@ for (const id of ['playNow','s-tren','s-alimentar','s-atrapar','s-frases','s-tra
   if (!root.includes(`id="${id}"`)) throw new Error(`Falta la mejora ${id}.`);
 }
 if (!root.includes('function startGuided()')) throw new Error('Falta la partida guiada.');
+if (!root.includes('function traceSegmentValid(') || !root.includes('function traceCoverage(')) throw new Error('Falta la validación estricta del trazado.');
+if (!root.includes("catchW.syl[catchIdx]") || !root.includes("feedW.syl[feedIdx]")) throw new Error('Alimentar y Atrapar deben trabajar sílabas en orden.');
+if (!root.includes("<span class=\"gap\">?</span>") || !root.includes('function effectiveLevel()')) throw new Error('Faltan las frases incompletas o la dificultad adaptativa.');
 
 console.log('Comprobaciones del proyecto superadas.');

@@ -1,6 +1,6 @@
 {
   "name": "leojugando",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprenden por los sonidos de las letras.",
   "scripts": {
     "prepare:www": "node scripts/prepare-www.mjs",
