@@ -38,7 +38,17 @@ La app está en **castellano** y **catalán** (selector en Ajustes del panel de 
 - **Estado:** `localStorage` clave `leoJugando2`. Si cambias su forma, mantén la compatibilidad con datos guardados.
 
 ## Pantallas
-`home` (camino + menú), `lesson`, `sonidos`, `silabas`, `juntar`, `adivina` (¿Qué es?), `escucha` (sílaba o palabra), `album`. Panel de mayores: mantener pulsado ⚙️ 1 segundo.
+`home` (camino + menú), `lesson`, `sonidos`, `silabas`, `juntar`, `adivina` (¿Qué es?), `escucha` (sílaba o palabra), `inicio` (¿Cómo empieza?: sonido inicial), `formar` (ordenar sílabas), `globos` (explotar la sílaba que se oye), `parejas` (memoria palabra-dibujo), `album`.
+En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: mantener pulsado ⚙️ 1 segundo.
+
+## Pegatinas y logros
+- `STK`: cada pegatina tiene emoji, nombre (es/ca), onomatopeya (es/ca), efecto sonoro (`FX`) y animación (clase `a-*`). Se gana una cada 5 estrellas.
+- Al tocarla se abre el visor (`openViewer`): se agranda, se anima, suena el efecto y la voz dice la onomatopeya ("El perro hace guau, guau").
+- `ACH`: logros con su condición; `checkAch()` se llama tras cada acierto. Contadores en `state.cnt`.
+- Los premios van en cola (`queuePrize`), así nunca se pisan.
+
+## Android
+- `MainActivity.java` fija `textZoom` a 100 (la letra grande del sistema no descoloca la app) y aplica los márgenes de la cámara y las barras del sistema. No quitarlo.
 
 ## Cómo probar
 - Servir la carpeta: `python3 -m http.server 8000` y abrir `http://localhost:8000` en modo móvil de las herramientas de desarrollo.
@@ -49,6 +59,5 @@ La app está en **castellano** y **catalán** (selector en Ajustes del panel de 
 1. Audios grabados de calidad para los 21 sonidos (sustituir el sintetizador por defecto).
 2. Más palabras y frases cortas ("mi mamá me mima") cuando domine palabras.
 3. Sílabas inversas y trabadas (al, pla, tra) como niveles nuevos del camino.
-4. Juego de escribir: arrastrar sílabas para formar la palabra del dibujo.
 5. Varios perfiles (hermanos).
 6. Empaquetar como APK para Google Play (PWABuilder / Trusted Web Activity).

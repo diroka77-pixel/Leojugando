@@ -7,8 +7,12 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 🧩 **Juntar:** une los trozos de una palabra y descubre el dibujo.
 - 🖼️ **¿Qué es?:** lee la palabra y toca su dibujo.
 - 👂 **Escucha:** oye una sílaba o palabra y encuéntrala.
+- 🔠 **¿Cómo empieza?:** oye la palabra y elige su primera letra.
+- 🧱 **Formar:** ordena las sílabas para formar la palabra del dibujo.
+- 🎈 **Globos:** explota los globos con la sílaba que oyes.
+- 🃏 **Parejas:** juego de memoria de palabras y dibujos.
 - 🛤️ **Camino de letras** con repaso inteligente de lo que más cuesta.
-- ⭐ Estrellas y pegatinas como premio.
+- ⭐ Estrellas, 52 pegatinas que se animan y suenan (cada animal hace su sonido) y 22 logros.
 - 🎙️ Los padres pueden grabar su propia voz para cada sonido.
 - 🌍 En **castellano** y **catalán**, también los sonidos (se cambia en Ajustes).
 - 📲 Se instala en el móvil y funciona sin internet.
