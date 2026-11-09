@@ -18,7 +18,8 @@ if (!root.includes('function traceSegmentValid(') || !root.includes('function tr
 if (!root.includes("catchW.syl[catchIdx]") || !root.includes("feedW.syl[feedIdx]")) throw new Error('Alimentar y Atrapar deben trabajar sílabas en orden.');
 if (!root.includes("<span class=\"gap\">?</span>") || !root.includes('function effectiveLevel()')) throw new Error('Faltan las frases incompletas o la dificultad adaptativa.');
 if (!root.includes('assets/pics/openmoji/') || !root.includes('leo-mascot.png')) throw new Error('Faltan las ilustraciones infantiles.');
-if (!root.includes("bundled('sounds'") || !root.includes("bundled('syllables'")) throw new Error('Falta el paquete de audio local.');
+if (!root.includes("bundled('sounds'") || !root.includes('if(await tts(s,.8)) return true')) throw new Error('Las sílabas deben pronunciarse con voz y conservar los sonidos locales.');
+if (root.includes("playURL(bundled('syllables'")) throw new Error('Las sílabas no deben reproducir tonos sintetizados.');
 if (!root.includes('function newCuento()') || !root.includes('storyRead.size===words.length')) throw new Error('Faltan los cuentos interactivos.');
 
 console.log('Comprobaciones del proyecto superadas.');

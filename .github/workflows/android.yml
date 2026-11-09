@@ -111,5 +111,5 @@ jobs:
           else
             gh release create "$RELEASE_TAG" LeoJugando.apk \
               --title "Leo Jugando 1.4.${{ github.run_number }}" \
-              --notes "Audios y sílabas sin conexión, ilustraciones infantiles coherentes, vocabulario progresivo y cuentos interactivos en castellano y catalán."
+              --notes "Corrige la pronunciación real de las sílabas y mantiene todas las ilustraciones dentro de sus botones."
           fi
