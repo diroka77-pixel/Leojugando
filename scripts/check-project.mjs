@@ -16,6 +16,7 @@ for (const id of ['playNow','s-tren','s-alimentar','s-atrapar','s-frases','s-tra
 if (!root.includes('function startGuided()')) throw new Error('Falta la partida guiada.');
 if (!root.includes('function traceSegmentValid(') || !root.includes('function traceCoverage(')) throw new Error('Falta la validación estricta del trazado.');
 if (!root.includes('function endTraceStroke(') || !root.includes('traceLast=null')) throw new Error('El trazado debe permitir levantar el dedo y continuar.');
+if (!root.includes("c.toDataURL('image/png')") || !root.includes('traceOutsideDistance>32')) throw new Error('La guía visible y la máscara deben coincidir y tolerar movimientos aislados.');
 if (!root.includes("catchW.syl[catchIdx]") || !root.includes("feedW.syl[feedIdx]")) throw new Error('Alimentar y Atrapar deben trabajar sílabas en orden.');
 if (!root.includes("<span class=\"gap\">?</span>") || !root.includes('function effectiveLevel()')) throw new Error('Faltan las frases incompletas o la dificultad adaptativa.');
 if (!root.includes('assets/pics/openmoji/') || !root.includes('leo-mascot.png')) throw new Error('Faltan las ilustraciones infantiles.');
