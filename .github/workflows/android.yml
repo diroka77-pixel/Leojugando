@@ -111,5 +111,5 @@ jobs:
           else
             gh release create "$RELEASE_TAG" LeoJugando.apk \
               --title "Leo Jugando 1.4.${{ github.run_number }}" \
-              --notes "Corrige la pronunciación real de las sílabas y mantiene todas las ilustraciones dentro de sus botones."
+              --notes "Corrige el trazado de letras: permite levantar el dedo y continuar en varios trazos sin invalidar el ejercicio."
           fi
