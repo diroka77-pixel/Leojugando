@@ -21,6 +21,12 @@ La app está en **castellano** y **catalán** (selector en Ajustes del panel de 
 - Catalán: `ny` y `ll` son una sola letra (`tok()`); `j` suena /ʒ/, `x` /ʃ/ y `z` /z/ (`PHX.ca`). Las grabaciones de los padres llevan el prefijo `ca:`.
 - Para añadir un idioma: una entrada en `LANGS` y otra en `T`, sus sonidos en `PHX` si cambian, y la opción en `#langSel`.
 
+## Vocabulario
+- Unas 250 palabras en castellano y 240 en catalán. `*_WORDS` = nivel 1 (solo sílabas directas: consonante del camino + vocal). `*_ADV_WORDS` = nivel 2 (sílabas trabadas o cerradas, diptongos, h, ll, ch, qu, ç…).
+- En el nivel 2 solo se exige que la niña conozca las letras que están en el camino (`ORDER`); h, y, k, q, w, ç no bloquean palabras.
+- Cada palabra necesita su dibujo en `assets/pics/openmoji/<código>.svg` (OpenMoji, CC BY-SA). No repitas el mismo dibujo en dos palabras del mismo idioma.
+- ¿Cómo empieza? descarta las palabras que empiezan por h, qu, ce/ci, ge/gi, ll o ch, porque su primera letra no suena como se enseña.
+
 ## Estructura
 - `index.html` — toda la app (HTML + CSS + JS en un único archivo, sin dependencias ni paso de compilación).
 - `sw.js` — service worker (caché para uso sin conexión). **Sube el número de `CACHE` en cada cambio** o los móviles seguirán viendo la versión vieja.

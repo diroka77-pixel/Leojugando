@@ -603,6 +603,11 @@ const ES_WORDS=[
  ['u-ña','💅'],['za-pa-to','👞'],['va-so','🥛'],['ra-ta','🐀'],['ro-pa','👕'],['go-ta','💧'],['be-bé','👶'],['co-co','🥥'],
  ['ja-bón','🧼'],['so-fá','🛋️'],['zu-mo','🧃'],['ca-ra-me-lo','🍬'],['pi-ra-ta','🏴‍☠️'],['go-ri-la','🦍'],['ma-le-ta','🧳'],['mu-ñe-ca','🪆'],
  ['mo-ne-da','🪙'],['lo-ro','🦜']
+,
+ ['ma-ri-po-sa','🦋'],['ce-re-za','🍒'],['ca-mi-sa','👔'],['ca-ra-co-la','🐚'],['mo-ne-de-ro','👛'],['ma-ce-ta','🪴'],['na-ve','🛸'],['ca-la-ba-za','🎃'],
+ ['ra-ma','🌿'],['pa-pe-le-ra','🗑️'],['co-ro-na','👑'],['be-so','💋'],['ca-no-a','🛶'],['pi-ru-le-ta','🍭'],['pa-ti-ne-te','🛴'],['po-li-cí-a','👮'],
+ ['pi-ña-ta','🪅'],['ma-go','🧙'],['ro-ca','🪨'],['le-ña','🪵'],['a-ra-ña','🕷️'],['pa-vo','🦃'],['e-ri-zo','🦔'],['o-ve-ja','🐑'],
+ ['a-jo','🧄'],['o-re-ja','👂'],['ca-ja','📦'],['re-ga-lo','🎁'],['te-lé-fo-no','☎️'],['ve-ne-no','🧪'],['mu-ñe-co','🧸']
 ].filter((w,i,a)=>a.findIndex(x=>x[0]===w[0])===i);
 const CA_ORDER=['m','p','s','l','t','n','d','c','b','f','r','g','v','j','ny','x','z','ll'];
 const CA_HARD={c:['a','o','u'],g:['a','o','u'],j:['a','o','u']};
@@ -616,9 +621,51 @@ const CA_WORDS=[
  ['a-be-lla','🐝'],['te-le','📺'],['ne-na','👧'],['sa-ba-ta','👞'],['ra-ta','🐀'],['ro-ba','👕'],['go-ta','💧'],['na-dó','👶'],
  ['co-co','🥥'],['sa-bó','🧼'],['so-fà','🛋️'],['pi-ra-ta','🏴‍☠️'],['ma-le-ta','🧳'],['ni-na','🪆'],['mo-ne-da','🪙'],['xo-co-la-ta','🍫'],
  ['ze-ro','0️⃣'],['po-ma','🍎'],['pa','🍞'],['fa-da','🧚'],['lle-ó','🦁'],['mo-to','🏍️']
+,
+ ['ba-le-na','🐳'],['pa-pa-llo-na','🦋'],['ma-ri-e-ta','🐞'],['a-ra-nya','🕷️'],['ò-li-ba','🦉'],['co-a-la','🐨'],['gi-ra-fa','🦒'],['ce-re-sa','🍒'],
+ ['ce-ba','🧅'],['ga-le-ta','🍪'],['ca-fè','☕'],['pi-ru-le-ta','🍭'],['o-re-lla','👂'],['ca-di-ra','🪑'],['pi-a-no','🎹'],['vi-o-lí','🎻'],
+ ['fu-lla','🍃'],['i-lla','🏝️'],['a-vi-ó','✈️'],['ca-mi-ó','🚚'],['a-vi','👴'],['à-vi-a','👵'],['po-li-ci-a','👮'],['co-ro-na','👑'],
+ ['pe-tó','💋'],['ca-mi-sa','👔'],['pa-pe-re-ra','🗑️'],['ca-no-a','🛶'],['cu-lle-ra','🥄'],['ra-ma','🌿'],['ro-ca','🪨'],['lle-nya','🪵'],
+ ['pi-nya-ta','🪅'],['o-ve-lla','🐑'],['ga-lli-na','🐔'],['do-fí','🐬'],['tu-li-pa','🌷'],['ca-ra-go-la','🐚'],['ca-po-ta','🧥'],['bi-be-ró','🍼']
 ];
-const ES_ADV_WORDS=[['pan','🍞'],['mar','🌊'],['sol','☀️'],['tren','🚂'],['flor','🌸'],['pla-to','🍽️'],['plu-ma','🪶'],['fre-sa','🍓'],['fru-ta','🍎'],['bra-zo','💪'],['cre-ma','🍦'],['gri-llo','🦗'],['dra-gón','🐉']];
-const CA_ADV_WORDS=[['pa','🍞'],['mar','🌊'],['sol','☀️'],['tren','🚂'],['flor','🌸'],['plat','🍽️'],['plo-ma','🪶'],['ma-dui-xa','🍓'],['frui-ta','🍎'],['braç','💪'],['cre-ma','🍦'],['gri-ll','🦗'],['dra-gó','🐉']];
+const ES_ADV_WORDS=[['pan','🍞'],['mar','🌊'],['sol','☀️'],['tren','🚂'],['flor','🌸'],['pla-to','🍽️'],['plu-ma','🪶'],['fre-sa','🍓'],['fru-ta','🍎'],['bra-zo','💪'],['cre-ma','🍦'],['gri-llo','🦗'],['dra-gón','🐉'],
+ ['bo-te-lla','🍼'],['pe-rro','🐶'],['ga-lli-na','🐔'],['ga-llo','🐓'],['ca-ba-llo','🐴'],['ca-bra','🐐'],['cer-do','🐷'],['le-ón','🦁'],
+ ['ti-gre','🐯'],['e-le-fan-te','🐘'],['ce-bra','🦓'],['ca-me-llo','🐫'],['can-gu-ro','🦘'],['pin-güi-no','🐧'],['del-fín','🐬'],['ba-lle-na','🐳'],
+ ['ti-bu-rón','🦈'],['pez','🐟'],['pul-po','🐙'],['can-gre-jo','🦀'],['ca-ra-col','🐌'],['ma-ri-qui-ta','🐞'],['hor-mi-ga','🐜'],['ser-pien-te','🐍'],
+ ['co-co-dri-lo','🐊'],['tor-tu-ga','🐢'],['di-no-sau-rio','🦖'],['bú-ho','🦉'],['cis-ne','🦢'],['fla-men-co','🦩'],['zo-rro','🦊'],['ar-di-lla','🐿️'],
+ ['mur-cié-la-go','🦇'],['mos-ca','🪰'],['hi-po-pó-ta-mo','🦛'],['pan-da','🐼'],['ko-a-la','🐨'],['u-ni-cor-nio','🦄'],['cier-vo','🦌'],['la-gar-ti-ja','🦎'],
+ ['ri-no-ce-ron-te','🦏'],['gam-ba','🦐'],['ca-ba-lli-to','🎠'],['que-so','🧀'],['hue-vo','🥚'],['man-za-na','🍏'],['plá-ta-no','🍌'],['na-ran-ja','🍊'],
+ ['san-dí-a','🍉'],['me-lo-co-tón','🍑'],['ki-wi','🥝'],['ma-íz','🌽'],['za-na-ho-ria','🥕'],['ce-bo-lla','🧅'],['bró-co-li','🥦'],['a-gua-ca-te','🥑'],
+ ['ga-lle-ta','🍪'],['tar-ta','🎂'],['he-la-do','🍨'],['cho-co-la-te','🍫'],['piz-za','🍕'],['ham-bur-gue-sa','🍔'],['pa-lo-mi-tas','🍿'],['sal-chi-cha','🌭'],
+ ['miel','🍯'],['ja-món','🍖'],['bo-ca-di-llo','🥪'],['pi-mien-to','🫑'],['pie','🦶'],['na-riz','👃'],['dien-te','🦷'],['pier-na','🦵'],
+ ['co-ra-zón','❤️'],['len-gua','👅'],['si-lla','🪑'],['puer-ta','🚪'],['ven-ta-na','🪟'],['lla-ve','🔑'],['li-bro','📖'],['lá-piz','✏️'],
+ ['re-loj','⌚'],['glo-bo','🎈'],['ves-ti-do','👗'],['go-rra','🧢'],['ga-fas','👓'],['bu-fan-da','🧣'],['guan-tes','🧤'],['cal-ce-ti-nes','🧦'],
+ ['pa-ra-guas','☂️'],['mar-ti-llo','🔨'],['es-co-ba','🧹'],['or-de-na-dor','💻'],['gui-ta-rra','🎸'],['tam-bor','🥁'],['pia-no','🎹'],['trom-pe-ta','🎺'],
+ ['vio-lín','🎻'],['cam-pa-na','🔔'],['te-ne-dor','🍴'],['cu-cha-ra','🥄'],['mo-chi-la','🎒'],['es-tre-lla','⭐'],['llu-via','🌧️'],['nie-ve','❄️'],
+ ['ra-yo','⚡'],['ar-co-í-ris','🌈'],['fue-go','🔥'],['ár-bol','🌳'],['ho-ja','🍃'],['gi-ra-sol','🌻'],['tu-li-pán','🌷'],['mon-ta-ña','⛰️'],
+ ['pla-ya','🏖️'],['is-la','🏝️'],['vol-cán','🌋'],['co-che','🚗'],['au-to-bús','🚌'],['a-vión','✈️'],['bar-co','🚢'],['bi-ci-cle-ta','🚲'],
+ ['ca-mión','🚚'],['co-he-te','🚀'],['he-li-cóp-te-ro','🚁'],['trac-tor','🚜'],['am-bu-lan-cia','🚑'],['a-bue-lo','👴'],['a-bue-la','👵'],['prin-ce-sa','👸'],
+ ['prín-ci-pe','🤴'],['ha-da','🧚'],['pa-ya-so','🤡'],['cas-ti-llo','🏰'],['ro-bot','🤖'],['fan-tas-ma','👻']
+];
+const CA_ADV_WORDS=[['pa','🍞'],['mar','🌊'],['sol','☀️'],['tren','🚂'],['flor','🌸'],['plat','🍽️'],['plo-ma','🪶'],['ma-dui-xa','🍓'],['frui-ta','🍎'],['braç','💪'],['cre-ma','🍦'],['gri-ll','🦗'],['dra-gó','🐉'],
+ ['gos','🐶'],['gat','🐱'],['ca-vall','🐴'],['ca-bra','🐐'],['porc','🐷'],['gall','🐓'],['à-nec','🦆'],['ti-gre','🐯'],
+ ['e-le-fant','🐘'],['ze-bra','🦓'],['ca-mell','🐫'],['can-gur','🦘'],['pin-güí','🐧'],['tau-ró','🦈'],['peix','🐟'],['pop','🐙'],
+ ['cranc','🦀'],['car-gol','🐌'],['for-mi-ga','🐜'],['serp','🐍'],['co-co-dril','🐊'],['tor-tu-ga','🐢'],['di-no-sau-re','🦖'],['fla-menc','🦩'],
+ ['gui-neu','🦊'],['e-ri-çó','🦔'],['rat-pe-nat','🦇'],['mos-ca','🪰'],['hi-po-pò-tam','🦛'],['pan-da','🐼'],['u-ni-corn','🦄'],['cér-vol','🦌'],
+ ['co-nill','🐰'],['ós','🐻'],['llop','🐺'],['gra-no-ta','🐸'],['o-cell','🐦'],['cuc','🐛'],['sar-gan-ta-na','🦎'],['ri-no-ce-ront','🦏'],
+ ['gam-ba','🦐'],['cig-ne','🦢'],['llet','🥛'],['for-mat-ge','🧀'],['ou','🥚'],['plà-tan','🍌'],['ta-ron-ja','🍊'],['sín-di-a','🍉'],
+ ['prés-sec','🍑'],['ki-wi','🥝'],['pas-ta-na-ga','🥕'],['to-mà-quet','🍅'],['bo-let','🍄'],['all','🧄'],['brò-quil','🥦'],['al-vo-cat','🥑'],
+ ['pas-tís','🎂'],['ge-lat','🍨'],['piz-za','🍕'],['ham-bur-gue-sa','🍔'],['cris-pe-tes','🍿'],['sal-sit-xa','🌭'],['mel','🍯'],['suc','🧃'],
+ ['per-nil','🍖'],['ca-ra-mel','🍬'],['ca-ra-bas-sa','🎃'],['en-tre-pà','🥪'],['pe-brot','🫑'],['ull','👁️'],['dit','👆'],['peu','🦶'],
+ ['nas','👃'],['dent','🦷'],['cor','❤️'],['llen-gua','👅'],['llit','🛏️'],['por-ta','🚪'],['fi-nes-tra','🪟'],['clau','🔑'],
+ ['lli-bre','📖'],['lla-pis','✏️'],['cai-xa','📦'],['re-gal','🎁'],['glo-bus','🎈'],['ves-tit','👗'],['gor-ra','🧢'],['u-lle-res','👓'],
+ ['bu-fan-da','🧣'],['guants','🧤'],['mit-jons','🧦'],['pa-ra-i-gua','☂️'],['mar-tell','🔨'],['es-com-bra','🧹'],['te-lè-fon','☎️'],['or-di-na-dor','💻'],
+ ['gui-tar-ra','🎸'],['tam-bor','🥁'],['trom-pe-ta','🎺'],['cam-pa-na','🔔'],['for-qui-lla','🍴'],['mot-xi-lla','🎒'],['ni-not','🧸'],['es-tre-lla','⭐'],
+ ['nú-vol','☁️'],['plu-ja','🌧️'],['neu','❄️'],['llamp','⚡'],['foc','🔥'],['ar-bre','🌳'],['gi-ra-sol','🌻'],['mun-ta-nya','⛰️'],
+ ['plat-ja','🏖️'],['vol-cà','🌋'],['cot-xe','🚗'],['au-to-bús','🚌'],['vai-xell','🚢'],['bi-ci-cle-ta','🚲'],['co-et','🚀'],['he-li-còp-ter','🚁'],
+ ['trac-tor','🚜'],['am-bu-làn-ci-a','🚑'],['pa-ti-net','🛴'],['nen','👦'],['prin-ce-sa','👸'],['prín-cep','🤴'],['pa-llas-so','🤡'],['cas-tell','🏰'],
+ ['ro-bot','🤖'],['fan-tas-ma','👻'],['mag','🧙'],['tes-to','🪴'],['ca-va-llet','🎠']
+];
 const mkWords=(list,level=1)=>list.filter((w,i,a)=>a.findIndex(x=>x[0]===w[0])===i).map(([s,e])=>({syl:s.split('-'),word:s.replace(/-/g,''),emoji:e,level}));
 const LANGS={
  es:{order:ES_ORDER,hard:ES_HARD,names:ES_NAMES,lpic:ES_LPIC,words:[...mkWords(ES_WORDS),...mkWords(ES_ADV_WORDS,2)],tts:'es-ES',re:/^es/i,pref:/es[-_]ES/i,loc:'es'},
@@ -991,7 +1038,7 @@ function sayKey(key){const own=REC[rk('txt:'+key)];return own?playURL(own):sayIt
 let session=null; // {focus, count}
 const focusL=()=>session&&session.focus&&session.focus!=='vocales'?session.focus:null;
 function known(){const k=new Set(state.letters);if(focusL())k.add(focusL());return k}
-function wordOK(w,k=known()){return consOf(w.word).every(c=>k.has(c))}
+function wordOK(w,k=known()){return consOf(w.word).filter(c=>ORDER.includes(c)).every(c=>k.has(c))}
 function pool(){const k=known(),max=effectiveLevel()==='syllables'?1:2;let p=WORDS.filter(w=>(w.level||1)<=max&&wordOK(w,k));if(focusL()){const f=p.filter(w=>consOf(w.word).includes(focusL()));if(f.length>=3)p=f}return p.length>=3?p:WORDS.filter(w=>(w.level||1)<=max)}
 function sylPool(){if(session&&session.focus==='vocales')return VOWELS.slice();const out=[];const k=[...known()].filter(l=>!isV(l));let ls=focusL()?[focusL()]:k;if(!ls.length)return VOWELS.slice();ls.forEach(l=>(HARD[l]||VOWELS).forEach(v=>out.push(l+v)));return out}
 function weight(key){const s=state.st[key];if(!s)return 2.2;return (1+2.5*s.ko)/(1+.6*s.ok)+.15}
@@ -1275,7 +1322,9 @@ $('viewer').onclick=()=>{stopAll();$('viewer').classList.remove('on')};
 // =================== ¿CÓMO EMPIEZA? ===================
 let iw=null,iLast=null,iLocked=false,iFirst=true,iTarget=null;
 function newInicio(opts={}){
-  iw=pickW(pool(),w=>'w:'+w.word,iLast);iLast=iw;iLocked=false;iFirst=true;
+  const okStart=w=>{const k=tok(plain(w.word));const f=k[0];if(!(isV(f)||ORDER.includes(f)))return false;if((f==='c'||f==='g')&&/[ei]/.test(k[1]||''))return false;if(state.lang==='es'&&f==='l'&&k[1]==='l')return false;return true};
+  const ip=pool().filter(okStart);
+  iw=pickW(ip.length>=3?ip:pool(),w=>'w:'+w.word,iLast);iLast=iw;iLocked=false;iFirst=true;
   iTarget=tok(plain(iw.word))[0];
   const pic=$('iPic');setArt(pic,iw.emoji,iw.word);bump(pic,'reveal');
   const kn=[...VOWELS,...ORDER.filter(l=>state.letters.includes(l))].filter(l=>l!==iTarget);
@@ -1403,7 +1452,7 @@ let feedW=null,feedFirst=true,feedLock=false,feedIdx=0;
 function newAlimentar(opts={}){
   const multi=pool().filter(w=>w.syl.length>=2&&w.syl.length<=3);feedW=pickW(multi.length?multi:WORDS.filter(w=>w.syl.length>=2),w=>'w:'+w.word,feedW);feedFirst=true;feedLock=false;feedIdx=0;setLeo($('feedCharacter'));setArt($('feedPic'),feedW.emoji,feedW.word);$('feedPic').onclick=()=>run(a=>playWord(feedW,a));
   const slots=$('feedSlots');slots.innerHTML='';feedW.syl.forEach(()=>slots.appendChild(el('div','food-slot','?')));
-  const extra=shuffle(WORDS.flatMap(w=>w.syl)).find(s=>!feedW.syl.includes(s))||sylPool()[0];
+  const extra=shuffle(pool().flatMap(w=>w.syl)).find(s=>!feedW.syl.includes(s))||sylPool()[0];
   const pieces=shuffle([...feedW.syl,extra]);const o=$('feedOptions');o.innerHTML='';pieces.forEach(s=>{const b=el('button','food',fmt(s));b.onclick=()=>{
     if(feedLock||b.classList.contains('used'))return;
     if(s===feedW.syl[feedIdx]){b.classList.add('used');const slot=slots.children[feedIdx];slot.textContent=fmt(s);slot.classList.add('filled');feedIdx++;run(a=>playSyl(s,a));if(feedIdx===feedW.syl.length){feedLock=true;setTimeout(()=>{bump($('feedCharacter'),'chew');state.cnt.feed++;const m=win('w:'+feedW.word,feedFirst);run(async a=>{await playFx('pop');if(a())await playWord(feedW,a);if(m||!a())return;await sayIt(praise());await wait(300);if(a())nextRound()})},350)}}
@@ -1417,7 +1466,7 @@ let catchW=null,catchFirst=true,catchLock=false,catchIdx=0;
 function newAtrapar(opts={}){
   const multi=pool().filter(w=>w.syl.length>=2&&w.syl.length<=3);catchW=pickW(multi.length?multi:WORDS.filter(w=>w.syl.length>=2),w=>'w:'+w.word,catchW);catchFirst=true;catchLock=false;catchIdx=0;setArt($('catchPic'),catchW.emoji,catchW.word);$('catchPic').onclick=()=>run(a=>playWord(catchW,a));
   const progress=$('catchProgress');progress.innerHTML='';catchW.syl.forEach(()=>progress.appendChild(el('div','catch-slot','?')));
-  const extras=shuffle(WORDS.flatMap(w=>w.syl).filter(s=>!catchW.syl.includes(s))).slice(0,Math.max(1,4-catchW.syl.length));const choices=shuffle([...catchW.syl,...extras]);const z=$('catchZone');z.innerHTML='';const pos=[[6,10],[60,14],[18,45],[62,60],[33,72]];
+  const extras=shuffle(pool().flatMap(w=>w.syl).filter(s=>!catchW.syl.includes(s))).slice(0,Math.max(1,4-catchW.syl.length));const choices=shuffle([...catchW.syl,...extras]);const z=$('catchZone');z.innerHTML='';const pos=[[6,10],[60,14],[18,45],[62,60],[33,72]];
   choices.forEach((s,i)=>{const b=el('button','catch-item',fmt(s));b.style.left=pos[i][0]+'%';b.style.top=pos[i][1]+'%';b.onclick=()=>{if(catchLock||b.classList.contains('used'))return;if(s===catchW.syl[catchIdx]){b.classList.add('used');const slot=progress.children[catchIdx];slot.textContent=fmt(s);slot.classList.add('filled');catchIdx++;run(a=>playSyl(s,a));if(catchIdx===catchW.syl.length){catchLock=true;state.cnt.catch++;const m=win('w:'+catchW.word,catchFirst);run(async a=>{await playFx('magic');if(a())await playWord(catchW,a);if(m||!a())return;await sayIt(praise());await wait(350);if(a())nextRound()})}}else{bump(b,'shake');if(catchFirst)lose('w:'+catchW.word);catchFirst=false;run(async a=>{await playSyl(s,a);if(a())await sayIt(state.lang==='ca'?'Busca la síl·laba següent':'Busca la sílaba siguiente')})}};z.appendChild(b)});
 }
 $('catchSay').onclick=()=>run(a=>playWord(catchW,a));
@@ -1498,8 +1547,8 @@ function renderCfg(){
   const worst=hard[0]?.[0]?.slice(2),level=effectiveLevel(),levelName={syllables:'sílabas',words:'palabras',sentences:'frases'}[level];$('recommend').textContent=(worst?`Recomendación: practica ${fmt(worst)} en la próxima partida.`:`Recomendación: continúa con ${fmt(ORDER.find(l=>!state.letters.includes(l))||'palabras cortas')}.`)+` Nivel actual: ${levelName}.`;
   const L=$('letters');L.innerHTML='';
   ORDER.forEach(l=>{const b=el('button','lt'+(state.letters.includes(l)?' on':''),fmt(l));b.onclick=()=>{state.letters=state.letters.includes(l)?state.letters.filter(x=>x!==l):[...state.letters,l];save();renderCfg()};L.appendChild(b)});
-  const n=WORDS.filter(w=>consOf(w.word).every(c=>state.letters.includes(c))).length;
-  $('wcount').textContent=n>=3?`Con estas letras hay ${n} palabras para jugar.`:`Con estas letras hay ${n} palabras; de momento saldrán todas.`;
+  const okL=w=>consOf(w.word).filter(c=>ORDER.includes(c)).every(c=>state.letters.includes(c));const n=WORDS.filter(okL).length,n1=WORDS.filter(w=>(w.level||1)===1&&okL(w)).length;
+  $('wcount').textContent=n>=3?`Con estas letras hay ${n} palabras para jugar (${n1} fáciles y ${n-n1} más difíciles).`:`Con estas letras hay ${n} palabras; de momento saldrán todas.`;
   $('caseBtn').textContent=state.upper?'MAYÚSCULAS':'minúsculas';
   $('instrBtn').textContent=state.instr?'Sí':'No';
   $('hapticBtn').textContent=state.haptic?'Sí':'No';
