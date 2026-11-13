@@ -292,6 +292,70 @@ select{padding:8px;border-radius:12px;border:2px solid #e2d8ec;background:#fff}
 @keyframes a-slide{0%{transform:translateX(0)}40%{transform:translateX(-70vw)}41%{transform:translateX(70vw)}100%{transform:translateX(0)}}
 @keyframes a-slow{0%,100%{transform:translateX(0)}50%{transform:translateX(-60px) rotate(-4deg)}}
 
+
+/* Alimentar compacto: todo cabe en pantalla */
+.feed-card{gap:10px;padding:14px}
+.feed-top{display:flex;align-items:center;justify-content:center;gap:14px;width:100%}
+.food-character{width:clamp(78px,24vw,104px);height:clamp(78px,24vw,104px);font-size:64px;flex:0 0 auto}
+.food-character .leo-art{width:100%;height:100%;object-fit:contain}
+.food-options{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
+.food{min-width:0!important;height:64px!important;font-size:clamp(24px,7.5vw,30px)!important;padding:0 4px!important}
+.feed-chest{display:flex;align-items:center;justify-content:center;gap:8px;font-size:20px;margin-top:-6px}
+/* Casita */
+.house{isolation:isolate;position:relative;height:min(112vw,440px);border-radius:28px;overflow:hidden;border:4px solid #fff;box-shadow:var(--sh);touch-action:none;user-select:none}
+.hwall{position:absolute;left:0;right:0;top:0;height:60%}
+.hfloor{position:absolute;left:0;right:0;bottom:0;height:40%;box-shadow:inset 0 14px 18px -10px rgba(0,0,0,.18)}
+.hfloor::before{content:'';position:absolute;top:0;left:0;right:0;height:10px;background:#fff;opacity:.9}
+.hwindow{position:absolute;left:7%;top:9%;width:25%;aspect-ratio:1;border-radius:12px;background:linear-gradient(#9fdcff,#e2f5ff);border:6px solid #fff;box-shadow:0 4px 0 rgba(0,0,0,.08)}
+.hwindow::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:5px;margin-left:-2.5px;background:#fff}
+.hwindow::after{content:'';position:absolute;top:50%;left:0;right:0;height:5px;margin-top:-2.5px;background:#fff}
+.hwindow span{position:absolute;right:12%;top:12%;width:24%;aspect-ratio:1;border-radius:50%;background:#ffd25a}
+.hshelf{position:absolute;left:40%;top:32%;width:24%;height:8px;border-radius:4px;background:#c48a55;box-shadow:0 4px 0 rgba(0,0,0,.1)}
+.hdoor{position:absolute;right:9%;bottom:40%;width:17%;height:34%;border-radius:40px 40px 0 0;background:#c98b52;border:5px solid #fff;border-bottom:0}
+.hdoor::after{content:'';position:absolute;right:16%;top:52%;width:9px;height:9px;border-radius:50%;background:#ffd25a}
+.house .room-mascot{position:absolute;top:auto;bottom:3%;left:50%;transform:translateX(-50%);width:26%;height:auto;aspect-ratio:1;z-index:60}
+.hitem{position:absolute;transform:translate(-50%,-100%);touch-action:none;cursor:grab}
+.hitem .art{width:100%;height:auto;display:block;pointer-events:none;filter:drop-shadow(0 4px 2px rgba(59,47,74,.18))}
+.hitem.drag{cursor:grabbing}.hitem.drag .art{transform:scale(1.12)}
+.hitem.out{opacity:.4}
+.tray{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none}
+.tray::-webkit-scrollbar{display:none}
+.tray .hint{margin:4px auto}
+.titem{flex:0 0 auto;width:70px;height:70px;border-radius:20px;background:#fff;box-shadow:var(--sh2);display:grid;place-items:center}
+.titem .art{width:48px;height:48px}
+.swatch{flex:0 0 auto;width:62px;height:62px;border-radius:18px;box-shadow:var(--sh2);border:4px solid #fff;font-size:22px}
+.swatch.fl{border-radius:50%}
+.swatch.sel{outline:4px solid var(--purple)}
+.swatch.lock{filter:grayscale(1);opacity:.35}
+.chestbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chestBtn{padding:4px}
+.badge{position:absolute;top:8px;right:10px;min-width:28px;height:28px;border-radius:14px;background:#ff4d6d;color:#fff;font-size:16px;font-weight:700;display:grid;place-items:center;padding:0 6px;animation:pulse 1.2s infinite}
+.mc{position:relative}
+/* Cofres */
+.chest{position:relative;width:110px;height:92px;margin:6px auto}
+.chest .base{position:absolute;bottom:0;left:0;right:0;height:60px;border-radius:10px 10px 16px 16px;background:var(--c1);box-shadow:inset 0 -9px 0 rgba(0,0,0,.16),inset 22px 0 0 -12px var(--band),inset -22px 0 0 -12px var(--band)}
+.chest .lid{position:absolute;top:0;left:0;right:0;height:38px;border-radius:44px 44px 8px 8px;background:var(--c2);box-shadow:inset 0 -6px 0 var(--band);transform-origin:12% 100%;transition:transform .45s cubic-bezier(.3,1.6,.5,1);z-index:2}
+.chest .lock{position:absolute;left:50%;top:30px;width:20px;height:24px;margin-left:-10px;background:#ffe27a;border:3px solid #c48a0b;border-radius:5px;z-index:3}
+.chest.open .lid{transform:translateY(-18px) rotate(-22deg)}
+.chest.open .lock{opacity:0}
+.chest.cbig{transform:scale(1.35);margin:56px auto 24px}
+.chest.cpop{animation:cpop .6s cubic-bezier(.3,1.7,.5,1)}
+@keyframes cpop{from{transform:scale(.3)}to{transform:scale(1.35)}}
+.chestWrap{position:relative;display:inline-block;flex:0 0 auto}
+.chestWrap.small{width:76px;height:66px}.chestWrap.tiny{width:44px;height:40px}
+.chestWrap .chest{position:absolute;left:50%;top:50%;margin:0;translate:-50% -50%}
+.chestWrap.small .chest{scale:.62}.chestWrap.tiny .chest{scale:.36}
+.chest.shake{animation:chestShake .5s 2}
+.chest.wiggle{animation:cwig 1.4s infinite}
+@keyframes cwig{0%,100%{rotate:-6deg}50%{rotate:6deg}}
+@keyframes chestShake{0%,100%{transform:scale(1.35) rotate(0)}25%{transform:scale(1.35) rotate(-8deg)}75%{transform:scale(1.35) rotate(8deg)}}
+.chestStage{position:relative;min-height:190px;padding-top:10px}
+.loot{display:flex;justify-content:center;gap:14px;margin-top:-10px}
+.lootItem{width:110px;height:110px;display:grid;place-items:center;font-size:30px;animation:lootPop .6s cubic-bezier(.3,1.7,.5,1)}
+.lootItem .art{width:100%;height:100%}
+.swatchBig{border-radius:24px;border:5px solid #fff;box-shadow:var(--sh2)}
+@keyframes lootPop{from{transform:translateY(60px) scale(.2);opacity:0}to{transform:none;opacity:1}}
+
 .confetti{position:fixed;top:-20px;width:12px;height:16px;border-radius:3px;z-index:40;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
@@ -349,7 +413,7 @@ select{padding:8px;border-radius:12px;border:2px solid #e2d8ec;background:#fff}
     <button class="mc c7" data-go="frases"><span class="ico">💬</span><span data-t="m_sentence">Frases</span></button>
     <button class="mc c5" data-go="cuentos"><span class="ico">📚</span><span data-t="m_story">Cuentos</span></button>
     <button class="mc c8" data-go="trazar"><span class="ico">✏️</span><span data-t="m_trace">Dibujar</span></button>
-    <button class="mc c6" data-go="habitacion"><span class="ico">🏠</span><span data-t="m_room">Mi rincón</span></button>
+    <button class="mc c6" data-go="habitacion"><span class="ico">🏠</span><span data-t="m_room">Mi casita</span></button>
     <button class="mc c6 wide" data-go="album"><span class="ico">📒</span><span data-t="m_album">Pegatinas</span></button>
   </div>
   <button class="install" id="installBtn">📲 Instalar la app en el móvil</button>
@@ -462,7 +526,8 @@ select{padding:8px;border-radius:12px;border:2px solid #e2d8ec;background:#fff}
 <!-- ALIMENTAR -->
 <section class="screen" id="s-alimentar">
   <h2 class="game-title" data-t="feedT">Leo tiene hambre</h2>
-  <div class="game-card"><button class="food-character" id="feedCharacter">😋</button><div class="food-target"><button class="food-pic" id="feedPic"></button><button class="big go" id="feedSay">🔊</button></div><div class="food-slots" id="feedSlots"></div><div class="food-options" id="feedOptions"></div></div>
+  <div class="feed-chest" id="feedChest"></div>
+  <div class="game-card feed-card"><div class="feed-top"><button class="food-character" id="feedCharacter">😋</button><div class="food-target"><button class="food-pic" id="feedPic"></button><button class="big go" id="feedSay">🔊</button></div></div><div class="food-slots" id="feedSlots"></div><div class="food-options" id="feedOptions"></div></div>
   <p class="hint" data-t="h_feed">Forma la palabra para alimentar a Leo</p>
 </section>
 
@@ -494,8 +559,14 @@ select{padding:8px;border-radius:12px;border:2px solid #e2d8ec;background:#fff}
 <!-- HABITACIÓN DE PREMIOS -->
 <section class="screen" id="s-habitacion">
   <h2 class="game-title" data-t="roomT">Mi rincón</h2>
-  <div class="room" id="room"><button class="room-mascot" id="roomMascot"><img class="leo-art" src="assets/illustrations/leo-mascot.png" alt="Leo"></button></div>
+  <div class="house" id="room"><div class="hwall"></div><div class="hfloor"></div><div class="hwindow"><span></span></div><div class="hshelf"></div><div class="hdoor"></div>
+    <button class="room-mascot" id="roomMascot"><img class="leo-art" src="assets/illustrations/leo-mascot.png" alt="Leo"></button><div id="roomItems"></div></div>
+  <div class="chestbar" id="chestBar"></div>
   <p class="hint" id="roomStatus"></p>
+  <h3><span data-t="myThings">Mis cosas</span> <small id="invCount"></small></h3>
+  <div class="tray" id="tray"></div>
+  <h3 data-t="themesT">Paredes y suelos</h3>
+  <div class="tray" id="themeTray"></div>
   <div class="closet" id="closet"></div>
 </section>
 
@@ -573,6 +644,16 @@ select{padding:8px;border-radius:12px;border:2px solid #e2d8ec;background:#fff}
 <div class="modal viewer" id="viewer">
   <div class="vbig" id="vBig"></div>
   <div class="vname" id="vName"></div>
+</div>
+
+<!-- ABRIR COFRE -->
+<div class="modal" id="chestModal">
+  <div class="box celebrate">
+    <h2 id="chestTitle"></h2>
+    <div class="chestStage" id="chestStage"></div>
+    <p class="pname" id="chestName"></p>
+    <div class="row"><button class="big go" id="chestOk" style="display:none">👍</button></div>
+  </div>
 </div>
 
 <!-- PREMIO / CELEBRACIÓN -->
@@ -673,7 +754,7 @@ const LANGS={
 };
 let ORDER,HARD,NAMES,LPIC,WORDS,LANG;
 const T={
- es:{path:'Camino de letras',welcome:'¿Qué quieres practicar?',playNow:'Jugar ahora',playNowSub:'Una partida corta preparada por Leo',practice:'Aprendo',games:'Juego',m_snd:'Sonidos',m_syl:'Sílabas',m_join:'Juntar',m_what:'¿Qué es?',m_listen:'Escucha',m_album:'Pegatinas',m_train:'Tren',m_feed:'Alimentar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibujar',m_story:'Cuentos',m_room:'Mi rincón',
+ es:{path:'Camino de letras',welcome:'¿Qué quieres practicar?',playNow:'Jugar ahora',playNowSub:'Una partida corta preparada por Leo',practice:'Aprendo',games:'Juego',m_snd:'Sonidos',m_syl:'Sílabas',m_join:'Juntar',m_what:'¿Qué es?',m_listen:'Escucha',m_album:'Pegatinas',m_train:'Tren',m_feed:'Alimentar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibujar',m_story:'Cuentos',m_room:'Mi casita',
   adults:'Mayores: mantén pulsado ⚙️ para ajustes y grabar tu voz',b_sound:'🔊 Sonido',b_play:'▶️ ¡A jugar!',b_all:'🔊 Todas',b_join:'🤝 ¡Juntar!',
   h_snd:'Toca una letra para oír cómo suena. Toca el dibujo para oír la palabra.',h_syl:'Los sonidos se juntan: mmm… a… ¡ma!',h_join:'Toca cada trozo, luego ¡Juntar!',
   h_what:'Lee y toca el dibujo. ¿Ayuda? Toca la palabra.',m_first:'¿Cómo empieza?',m_build:'Formar',m_balloon:'Globos',m_pairs:'Parejas',
@@ -685,9 +766,9 @@ const T={
   praise:['¡Muy bien!','¡Genial!','¡Bravo!','¡Lo has leído!','¡Qué bien lees!','¡Fenomenal!','¡Eso es!'],
   almost:'Casi. Vamos a leerla despacio',again:'Escucha otra vez',wonStk:'¡Has ganado una pegatina!',done:n=>'¡Lo has conseguido! Ya sabes la '+n,
   thisIs:n=>n?'Esta es la '+n+'. Suena así.':'Escucha cómo suena.',vowels:'Estas son las vocales. Escucha.',hello:'Hola, vamos a leer',
-  trainT:'Completa el tren',feedT:'Leo tiene hambre',catchT:'Atrapa las sílabas',sentenceT:'Completa la frase',traceT:'Dibuja la letra',storyT:'Leo un cuento',roomT:'Mi rincón',h_train:'Pon los vagones en orden',h_feed:'Forma la palabra para alimentar a Leo',h_catch:'Atrapa las sílabas en orden',h_sentence:'Lee y elige la palabra que falta',h_trace:'Repasa la letra sin salirte',h_story:'Lee cada palabra y toca para escucharla',traceOut:'Te has salido. Borra y prueba otra vez',traceMore:'Recorre un poco más la letra',traceGood:'¡Buen trazo! Ya puedes comprobarlo',
+  trainT:'Completa el tren',feedT:'Leo tiene hambre',catchT:'Atrapa las sílabas',sentenceT:'Completa la frase',traceT:'Dibuja la letra',storyT:'Leo un cuento',roomT:'Mi casita',myThings:'Mis cosas',themesT:'Paredes y suelos',newChest:'¡Cofre nuevo!',chestSay:'Has ganado un cofre. Ábrelo en tu casita.',tapChest:'¡Toca un cofre para abrirlo!',noChest:'Gana cofres dando de comer a Leo y terminando partidas.',dragHint:'Toca una cosa para ponerla en la casita. Arrástrala para moverla, o hacia abajo para guardarla.',gotIt:'Has conseguido',allOwned:'¡Ya lo tienes todo! Toma tres estrellas',h_train:'Pon los vagones en orden',h_feed:'Forma la palabra para alimentar a Leo',h_catch:'Atrapa las sílabas en orden',h_sentence:'Lee y elige la palabra que falta',h_trace:'Repasa la letra sin salirte',h_story:'Lee cada palabra y toca para escucharla',traceOut:'Te has salido. Borra y prueba otra vez',traceMore:'Recorre un poco más la letra',traceGood:'¡Buen trazo! Ya puedes comprobarlo',
   noVoice:'🔈 Este móvil no tiene la voz en español activada, así que las palabras se oyen sílaba a sílaba. Para tener voz completa: Ajustes del teléfono → Idioma → <b>Texto a voz</b> → descarga la voz en español. También puedes grabar tu voz (mantén pulsado ⚙️).'},
- ca:{path:'Camí de lletres',welcome:'Què vols practicar?',playNow:'Juga ara',playNowSub:'Una partida curta preparada per Leo',practice:'Aprenc',games:'Jugo',m_snd:'Sons',m_syl:'Síl·labes',m_join:'Ajuntar',m_what:'Què és?',m_listen:'Escolta',m_album:'Adhesius',m_train:'Tren',m_feed:'Donar menjar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibuixar',m_story:'Contes',m_room:'El meu racó',
+ ca:{path:'Camí de lletres',welcome:'Què vols practicar?',playNow:'Juga ara',playNowSub:'Una partida curta preparada per Leo',practice:'Aprenc',games:'Jugo',m_snd:'Sons',m_syl:'Síl·labes',m_join:'Ajuntar',m_what:'Què és?',m_listen:'Escolta',m_album:'Adhesius',m_train:'Tren',m_feed:'Donar menjar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibuixar',m_story:'Contes',m_room:'La meva caseta',
   adults:'Grans: mantingueu premut ⚙️ per als ajustos i per gravar la vostra veu',b_sound:'🔊 So',b_play:'▶️ A jugar!',b_all:'🔊 Totes',b_join:'🤝 Ajunta!',
   h_snd:'Toca una lletra per sentir com sona. Toca el dibuix per sentir la paraula.',h_syl:'Els sons s’ajunten: mmm… a… ma!',h_join:'Toca cada tros i després Ajunta!',
   h_what:'Llegeix i toca el dibuix. Ajuda? Toca la paraula.',m_first:'Com comença?',m_build:'Formar',m_balloon:'Globus',m_pairs:'Parelles',
@@ -699,7 +780,7 @@ const T={
   praise:['Molt bé!','Genial!','Bravo!','Ho has llegit!','Que bé que llegeixes!','Fantàstic!','Això mateix!'],
   almost:'Gairebé. La llegim a poc a poc',again:'Escolta una altra vegada',wonStk:'Has guanyat un adhesiu!',done:n=>'Ho has aconseguit! Ja saps la '+n,
   thisIs:n=>n?'Aquesta és la '+n+'. Sona així.':'Escolta com sona.',vowels:'Aquestes són les vocals. Escolta.',hello:'Hola, anem a llegir',
-  trainT:'Completa el tren',feedT:'Leo té gana',catchT:'Atrapa les síl·labes',sentenceT:'Completa la frase',traceT:'Dibuixa la lletra',storyT:'Llegeixo un conte',roomT:'El meu racó',h_train:'Posa els vagons en ordre',h_feed:'Forma la paraula per donar menjar a Leo',h_catch:'Atrapa les síl·labes en ordre',h_sentence:'Llegeix i tria la paraula que falta',h_trace:'Ressegueix la lletra sense sortir-te',h_story:'Llegeix cada paraula i toca-la per escoltar-la',traceOut:'Has sortit de la lletra. Esborra i torna-ho a provar',traceMore:'Ressegueix una mica més la lletra',traceGood:'Bon traç! Ja el pots comprovar',
+  trainT:'Completa el tren',feedT:'Leo té gana',catchT:'Atrapa les síl·labes',sentenceT:'Completa la frase',traceT:'Dibuixa la lletra',storyT:'Llegeixo un conte',roomT:'La meva caseta',myThings:'Les meves coses',themesT:'Parets i terres',newChest:'Cofre nou!',chestSay:'Has guanyat un cofre. Obre’l a la teva caseta.',tapChest:'Toca un cofre per obrir-lo!',noChest:'Guanya cofres donant menjar a Leo i acabant partides.',dragHint:'Toca una cosa per posar-la a la caseta. Arrossega-la per moure-la, o cap avall per desar-la.',gotIt:'Has aconseguit',allOwned:'Ja ho tens tot! Té tres estrelles',h_train:'Posa els vagons en ordre',h_feed:'Forma la paraula per donar menjar a Leo',h_catch:'Atrapa les síl·labes en ordre',h_sentence:'Llegeix i tria la paraula que falta',h_trace:'Ressegueix la lletra sense sortir-te',h_story:'Llegeix cada paraula i toca-la per escoltar-la',traceOut:'Has sortit de la lletra. Esborra i torna-ho a provar',traceMore:'Ressegueix una mica més la lletra',traceGood:'Bon traç! Ja el pots comprovar',
   noVoice:'🔈 Este móvil no tiene la voz en catalán activada, así que las palabras se oyen sílaba a sílaba. Para tener voz completa: Ajustes del teléfono → Idioma → <b>Texto a voz</b> → descarga la voz en catalán. También puedes grabar tu voz (mantén pulsado ⚙️).'}
 };
 const t=k=>T[state.lang][k];
@@ -910,6 +991,10 @@ const lp=(f,q=.8)=>({type:'lowpass',f:Array.isArray(f)?f:[[0,f]],q});
 function roar(t,base,dur){noise(t,dur,{filters:[['lowpass',base*6],['highpass',50]],gain:1,att:.12,rel:.4});sw(t,dur,{f:[[0,base],[.3,base*1.35],[1,base*.8]],filt:lp(700),trem:26,gain:.8,att:.12,rel:.4});return dur}
 function notes(t,list,type='triangle',vol=.3){let tt=t;list.forEach(([f,d])=>{sw(tt,d,{type,f:[[0,f]],gain:vol,att:.01,rel:d*.6});tt+=d*.85});return tt-t}
 const FX={
+  robot:t=>notes(t,[[880,.08],[660,.08],[990,.14]],'square',.14),
+  piano:t=>notes(t,[[523,.22],[659,.22],[784,.32]],'triangle',.35),
+  bell:t=>(sw(t,1.2,{type:'sine',f:[[0,1320]],gain:.45,att:.005,rel:1}),sw(t,1.2,{type:'sine',f:[[0,1980]],gain:.15,att:.005,rel:1}),1.2),
+  tick:t=>{for(let i=0;i<4;i++)noise(t+i*.25,.02,{filters:[['bandpass',i%2?2500:3500,3]],gain:1.2,att:.002,rel:.015});return 1},
   dog:t=>{for(let i=0;i<2;i++){sw(t+i*.3,.17,{f:[[0,520],[.3,620],[1,300]],filt:bp(900,1.5),gain:1.2,att:.01});noise(t+i*.3,.08,{filters:[['bandpass',1300,1]],gain:.5,att:.005,rel:.05})}return .65},
   cat:t=>(sw(t,.9,{f:[[0,480],[.4,740],[1,420]],filt:bp([[0,700],[.45,1700],[1,800]],3),gain:1.4,att:.08,rel:.25}),.95),
   cow:t=>(sw(t,1.4,{f:[[0,140],[.3,152],[1,112]],filt:lp([[0,300],[.4,950],[1,350]]),gain:1.5,att:.15,rel:.4,vib:5,vibD:3}),1.45),
@@ -1088,7 +1173,7 @@ function showSticker(){
 }
 function checkAch(){
   let any=false;
-  ACH.forEach(a=>{if(!state.ach[a[0]]&&a[4]()){state.ach[a[0]]=Date.now();any=true;
+  ACH.forEach(a=>{if(!state.ach[a[0]]&&a[4]()){state.ach[a[0]]=Date.now();any=true;if(typeof giveChest==='function')giveChest('rainbow');
     queuePrize({title:t('newAch'),body:`<div class="vbig a-spin">${a[1]}</div><p class="pname">${achName(a)}</p>`,
       sound:()=>run(async x=>{await playFx('fanfare');if(x())await sayIt(t('newAch')+' '+achName(a))})})}});
   if(any)save();return any;
@@ -1114,7 +1199,7 @@ function updateGuide(){const g=$('guide');g.classList.toggle('on',!!guided);if(!
 function effectiveLevel(){if(state.readingLevel&&state.readingLevel!=='auto')return state.readingLevel;if(state.cnt.sentences>=5||state.cnt.words>=45)return 'sentences';if(state.cnt.words>=15||state.okTot>=30)return 'words';return 'syllables'}
 function guidedGames(){const level=effectiveLevel();if(level==='syllables')return ['escucha','inicio','formar','tren','alimentar','atrapar','globos'];if(level==='words')return ['adivina','escucha','inicio','formar','tren','alimentar','atrapar','parejas','globos'];return ['adivina','formar','tren','alimentar','atrapar','parejas','frases','cuentos']}
 function startGuided(){const all=guidedGames();guided={step:0,total:Number(state.sessionLen)||5,games:[]};let bag=shuffle(all);while(guided.games.length<guided.total){guided.games.push(...bag);bag=shuffle(all)}guided.games=guided.games.slice(0,guided.total);updateGuide();show(guided.games[0],{quiet:true,keep:true});run(()=>sayIt(state.lang==='ca'?'Comencem. Leo t’acompanya.':'Empezamos. Leo te acompaña.'))}
-function finishGuided(){state.cnt.sessions++;state.pieces=(state.pieces||0)+1;let chest=false;if(state.pieces>=5){state.pieces-=5;state.chests=(state.chests||0)+1;chest=true}save();guided=null;updateGuide();checkAch();afterPrize=()=>show('home');queuePrize({title:chest?(state.lang==='ca'?'Has obert un cofre!':'¡Has abierto un cofre!'):(state.lang==='ca'?'Partida completada':'Partida completada'),body:`<div class="vbig a-${chest?'shake':'spin'}">${chest?'🎁':'🧩'}</div><p class="pname">${chest?'+'+state.chests+' 🏆':state.pieces+' / 5'}</p>`,sound:()=>run(async a=>{await playFx(chest?'fanfare':'sparkle');if(a())await sayIt(chest?(state.lang==='ca'?'Premi desbloquejat':'Premio desbloqueado'):praise())})})}
+function finishGuided(){state.cnt.sessions++;state.pieces=(state.pieces||0)+1;let chest=false;if(state.pieces>=5){state.pieces-=5;chest=true;giveChest('silver')}save();guided=null;updateGuide();checkAch();afterPrize=()=>show('home');queuePrize({title:chest?t('newChest'):(state.lang==='ca'?'Partida completada':'Partida completada'),body:chest?chestHTML('silver','cbig cpop')+`<p class="pname">${t('chestSay')}</p>`:`<div class="vbig a-spin">🧩</div><p class="pname">${state.pieces} / 5</p>`,sound:()=>run(async a=>{await playFx(chest?'fanfare':'sparkle');if(a())await sayIt(chest?t('chestSay'):praise())})})}
 function show(name,opts={}){
   stopAll();
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
@@ -1137,6 +1222,7 @@ function nextRound(){
 
 // =================== INICIO / CAMINO ===================
 function renderHome(){
+  setTimeout(updateRoomBadge,0);
   guided=null;updateGuide();applyWorld();const mas=$('mascot');setLeo(mas);mas.onclick=()=>{bump(mas,'happy');run(()=>sayIt(state.lang==='ca'?'Hola! Soc Leo. Juguem?':'¡Hola! Soy Leo. ¿Jugamos?'))};
   const p=$('path');p.innerHTML='';
   const nv=el('button','node v',`<b>${fmt('aeiou')}</b><small>${'⭐'.repeat(state.mast.vocales||0)}</small>`);
@@ -1452,10 +1538,15 @@ let feedW=null,feedFirst=true,feedLock=false,feedIdx=0;
 function newAlimentar(opts={}){
   const multi=pool().filter(w=>w.syl.length>=2&&w.syl.length<=3);feedW=pickW(multi.length?multi:WORDS.filter(w=>w.syl.length>=2),w=>'w:'+w.word,feedW);feedFirst=true;feedLock=false;feedIdx=0;setLeo($('feedCharacter'));setArt($('feedPic'),feedW.emoji,feedW.word);$('feedPic').onclick=()=>run(a=>playWord(feedW,a));
   const slots=$('feedSlots');slots.innerHTML='';feedW.syl.forEach(()=>slots.appendChild(el('div','food-slot','?')));
-  const extra=shuffle(pool().flatMap(w=>w.syl)).find(s=>!feedW.syl.includes(s))||sylPool()[0];
-  const pieces=shuffle([...feedW.syl,extra]);const o=$('feedOptions');o.innerHTML='';pieces.forEach(s=>{const b=el('button','food',fmt(s));b.onclick=()=>{
+  // Siempre están todas las sílabas de la palabra y además dos trampas que no son de la palabra
+  const inWord=new Set(feedW.syl.map(s=>plain(s)));
+  const near=s=>feedW.syl.some(x=>plain(x)[0]===plain(s)[0]||plain(x).slice(-1)===plain(s).slice(-1))?1:0;
+  const cand=[...new Set([...sylPool(),...pool().flatMap(w=>w.syl)])].filter(s=>!inWord.has(plain(s)));
+  const extras=[];for(const s of shuffle(cand).sort((a,b)=>near(b)-near(a))){if(!extras.some(x=>plain(x)===plain(s)))extras.push(s);if(extras.length===2)break}
+  for(const s of shuffle(['ma','pe','lu','so','ti','na','be','fo'])){if(extras.length>=2)break;if(!inWord.has(s)&&!extras.includes(s))extras.push(s)}
+  const pieces=shuffle([...feedW.syl,...extras]);renderFeedChest();const o=$('feedOptions');o.innerHTML='';pieces.forEach(s=>{const b=el('button','food',fmt(s));b.onclick=()=>{
     if(feedLock||b.classList.contains('used'))return;
-    if(s===feedW.syl[feedIdx]){b.classList.add('used');const slot=slots.children[feedIdx];slot.textContent=fmt(s);slot.classList.add('filled');feedIdx++;run(a=>playSyl(s,a));if(feedIdx===feedW.syl.length){feedLock=true;setTimeout(()=>{bump($('feedCharacter'),'chew');state.cnt.feed++;const m=win('w:'+feedW.word,feedFirst);run(async a=>{await playFx('pop');if(a())await playWord(feedW,a);if(m||!a())return;await sayIt(praise());await wait(300);if(a())nextRound()})},350)}}
+    if(s===feedW.syl[feedIdx]){b.classList.add('used');const slot=slots.children[feedIdx];slot.textContent=fmt(s);slot.classList.add('filled');feedIdx++;run(a=>playSyl(s,a));if(feedIdx===feedW.syl.length){feedLock=true;setTimeout(()=>{bump($('feedCharacter'),'chew');state.cnt.feed++;let m=win('w:'+feedW.word,feedFirst);if(feedReward())m=true;run(async a=>{await playFx('pop');if(a())await playWord(feedW,a);if(m||!a())return;await sayIt(praise());await wait(300);if(a())nextRound()})},350)}}
     else{bump(b,'no');if(feedFirst)lose('w:'+feedW.word);feedFirst=false;run(async a=>{await playSyl(s,a);if(a())await sayIt(state.lang==='ca'?'Busca la síl·laba següent':'Busca la sílaba siguiente')})}
   };o.appendChild(b)});
 }
@@ -1528,7 +1619,195 @@ $('traceDone').onclick=()=>{if(traceInvalid||traceDistance<$('traceWrap').client
 
 // =================== RINCÓN Y COSMÉTICOS ===================
 const COSMETICS=[['📖',0],['📕',1],['📗',2],['📘',3],['📙',4],['🧙‍♂️',5],['🦸',7],['🤖',10]];
-function renderRoom(){applyWorld();setLeo($('roomMascot'));$('roomMascot').onclick=()=>{bump($('roomMascot'),'a-jump');playFx('magic')};$('roomStatus').textContent=(state.lang==='ca'?'Peces: ':'Piezas: ')+(state.pieces||0)+'/5 · '+(state.lang==='ca'?'Cofres: ':'Cofres: ')+(state.chests||0);const c=$('closet');c.innerHTML='';COSMETICS.forEach(([ico,need])=>{const open=(state.chests||0)>=need;const b=el('button','cosmetic'+(open?'':' lock'),open?ico:'🔒');b.onclick=()=>{if(!open){boop();return}state.cosmetic=ico;save();renderRoom()};c.appendChild(b)})}
+const DECOR=[
+ ['🧸','el osito','l\'osset','f','boing',0],
+ ['🛏️','la cama','el llit','f','pop',0],
+ ['🛋️','el sofá','el sofà','f','pop',0],
+ ['🪑','la silla','la cadira','f','pop',0],
+ ['🪀','el yoyó','el io-io','f','boing',0],
+ ['🚂','el tren','el tren','f','train',0],
+ ['🪆','la muñeca','la nina','f','sparkle',0],
+ ['🎲','el dado','el dau','f','pop',0],
+ ['🧩','el puzle','el trencaclosques','f','pop',0],
+ ['⚽','la pelota','la pilota','f','boing',0],
+ ['🛝','el tobogán','el tobogan','f','whoosh',0],
+ ['🛼','los patines','els patins','f','whoosh',0],
+ ['🚲','la bici','la bici','f','bell',0],
+ ['🎹','el piano','el piano','f','piano',0],
+ ['🥁','el tambor','el tambor','f','drum',0],
+ ['🎸','la guitarra','la guitarra','f','sparkle',0],
+ ['🪴','la planta','la planta','f','sparkle',0],
+ ['🌵','el cactus','el cactus','f','sparkle',0],
+ ['🌻','el girasol','el gira-sol','f','sparkle',0],
+ ['🌷','el tulipán','la tulipa','f','sparkle',0],
+ ['🍰','el pastel','el pastís','f','pop',0],
+ ['🧁','la magdalena','la magdalena','f','pop',0],
+ ['🍎','la manzana','la poma','f','pop',0],
+ ['📚','los libros','els llibres','f','magic',0],
+ ['🧺','la cesta','la cistella','f','pop',0],
+ ['🎁','el regalo','el regal','f','magic',0],
+ ['🤖','el robot','el robot','f','robot',0],
+ ['🪁','la cometa','l\'estel','w','whoosh',0],
+ ['🖼️','el cuadro','el quadre','w','sparkle',0],
+ ['🕰️','el reloj','el rellotge','w','tick',0],
+ ['🪞','el espejo','el mirall','w','magic',0],
+ ['⭐','la estrella','l\'estrella','w','sparkle',0],
+ ['🌙','la luna','la lluna','w','magic',0],
+ ['🏮','el farolillo','el fanalet','w','sparkle',0],
+ ['🎈','el globo','el globus','w','balloon',0],
+ ['🪅','la piñata','la piñata','w','pop',0],
+ ['🔔','la campana','la campana','w','bell',0],
+ ['🗺️','el mapa','el mapa','w','pop',0],
+ ['🎀','el lazo','el llaç','w','sparkle',0],
+ ['🦋','la mariposa','la papallona','w','magic',0],
+ ['💡','la bombilla','la bombeta','w','pop',0],
+ ['☀️','el sol','el sol','w','sparkle',0],
+ ['🐶','el perrito','el gosset','p','dog',0],
+ ['🐱','el gatito','el gatet','p','cat',0],
+ ['🐰','el conejito','el conillet','p','boing',0],
+ ['🐹','el hámster','l\'hàmster','p','mouse',0],
+ ['🐢','la tortuga','la tortuga','p','slow',0],
+ ['🐠','el pececito','el peixet','p','bubbles',0],
+ ['🦜','el loro','el lloro','p','bird',0],
+ ['🐣','el pollito','el pollet','p','bird',0],
+ ['🦔','el erizo','l\'eriçó','p','boing',0],
+ ['🐧','el pingüino','el pingüí','p','penguin',0],
+ ['🌈','el arcoíris','l\'arc de Sant Martí','w','magic',1],
+ ['🏰','el castillo','el castell','f','fanfare',1],
+ ['🚀','el cohete','el coet','f','whoosh',1],
+ ['🦖','el dinosaurio','el dinosaure','f','dino',1],
+ ['🦄','el unicornio','l\'unicorn','f','magic',1],
+ ['🐉','el dragón','el drac','f','dino',1],
+ ['🛸','el platillo volante','el plat volador','w','magic',1],
+ ['🎠','el tiovivo','els cavallets','f','fanfare',1],
+ ['🐼','el panda','el panda','p','boing',1],
+ ['👑','la corona','la corona','w','fanfare',1],
+ ['🏆','la copa','la copa','f','fanfare',1],
+ ['🦕','el diplodocus','el diplodocus','f','dino',1]
+];
+// Paredes y suelos: [id, tipo, nombre es, nombre ca, fondo]
+const THEMES=[
+ ['w0','wall','Crema','Crema','#fff1d6'],
+ ['w1','wall','Rayas','Ratlles','repeating-linear-gradient(90deg,#ffe3ec 0 22px,#fff4f7 22px 44px)'],
+ ['w2','wall','Lunares','Pics','radial-gradient(#ffd25a 18%,transparent 20%) 0 0/34px 34px,#fff8e6'],
+ ['w3','wall','Cielo','Cel','radial-gradient(circle at 22% 30%,#fff 0 7%,transparent 8%),radial-gradient(circle at 72% 22%,#fff 0 6%,transparent 7%),#bfe7ff'],
+ ['w4','wall','Menta','Menta','repeating-linear-gradient(45deg,#dff7ec 0 18px,#effcf5 18px 36px)'],
+ ['w5','wall','Noche estrellada','Nit estrellada','radial-gradient(#fff9 10%,transparent 12%) 0 0/28px 28px,linear-gradient(#5b4b9a,#8a6fd1)'],
+ ['w6','wall','Lila','Lila','#efe2ff'],
+ ['f0','floor','Madera','Fusta','repeating-linear-gradient(90deg,#d9a46b 0 46px,#cc965c 46px 49px)'],
+ ['f1','floor','Alfombra','Catifa','radial-gradient(ellipse at 50% 55%,#ff9fbf 0 44%,#ffc1d6 44% 47%,transparent 48%),repeating-linear-gradient(90deg,#d9a46b 0 46px,#cc965c 46px 49px)'],
+ ['f2','floor','Césped','Gespa','repeating-linear-gradient(90deg,#8fd47c 0 8px,#84cb70 8px 16px)'],
+ ['f3','floor','Baldosas','Rajoles','conic-gradient(#fff 25%,#d8e7f5 0 50%,#fff 0 75%,#d8e7f5 0) 0 0/40px 40px'],
+ ['f4','floor','Arena','Sorra','radial-gradient(#e8c98f 15%,transparent 16%) 0 0/20px 20px,#f6deaa'],
+ ['f5','floor','Nubes','Núvols','radial-gradient(circle at 30% 40%,#fff 0 18%,transparent 19%) 0 0/70px 50px,#dff1ff']
+];
+const CHEST={wood:['cofre de madera','cofre de fusta','#b97a45','#d08e57','#8a5a30'],silver:['cofre de plata','cofre de plata','#aab6c3','#d3dbe4','#7d8a99'],
+  gold:['cofre de oro',"cofre d'or",'#f0b31f','#ffd65a','#c48a0b'],rainbow:['cofre arcoíris',"cofre de l'arc de Sant Martí",'#ff8fb1','#8fd3ff','#a983ff']};
+function normRoom(){
+  if(!state.room||typeof state.room!=='object')state.room={};
+  const r=state.room;if(!Array.isArray(r.placed))r.placed=[];if(!r.wall)r.wall='w0';if(!r.floor)r.floor='f0';
+  if(!Array.isArray(state.inv))state.inv=['🧸','🪴'];if(!Array.isArray(state.themes))state.themes=['w0','f0'];
+  if(!state.box||typeof state.box!=='object')state.box={};if(!Array.isArray(state.box.pending))state.box.pending=[];state.box.fed=state.box.fed||0;state.box.opened=state.box.opened||0;
+}
+normRoom();
+const dName=d=>state.lang==='ca'?d[2]:d[1];
+const decorOf=e=>DECOR.find(d=>d[0]===e);
+function chestHTML(type,cls=''){const sz=/\b(small|tiny)\b/.exec(cls);if(sz)return `<span class="chestWrap ${sz[1]}">${chestHTML(type,cls.replace(sz[1],''))}</span>`;const c=CHEST[type]||CHEST.wood;const bg=type==='rainbow'?'linear-gradient(90deg,#ff8fb1,#ffd25a,#8fe08a,#8fd3ff,#c3a4ff)':c[2];
+  return `<div class="chest ${cls}" style="--c1:${c[2]};--c2:${c[3]};--band:${c[4]}"><div class="lid" style="${type==='rainbow'?'background:'+bg:''}"></div><div class="base" style="${type==='rainbow'?'background:'+bg:''}"></div><div class="lock"></div></div>`}
+function giveChest(type){normRoom();state.box.pending.push(type);save()}
+function chestPrize(type){
+  queuePrize({title:t('newChest'),body:chestHTML(type,'cbig cpop')+`<p class="pname">${cap(state.lang==='ca'?CHEST[type][1]:CHEST[type][0])}</p>`,
+    sound:()=>run(async a=>{await playFx('fanfare');if(a())await sayIt(t('chestSay'))})});
+}
+// Premio del juego de alimentar: cofre de madera cada 3 palabras y de oro cada 10
+function feedReward(){
+  normRoom();state.box.fed++;let type=null;
+  if(state.box.fed%10===0)type='gold';else if(state.box.fed%3===0)type='wood';
+  if(type){giveChest(type);chestPrize(type)}save();renderFeedChest();return !!type;
+}
+function renderFeedChest(){const n=3-(state.box.fed%3);const b=$('feedChest');if(!b)return;b.innerHTML=chestHTML((state.box.fed+n)%10===0?'gold':'wood','tiny')+`<span>${'🍎'.repeat(3-n)}${'⚪'.repeat(n)}</span>`}
+// Qué sale de un cofre
+function rollChest(type){
+  const own=new Set(state.inv),free=DECOR.filter(d=>!own.has(d[0])),themes=THEMES.filter(x=>!state.themes.includes(x[0]));
+  const out=[];let theme=false;
+  if((type==='silver'||type==='rainbow')&&themes.length&&(Math.random()<.45||!free.length)){out.push({theme:shuffle(themes)[0]});theme=true}
+  const need=type==='gold'?2:type==='rainbow'?1:(theme?0:1);
+  for(let i=0;i<need&&free.length;i++){
+    const wantRare=type==='gold'||type==='rainbow'||(type==='silver'&&Math.random()<.25);
+    let c=free.filter(d=>!!d[5]===wantRare);if(!c.length)c=free;
+    const d=shuffle(c)[0];out.push({item:d});free.splice(free.indexOf(d),1);
+  }
+  if(!out.length&&themes.length)out.push({theme:shuffle(themes)[0]});
+  return out;
+}
+function openChest(i){
+  normRoom();const type=state.box.pending.splice(i,1)[0];if(!type)return;state.box.opened++;state.chests=(state.chests||0)+1;
+  const got=rollChest(type);
+  got.forEach(g=>{if(g.item)state.inv.push(g.item[0]);if(g.theme)state.themes.push(g.theme[0])});
+  if(!got.length)state.stars+=3;
+  save();renderStars();
+  const m=$('chestModal'),st=$('chestStage'),nm=$('chestName');
+  $('chestTitle').textContent=cap(state.lang==='ca'?CHEST[type][1]:CHEST[type][0]);nm.textContent='';$('chestOk').style.display='none';
+  st.innerHTML=chestHTML(type,'cbig shake');m.classList.add('on');stopAll();
+  run(async a=>{
+    await playFx('drum');await wait(500);if(!a())return;
+    st.querySelector('.chest').classList.add('open');confetti();await playFx('magic');if(!a())return;
+    const names=[];
+    st.insertAdjacentHTML('beforeend','<div class="loot">'+got.map(g=>g.item?`<div class="lootItem">${artHTML(g.item[0])}</div>`:`<div class="lootItem swatchBig" style="background:${g.theme[4]}"></div>`).join('')+(got.length?'':'<div class="lootItem">⭐⭐⭐</div>')+'</div>');
+    got.forEach(g=>names.push(g.item?dName(g.item):(state.lang==='ca'?g.theme[3]:g.theme[2])));
+    nm.textContent=names.length?fmt(names.join(state.lang==='ca'?' i ':' y ')):t('allOwned');$('chestOk').style.display='';
+    if(got[0]&&got[0].item)await playFx(got[0].item[4]);
+    if(a())await sayIt(names.length?t('gotIt')+' '+names.join(state.lang==='ca'?' i ':' y '):t('allOwned'));
+  });
+}
+function placeDefault(e){const d=decorOf(e);const k=d?d[3]:'f';
+  const x=12+Math.random()*76,y=k==='w'?22+Math.random()*30:k==='p'?78+Math.random()*16:68+Math.random()*24;
+  state.room.placed.push({e,x:Math.round(x),y:Math.round(y)});}
+function itemSize(k,y,W){const base=W*(k==='w'?.15:k==='p'?.15:.19);if(k==='w')return base;return base*(.72+.55*Math.max(0,Math.min(1,(y-58)/40)))}
+function renderRoom(){
+  normRoom();applyWorld();setLeo($('roomMascot'));$('roomMascot').onclick=()=>{bump($('roomMascot'),'a-jump');playFx('magic')};
+  const room=$('room'),W=room.clientWidth||340;
+  const wall=THEMES.find(x=>x[0]===state.room.wall)||THEMES[0],floor=THEMES.find(x=>x[0]===state.room.floor)||THEMES[7];
+  room.querySelector('.hwall').style.background=wall[4];room.querySelector('.hfloor').style.background=floor[4];
+  const box=$('roomItems');box.innerHTML='';
+  state.room.placed.forEach(pl=>{
+    const d=decorOf(pl.e);if(!d)return;
+    const it=el('div','hitem',artHTML(d[0],dName(d)));const sz=itemSize(d[3],pl.y,W);
+    it.style.left=pl.x+'%';it.style.top=pl.y+'%';it.style.width=sz+'px';it.style.zIndex=Math.round(pl.y);
+    it.onpointerdown=e=>{
+      e.preventDefault();try{it.setPointerCapture(e.pointerId)}catch(_){}
+      const r=room.getBoundingClientRect(),sx=e.clientX,sy=e.clientY;let moved=false,nx=pl.x,ny=pl.y,out=false;
+      it.classList.add('drag');
+      it.onpointermove=ev=>{if(Math.abs(ev.clientX-sx)+Math.abs(ev.clientY-sy)>8)moved=true;if(!moved)return;
+        nx=Math.max(4,Math.min(96,(ev.clientX-r.left)/r.width*100));ny=(ev.clientY-r.top)/r.height*100;out=ev.clientY>r.bottom+10;
+        it.style.left=nx+'%';it.style.top=Math.min(ny,112)+'%';it.style.width=itemSize(d[3],Math.min(ny,98),W)+'px';it.style.zIndex=200;it.classList.toggle('out',out)};
+      it.onpointerup=it.onpointercancel=ev=>{it.onpointermove=it.onpointerup=it.onpointercancel=null;it.classList.remove('drag');
+        if(!moved){const img=it.querySelector('img');bump(img,'a-jump');run(async a=>{await playFx(d[4]);if(a())await sayIt(cap(dName(d)))});return}
+        if(out){state.room.placed.splice(state.room.placed.indexOf(pl),1);playFx('pop')}else{pl.x=Math.round(nx);pl.y=Math.round(Math.max(12,Math.min(98,ny)));playFx('pop')}
+        save();renderRoom()};
+    };
+    box.appendChild(it);
+  });
+  // Cofres pendientes
+  const cb=$('chestBar');cb.innerHTML='';
+  state.box.pending.forEach((type,i)=>{const b=el('button','chestBtn',chestHTML(type,'small wiggle'));b.onclick=()=>openChest(i);cb.appendChild(b)});
+  $('roomStatus').textContent=state.box.pending.length?t('tapChest'):t('noChest');
+  // Mis cosas (sin colocar)
+  const tr=$('tray');tr.innerHTML='';const placed=new Set(state.room.placed.map(x=>x.e));
+  const mine=state.inv.filter(e=>!placed.has(e));
+  if(!mine.length)tr.appendChild(el('p','hint',t('dragHint')));
+  mine.forEach(e=>{const d=decorOf(e);if(!d)return;const b=el('button','titem',artHTML(e,dName(d)));b.onclick=()=>{placeDefault(e);save();playFx('pop');renderRoom()};tr.appendChild(b)});
+  $('invCount').textContent=state.inv.length+' / '+DECOR.length;
+  // Paredes y suelos
+  const th=$('themeTray');th.innerHTML='';
+  THEMES.forEach(x=>{const has=state.themes.includes(x[0]);const sel=state.room[x[1]]===x[0];
+    const b=el('button','swatch'+(x[1]==='floor'?' fl':'')+(has?'':' lock')+(sel?' sel':''),has?'':'🔒');b.style.background=x[4];
+    b.onclick=()=>{if(!has){boop();return}state.room[x[1]]=x[0];save();playFx('sparkle');renderRoom()};th.appendChild(b)});
+  const c=$('closet');c.innerHTML='';COSMETICS.forEach(([ico,need])=>{const open=(state.chests||0)>=need;const b=el('button','cosmetic'+(open?'':' lock'),open?ico:'🔒');b.onclick=()=>{if(!open){boop();return}state.cosmetic=ico;save();renderRoom()};c.appendChild(b)});
+  updateRoomBadge();
+}
+$('chestOk').onclick=()=>{stopAll();$('chestModal').classList.remove('on');if(cur==='habitacion')renderRoom()};
+function updateRoomBadge(){const b=document.querySelector('[data-go="habitacion"]');if(!b)return;let s=b.querySelector('.badge');const n=(state.box&&state.box.pending.length)||0;if(!n){if(s)s.remove();return}if(!s){s=el('span','badge');b.appendChild(s)}s.textContent=n}
 
 // =================== PANEL DE MAYORES ===================
 let holdT=null;
@@ -1569,7 +1848,7 @@ $('rate').oninput=e=>{state.rate=parseFloat(e.target.value);save()};
 $('rate').onchange=()=>run(()=>sayIt(t('hello')));
 let resetArm=false;
 $('resetBtn').onclick=()=>{if(!resetArm){resetArm=true;$('resetBtn').textContent='¿Seguro? Toca otra vez';setTimeout(()=>{resetArm=false;$('resetBtn').textContent='Empezar de cero'},3000);return}
-  state.lp={es:{letters:[...ES_ORDER],st:{},mast:{},voiceURI:''},ca:{letters:[...CA_ORDER],st:{},mast:{},voiceURI:''}};Object.assign(state,{stars:0,pieces:0,chests:0,cosmetic:'📖',world:'meadow',readingLevel:'auto',okTot:0,first:0,tries:0,cnt:defCnt(),ach:{}});save();setLangData();renderStars();renderCfg();resetArm=false;$('resetBtn').textContent='Hecho ✔️'};
+  state.lp={es:{letters:[...ES_ORDER],st:{},mast:{},voiceURI:''},ca:{letters:[...CA_ORDER],st:{},mast:{},voiceURI:''}};state.room={};state.inv=null;state.themes=null;state.box={};normRoom();Object.assign(state,{stars:0,pieces:0,chests:0,cosmetic:'📖',world:'meadow',readingLevel:'auto',okTot:0,first:0,tries:0,cnt:defCnt(),ach:{}});save();setLangData();renderStars();renderCfg();resetArm=false;$('resetBtn').textContent='Hecho ✔️'};
 
 // ---- Perfiles y copias de seguridad ----
 function renderProfiles(){profiles=profileDb();const s=$('profileSel');s.innerHTML='';Object.entries(profiles.items||{}).forEach(([id,p])=>{const o=el('option','',p.name||'Perfil');o.value=id;o.selected=id===profiles.active;s.appendChild(o)})}

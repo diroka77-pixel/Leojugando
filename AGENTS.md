@@ -53,6 +53,12 @@ En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: ma
 - `ACH`: logros con su condición; `checkAch()` se llama tras cada acierto. Contadores en `state.cnt`.
 - Los premios van en cola (`queuePrize`), así nunca se pisan.
 
+## Mi casita y cofres
+- `DECOR`: objetos para decorar (emoji OpenMoji, nombre es/ca, tipo f=suelo/w=pared/p=mascota, efecto sonoro, raro). `THEMES`: papeles de pared y suelos.
+- Cofres (`state.box.pending`): madera cada 3 palabras en Alimentar, oro cada 10, plata al terminar 5 partidas guiadas y arcoíris con cada logro nuevo. `rollChest()` decide qué sale (los de oro y arcoíris dan objetos raros).
+- `state.room.placed` guarda dónde está cada objeto (x, y en %). Se arrastran con el dedo; arrastrar hacia abajo fuera de la casita lo guarda. Tocar un objeto lo anima y suena.
+- Alimentar: siempre salen todas las sílabas de la palabra más dos trampas que no son de la palabra, en una cuadrícula de 3 columnas que cabe en pantalla.
+
 ## Android
 - `MainActivity.java` fija `textZoom` a 100 (la letra grande del sistema no descoloca la app) y aplica los márgenes de la cámara y las barras del sistema. No quitarlo.
 
