@@ -70,6 +70,13 @@ En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: ma
 - Ojo: los botones con `transform` necesitan su propia regla `:active`, porque la regla general `button:active{transform:translateY(3px)}` los mueve y el toque se pierde.
 - En el salón, el bocadillo dice por escrito lo que más necesita ("TENGO HAMBRE") y al tocarlo lleva a esa habitación.
 
+## Casa en 2,5D y objetos usables
+- Cada habitación tiene pared del fondo, paredes laterales y suelo en perspectiva. Coordenadas de suelo `fx` (0-100, izquierda-derecha) y `fz` (0-100, delante-fondo): `proj()` las pasa a pantalla (posición, escala y orden) y `unproj()` al revés. Objetos de pared: `wx`,`wy` con `wallPos()`.
+- Leo (`petX`,`petZ`, guardado en `state.pet.pos`) se mueve con la cruceta (◀ ▶ ▲ al fondo ▼ adelante), el botón de saltar, tocando el suelo o arrastrándole.
+- `DECOR` (más de 100 objetos): emoji, nombres es/ca, tipo (f suelo, w pared, p mascota, h ponible), sonido, raro, acción y tamaño. Al tocar un objeto colocado, Leo va hasta él y hace su acción (`ACTS`: sentarse, siesta, regar, montar, tocar música, comer, tobogán, cohete…). Los ponibles (`WEARPOS`) se los pone Leo desde "Mis cosas".
+- Las animaciones de Leo van sobre `.lb` (cuerpo), para que lo que lleva puesto se mueva con él.
+- Cofres: también uno cada día (`daily`, trae 2 cosas) y uno de madera cada 10 estrellas.
+
 ## Mi casita y cofres
 - `DECOR`: objetos para decorar (emoji OpenMoji, nombre es/ca, tipo f=suelo/w=pared/p=mascota, efecto sonoro, raro). `THEMES`: papeles de pared y suelos.
 - Cofres (`state.box.pending`): madera cada 3 palabras en Alimentar, oro cada 10, plata al terminar 5 partidas guiadas y arcoíris con cada logro nuevo. `rollChest()` decide qué sale (los de oro y arcoíris dan objetos raros).
