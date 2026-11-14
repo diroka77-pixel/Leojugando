@@ -44,7 +44,7 @@ La app está en **castellano** y **catalán** (selector en Ajustes del panel de 
 - **Estado:** `localStorage` clave `leoJugando2`. Si cambias su forma, mantén la compatibilidad con datos guardados.
 
 ## Pantallas
-`home` (camino + menú), `lesson`, `sonidos`, `silabas`, `juntar`, `adivina` (¿Qué es?), `escucha` (sílaba o palabra), `inicio` (¿Cómo empieza?: sonido inicial), `formar` (ordenar sílabas), `globos` (explotar la sílaba que se oye), `parejas` (memoria palabra-dibujo), `album`.
+`home` (camino + menú), `lesson`, `sonidos`, `silabas`, `juntar`, `adivina` (¿Qué es?), `escucha` (sílaba o palabra), `inicio` (¿Cómo empieza?: sonido inicial), `formar` (ordenar sílabas), `globos` (explotar la sílaba que se oye), `parejas` (memoria palabra-dibujo), `unir` (Relacionar: unir 3-4 palabras con sus dibujos tocando o arrastrando; 4 y parecidas cuando ya va bien), `album`.
 En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: mantener pulsado ⚙️ 1 segundo.
 
 ## Pegatinas y logros
@@ -52,6 +52,12 @@ En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: ma
 - Al tocarla se abre el visor (`openViewer`): se agranda, se anima, suena el efecto y la voz dice la onomatopeya ("El perro hace guau, guau").
 - `ACH`: logros con su condición; `checkAch()` se llama tras cada acierto. Contadores en `state.cnt`.
 - Los premios van en cola (`queuePrize`), así nunca se pisan.
+
+## Casa Tamagotchi
+- `ROOMS`: salón (mimos), cocina (comida), baño (limpieza), dormitorio (sueño) y jardín (juego). Cada una tiene sus muebles fijos (`props`), su pared y su suelo, y sus objetos colocados (`state.room.rooms[id]`).
+- `state.pet`: necesidades de Leo (0-100). Bajan con el tiempo (`petDecay`) pero nunca de 15: Leo nunca lo pasa mal ni se muere.
+- Cuidar = leer: Leo pide algo escrito en su bocadillo (`CARE`) y hay que tocar el dibujo correcto. El 🔊 lo lee en voz alta como ayuda. Cada 8 cuidados, cofre de madera. Alimentar también da de comer a Leo.
+- En el salón, el bocadillo dice por escrito lo que más necesita ("TENGO HAMBRE") y al tocarlo lleva a esa habitación.
 
 ## Mi casita y cofres
 - `DECOR`: objetos para decorar (emoji OpenMoji, nombre es/ca, tipo f=suelo/w=pared/p=mascota, efecto sonoro, raro). `THEMES`: papeles de pared y suelos.
