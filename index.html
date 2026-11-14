@@ -463,6 +463,80 @@ img{-webkit-user-drag:none;user-drag:none}
 .petstat div{background:#fff;border-radius:16px;padding:10px;font-size:13px;color:var(--soft)}
 .petstat b{display:block;font-size:22px;color:var(--ink)}
 
+
+/* Leo: animaciones más suaves */
+.tv:active{transform:translate(-50%,-100%) scale(.97)}
+.poop:active{transform:translateX(-50%) scale(.92)}
+.house .room-mascot:active{transform:translateX(-50%)}
+.ballToy:active,.pompa:active{transform:translate(-50%,-50%)}
+.room-mascot img{transform-origin:50% 100%;animation:breathe 3.2s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035,.965)}}
+.room-mascot .shadow{position:absolute;left:20%;right:20%;bottom:9%;height:8%;border-radius:50%;background:radial-gradient(rgba(59,47,74,.3),transparent 70%);z-index:-1;pointer-events:none;transition:transform .3s}
+.house .room-mascot{transition-property:left,bottom,width;transition-timing-function:cubic-bezier(.45,.05,.4,1)}
+.room-mascot.walk img{animation:hopwalk .46s ease-in-out infinite}
+@keyframes hopwalk{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-9%) rotate(-4deg) scale(.97,1.04)}50%{transform:translateY(0) scale(1.05,.95)}75%{transform:translateY(-9%) rotate(4deg) scale(.97,1.04)}}
+.room-mascot.walk .shadow{animation:shadowHop .46s ease-in-out infinite}
+@keyframes shadowHop{25%,75%{transform:scale(.8);opacity:.6}}
+.room-mascot.jump img,.room-mascot.play img{animation:jump2 .75s cubic-bezier(.3,.7,.4,1) 1}
+@keyframes jump2{0%{transform:scale(1)}15%{transform:scale(1.12,.86)}42%{transform:translateY(-40%) scale(.93,1.08) rotate(-4deg)}70%{transform:translateY(0) scale(1.1,.9)}85%{transform:scale(.97,1.03)}100%{transform:scale(1)}}
+.room-mascot.jump .shadow{animation:shadowJump .75s 1}
+@keyframes shadowJump{42%{transform:scale(.6);opacity:.5}}
+.room-mascot.held img{animation:dangle .6s ease-in-out infinite;transform-origin:50% 0}
+@keyframes dangle{0%,100%{transform:translateY(-14%) rotate(-7deg) scale(1.06)}50%{transform:translateY(-14%) rotate(7deg) scale(1.06)}}
+.room-mascot.held .shadow{transform:scale(.6);opacity:.5}
+.room-mascot.land img{animation:land .4s ease-out}
+@keyframes land{30%{transform:scale(1.15,.82)}65%{transform:scale(.95,1.06)}}
+.room-mascot.dance img{animation:dance 1.68s ease-in-out infinite}
+@keyframes dance{0%{transform:rotate(0)}12%{transform:translateY(-12%) rotate(-12deg)}25%{transform:scale(1.08,.92)}37%{transform:translateY(-12%) rotate(12deg)}50%{transform:scale(1)}62%{transform:translateY(-6%) scale(.92,1.08)}75%{transform:rotate(-8deg)}87%{transform:rotate(8deg)}100%{transform:rotate(0)}}
+.room-mascot.watch img{animation:watch 1.4s ease-in-out infinite}
+@keyframes watch{0%,100%{transform:scale(1,.94)}50%{transform:scale(1.02,.92) rotate(2deg)}}
+.room-mascot.hug img{animation:hug .7s ease-in-out 2}
+@keyframes hug{40%{transform:scale(1.18,1.05)}70%{transform:scale(.96,1.02)}}
+.room-mascot.tired img{animation:breathe 5s ease-in-out infinite}
+.room-mascot.boop2,.ballToy.boop2{animation:pop .3s}
+.emote{animation:emote2 1.7s cubic-bezier(.3,1.6,.5,1) forwards;filter:drop-shadow(0 4px 4px rgba(59,47,74,.2))}
+@keyframes emote2{0%{transform:translate(-50%,14px) scale(.2);opacity:0}18%{transform:translate(-50%,-8px) scale(1.15);opacity:1}30%{transform:translate(-50%,-6px) scale(1)}80%{opacity:1}100%{transform:translate(-50%,-26px) scale(.9);opacity:0}}
+.bubble.on{animation:springIn .45s cubic-bezier(.3,1.7,.5,1)}
+@keyframes springIn{from{transform:translateX(-50%) scale(.4);opacity:0}}
+.pfx{filter:drop-shadow(0 0 6px rgba(255,255,255,.8))}
+.tapdot{position:absolute;width:44px;height:16px;border-radius:50%;border:3px solid #fff;transform:translate(-50%,-50%);z-index:58;pointer-events:none;animation:tapdot .6s ease-out forwards}
+@keyframes tapdot{from{opacity:1;scale:.3}to{opacity:0;scale:1.4}}
+/* Deseo de Leo */
+.wish{position:absolute;top:46px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:6px 8px 6px 12px;box-shadow:var(--sh);z-index:97;white-space:nowrap;font-weight:700;font-size:clamp(17px,5.4vw,24px);max-width:94%}
+.wish.on{display:flex;animation:wishIn .5s cubic-bezier(.3,1.7,.5,1)}
+@keyframes wishIn{from{transform:translateX(-50%) translateY(-20px) scale(.6);opacity:0}}
+.wish .bsay{width:38px;height:38px;border-radius:12px;background:var(--green);font-size:17px}
+.wish .wgo{height:38px;padding:0 8px;border-radius:12px;background:var(--purple);color:#fff;font-size:15px}
+/* Tele, cuento, radio */
+.tv{position:absolute;left:74%;top:47%;width:26%;aspect-ratio:4/3.2;transform:translate(-50%,-100%);background:#4a3c5c;border-radius:12px;padding:3.5%;z-index:6;box-shadow:0 5px 0 rgba(0,0,0,.15)}
+.tv::before{content:'';position:absolute;left:30%;right:30%;bottom:-10%;height:10%;background:#4a3c5c;border-radius:0 0 6px 6px}
+.tv .scr{width:100%;height:100%;border-radius:7px;background:linear-gradient(135deg,#2a2f45,#3b4160);overflow:hidden;position:relative}
+.tv .scr::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,#ffffff22 45%,transparent 60%)}
+.house.tvOn .tv .scr{background:linear-gradient(#8fd3ff,#d8f1ff 60%,#9fe39a 60%);animation:tvGlow 1.2s ease-in-out infinite}
+@keyframes tvGlow{50%{filter:brightness(1.15)}}
+.house.tvOn .tv{box-shadow:0 0 30px 6px #8fd3ff88,0 5px 0 rgba(0,0,0,.15)}
+.toon{display:none;position:absolute;inset:0}
+.house.tvOn .toon{display:block}
+.toon span{position:absolute;bottom:14%;width:30%;animation:toonRun 2.1s linear infinite}
+.toon span .art,.toon b .art{width:100%;height:auto}
+@keyframes toonRun{0%{left:-30%;transform:translateY(0)}25%{transform:translateY(-30%)}50%{transform:translateY(0)}75%{transform:translateY(-30%)}100%{left:100%;transform:translateY(0)}}
+.toon b{position:absolute;top:4%;left:30%;width:40%;animation:pulse 1.2s infinite}
+.iprop{position:absolute;width:12%;transform:translate(-50%,-100%);z-index:7;padding:0;filter:drop-shadow(0 3px 2px rgba(59,47,74,.2))}
+.iprop .art{width:100%;height:auto}
+.iprop:active{transform:translate(-50%,-100%) scale(.9)}
+.iprop.radio{animation:radioBob 2.4s ease-in-out infinite}
+@keyframes radioBob{50%{transform:translate(-50%,-104%)}}
+.storyBox{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:88%;background:#fffdf6;border-radius:24px;box-shadow:var(--sh);padding:12px 12px 10px;z-index:98;text-align:center;animation:springIn2 .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes springIn2{from{transform:translate(-50%,-50%) scale(.5);opacity:0}}
+.storyBox .sbook{width:56px;margin:0 auto}
+.storyBox .sbook .art{width:100%;height:auto}
+.storyBox .stxt{font-size:clamp(22px,7vw,30px);font-weight:700;margin:6px 0 10px;line-height:1.25;color:var(--ink)}
+.storyBox .sbtns{display:flex;gap:10px;justify-content:center}
+.storyBox .big{height:56px;min-width:64px}
+.storyBox small{display:block;color:var(--soft);margin-top:6px;font-size:13px}
+.ballToy{width:88px;height:88px;pointer-events:none}
+.ballCount{font-size:24px;letter-spacing:2px}
+
 .confetti{position:fixed;top:-20px;width:12px;height:16px;border-radius:3px;z-index:40;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
@@ -676,7 +750,7 @@ img{-webkit-user-drag:none;user-drag:none}
   <div class="needs" id="needs"></div>
   <div class="house" id="room"><div class="hwall"></div><div class="hfloor"></div><div id="roomProps"></div><div id="roomItems"></div>
     <button class="room-mascot" id="roomMascot"><img class="leo-art" src="assets/illustrations/leo-mascot.png" alt="Leo"></button>
-    <div class="bubble" id="leoBubble"></div><div class="night" id="night"></div>
+    <div class="bubble" id="leoBubble"></div><div class="wish" id="wish"></div><div class="night" id="night"></div>
     <button class="rnav prev" id="roomPrev">◀</button><button class="rnav next" id="roomNext">▶</button><div class="rname" id="roomName"></div></div>
   <div class="rooms" id="roomTabs"></div>
   <div class="careOpts" id="careOpts"></div>
@@ -886,7 +960,7 @@ const T={
   praise:['¡Muy bien!','¡Genial!','¡Bravo!','¡Lo has leído!','¡Qué bien lees!','¡Fenomenal!','¡Eso es!'],
   almost:'Casi. Vamos a leerla despacio',again:'Escucha otra vez',wonStk:'¡Has ganado una pegatina!',done:n=>'¡Lo has conseguido! Ya sabes la '+n,
   thisIs:n=>n?'Esta es la '+n+'. Suena así.':'Escucha cómo suena.',vowels:'Estas son las vocales. Escucha.',hello:'Hola, vamos a leer',
-  trainT:'Completa el tren',feedT:'Leo tiene hambre',catchT:'Atrapa las sílabas',sentenceT:'Completa la frase',traceT:'Dibuja la letra',storyT:'Leo un cuento',roomT:'Mi casita',m_match:'Relacionar',h_match:'Une cada palabra con su dibujo',wantsRead:'Leo quiere algo. ¡Lee qué es!',notThat:'Eso no. Lee otra vez',yum:'¡Ñam, ñam! ¡Qué rico!',cleanSay:'¡Qué limpio estoy!',night:'Buenas noches',morning:'¡Buenos días! Ya no tengo sueño',funSay:'¡Qué divertido!',petSay:['¡Qué cosquillas!','¡Te quiero mucho!','¡Me encanta estar contigo!','¡Ji, ji, ji!'],needTxt:{food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},fullTxt:{food:'¡estoy lleno!',clean:'¡estoy limpio!',energy:'no tengo sueño',fun:'estoy cansado'},fullHint:'Leo no necesita nada aquí. Mira las barras de arriba.',scrubHint:'¡Frota a Leo con el dedo!',lightHint:'Leo tiene sueño. ¡Apaga la luz con el interruptor!',sleepingTxt:'leo está durmiendo',sleepHint:'Leo duerme. Toca el interruptor del dormitorio para despertarle.',stillSleepy:'¡Aún tengo sueño!',yawnSay:'Aaah… tengo sueño',ballHint:'¡Toca el juguete para que no caiga!',bubbleHint:'¡Explota las pompas!',sickHint:'Leo está resfriado. Lee qué necesita para curarse.',cured:'¡Ya estoy bien! Gracias',poopTxt:'hay caca',poopClean:'¡Todo limpio!',grown:'¡Leo ha crecido!',stages:{bebe:'bebé',pequeno:'pequeño',mayor:'mayor'},statDays:'días',statStage:'etapa',statSay:(d,w)=>'Tengo '+d+(d===1?' día':' días')+' y peso '+w+' kilos',hi:'hola',careHint:'Lee lo que pide Leo y toca el dibujo correcto',salonHint:'Toca a Leo para hacerle mimos. Cambia de habitación con las flechas.',myThings:'Mis cosas',themesT:'Paredes y suelos',newChest:'¡Cofre nuevo!',chestSay:'Has ganado un cofre. Ábrelo en tu casita.',tapChest:'¡Toca un cofre para abrirlo!',noChest:'Gana cofres dando de comer a Leo y terminando partidas.',dragHint:'Toca una cosa para ponerla en la casita. Arrástrala para moverla, o hacia abajo para guardarla.',gotIt:'Has conseguido',allOwned:'¡Ya lo tienes todo! Toma tres estrellas',h_train:'Pon los vagones en orden',h_feed:'Forma la palabra para alimentar a Leo',h_catch:'Atrapa las sílabas en orden',h_sentence:'Lee y elige la palabra que falta',h_trace:'Repasa la letra sin salirte',h_story:'Lee cada palabra y toca para escucharla',traceOut:'Te has salido. Borra y prueba otra vez',traceMore:'Recorre un poco más la letra',traceGood:'¡Buen trazo! Ya puedes comprobarlo',
+  trainT:'Completa el tren',feedT:'Leo tiene hambre',catchT:'Atrapa las sílabas',sentenceT:'Completa la frase',traceT:'Dibuja la letra',storyT:'Leo un cuento',roomT:'Mi casita',m_match:'Relacionar',h_match:'Une cada palabra con su dibujo',wantsRead:'Leo quiere algo. ¡Lee qué es!',notThat:'Eso no. Lee otra vez',yum:'¡Ñam, ñam! ¡Qué rico!',cleanSay:'¡Qué limpio estoy!',night:'Buenas noches',morning:'¡Buenos días! Ya no tengo sueño',funSay:'¡Qué divertido!',petSay:['¡Qué cosquillas!','¡Te quiero mucho!','¡Me encanta estar contigo!','¡Ji, ji, ji!'],needTxt:{food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},wishTxt:{tele:'quiero ver la tele',cuento:'léeme un cuento',bailar:'quiero bailar',abrazo:'dame un abrazo',food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},thanks:'¡Gracias! ¡Te quiero!',tvSay:'¡Qué dibujos tan divertidos!',storyHint:'Lee la frase en voz alta a Leo y toca ✔️',storyThanks:'¡Qué cuento tan bonito!',fullTxt:{food:'¡estoy lleno!',clean:'¡estoy limpio!',energy:'no tengo sueño',fun:'estoy cansado'},fullHint:'Leo no necesita nada aquí. Mira las barras de arriba.',scrubHint:'¡Frota a Leo con el dedo!',lightHint:'Leo tiene sueño. ¡Apaga la luz con el interruptor!',sleepingTxt:'leo está durmiendo',sleepHint:'Leo duerme. Toca el interruptor del dormitorio para despertarle.',stillSleepy:'¡Aún tengo sueño!',yawnSay:'Aaah… tengo sueño',ballHint:'¡Toca el juguete para que no caiga!',bubbleHint:'¡Explota las pompas!',sickHint:'Leo está resfriado. Lee qué necesita para curarse.',cured:'¡Ya estoy bien! Gracias',poopTxt:'hay caca',poopClean:'¡Todo limpio!',grown:'¡Leo ha crecido!',stages:{bebe:'bebé',pequeno:'pequeño',mayor:'mayor'},statDays:'días',statStage:'etapa',statSay:(d,w)=>'Tengo '+d+(d===1?' día':' días')+' y peso '+w+' kilos',hi:'hola',careHint:'Lee lo que pide Leo y toca el dibujo correcto',salonHint:'Toca a Leo para hacerle mimos, arrástralo o toca el suelo para que camine. Mira lo que te pide arriba.',myThings:'Mis cosas',themesT:'Paredes y suelos',newChest:'¡Cofre nuevo!',chestSay:'Has ganado un cofre. Ábrelo en tu casita.',tapChest:'¡Toca un cofre para abrirlo!',noChest:'Gana cofres dando de comer a Leo y terminando partidas.',dragHint:'Toca una cosa para ponerla en la casita. Arrástrala para moverla, o hacia abajo para guardarla.',gotIt:'Has conseguido',allOwned:'¡Ya lo tienes todo! Toma tres estrellas',h_train:'Pon los vagones en orden',h_feed:'Forma la palabra para alimentar a Leo',h_catch:'Atrapa las sílabas en orden',h_sentence:'Lee y elige la palabra que falta',h_trace:'Repasa la letra sin salirte',h_story:'Lee cada palabra y toca para escucharla',traceOut:'Te has salido. Borra y prueba otra vez',traceMore:'Recorre un poco más la letra',traceGood:'¡Buen trazo! Ya puedes comprobarlo',
   noVoice:'🔈 Este móvil no tiene la voz en español activada, así que las palabras se oyen sílaba a sílaba. Para tener voz completa: Ajustes del teléfono → Idioma → <b>Texto a voz</b> → descarga la voz en español. También puedes grabar tu voz (mantén pulsado ⚙️).'},
  ca:{path:'Camí de lletres',welcome:'Què vols practicar?',playNow:'Juga ara',playNowSub:'Una partida curta preparada per Leo',practice:'Aprenc',games:'Jugo',m_snd:'Sons',m_syl:'Síl·labes',m_join:'Ajuntar',m_what:'Què és?',m_listen:'Escolta',m_album:'Adhesius',m_train:'Tren',m_feed:'Donar menjar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibuixar',m_story:'Contes',m_room:'La meva caseta',
   adults:'Grans: mantingueu premut ⚙️ per als ajustos i per gravar la vostra veu',b_sound:'🔊 So',b_play:'▶️ A jugar!',b_all:'🔊 Totes',b_join:'🤝 Ajunta!',
@@ -900,7 +974,7 @@ const T={
   praise:['Molt bé!','Genial!','Bravo!','Ho has llegit!','Que bé que llegeixes!','Fantàstic!','Això mateix!'],
   almost:'Gairebé. La llegim a poc a poc',again:'Escolta una altra vegada',wonStk:'Has guanyat un adhesiu!',done:n=>'Ho has aconseguit! Ja saps la '+n,
   thisIs:n=>n?'Aquesta és la '+n+'. Sona així.':'Escolta com sona.',vowels:'Aquestes són les vocals. Escolta.',hello:'Hola, anem a llegir',
-  trainT:'Completa el tren',feedT:'Leo té gana',catchT:'Atrapa les síl·labes',sentenceT:'Completa la frase',traceT:'Dibuixa la lletra',storyT:'Llegeixo un conte',roomT:'La meva caseta',m_match:'Relacionar',h_match:'Uneix cada paraula amb el seu dibuix',wantsRead:'Leo vol una cosa. Llegeix què és!',notThat:'Això no. Torna-ho a llegir',yum:'Nyam, nyam! Que bo!',cleanSay:'Que net que estic!',night:'Bona nit',morning:'Bon dia! Ja no tinc son',funSay:'Que divertit!',petSay:['Quines pessigolles!','T’estimo molt!','M’encanta estar amb tu!','Ji, ji, ji!'],needTxt:{food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},fullTxt:{food:'estic ple!',clean:'estic net!',energy:'no tinc son',fun:'estic cansat'},fullHint:'Leo no necessita res aquí. Mira les barres de dalt.',scrubHint:'Frega Leo amb el dit!',lightHint:'Leo té son. Apaga el llum amb l’interruptor!',sleepingTxt:'leo està dormint',sleepHint:'Leo dorm. Toca l’interruptor de l’habitació per despertar-lo.',stillSleepy:'Encara tinc son!',yawnSay:'Aaah… tinc son',ballHint:'Toca la joguina perquè no caigui!',bubbleHint:'Rebenta les bombolles!',sickHint:'Leo està refredat. Llegeix què necessita per curar-se.',cured:'Ja estic bé! Gràcies',poopTxt:'hi ha caca',poopClean:'Tot net!',grown:'Leo ha crescut!',stages:{bebe:'nadó',pequeno:'petit',mayor:'gran'},statDays:'dies',statStage:'etapa',statSay:(d,w)=>'Tinc '+d+(d===1?' dia':' dies')+' i peso '+w+' quilos',hi:'hola',careHint:'Llegeix què demana Leo i toca el dibuix correcte',salonHint:'Toca Leo per fer-li moixaines. Canvia d’habitació amb les fletxes.',myThings:'Les meves coses',themesT:'Parets i terres',newChest:'Cofre nou!',chestSay:'Has guanyat un cofre. Obre’l a la teva caseta.',tapChest:'Toca un cofre per obrir-lo!',noChest:'Guanya cofres donant menjar a Leo i acabant partides.',dragHint:'Toca una cosa per posar-la a la caseta. Arrossega-la per moure-la, o cap avall per desar-la.',gotIt:'Has aconseguit',allOwned:'Ja ho tens tot! Té tres estrelles',h_train:'Posa els vagons en ordre',h_feed:'Forma la paraula per donar menjar a Leo',h_catch:'Atrapa les síl·labes en ordre',h_sentence:'Llegeix i tria la paraula que falta',h_trace:'Ressegueix la lletra sense sortir-te',h_story:'Llegeix cada paraula i toca-la per escoltar-la',traceOut:'Has sortit de la lletra. Esborra i torna-ho a provar',traceMore:'Ressegueix una mica més la lletra',traceGood:'Bon traç! Ja el pots comprovar',
+  trainT:'Completa el tren',feedT:'Leo té gana',catchT:'Atrapa les síl·labes',sentenceT:'Completa la frase',traceT:'Dibuixa la lletra',storyT:'Llegeixo un conte',roomT:'La meva caseta',m_match:'Relacionar',h_match:'Uneix cada paraula amb el seu dibuix',wantsRead:'Leo vol una cosa. Llegeix què és!',notThat:'Això no. Torna-ho a llegir',yum:'Nyam, nyam! Que bo!',cleanSay:'Que net que estic!',night:'Bona nit',morning:'Bon dia! Ja no tinc son',funSay:'Que divertit!',petSay:['Quines pessigolles!','T’estimo molt!','M’encanta estar amb tu!','Ji, ji, ji!'],needTxt:{food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},wishTxt:{tele:'vull mirar la tele',cuento:'llegeix-me un conte',bailar:'vull ballar',abrazo:'fes-me una abraçada',food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},thanks:'Gràcies! T’estimo!',tvSay:'Quins dibuixos tan divertits!',storyHint:'Llegeix la frase en veu alta a Leo i toca ✔️',storyThanks:'Quin conte tan bonic!',fullTxt:{food:'estic ple!',clean:'estic net!',energy:'no tinc son',fun:'estic cansat'},fullHint:'Leo no necessita res aquí. Mira les barres de dalt.',scrubHint:'Frega Leo amb el dit!',lightHint:'Leo té son. Apaga el llum amb l’interruptor!',sleepingTxt:'leo està dormint',sleepHint:'Leo dorm. Toca l’interruptor de l’habitació per despertar-lo.',stillSleepy:'Encara tinc son!',yawnSay:'Aaah… tinc son',ballHint:'Toca la joguina perquè no caigui!',bubbleHint:'Rebenta les bombolles!',sickHint:'Leo està refredat. Llegeix què necessita per curar-se.',cured:'Ja estic bé! Gràcies',poopTxt:'hi ha caca',poopClean:'Tot net!',grown:'Leo ha crescut!',stages:{bebe:'nadó',pequeno:'petit',mayor:'gran'},statDays:'dies',statStage:'etapa',statSay:(d,w)=>'Tinc '+d+(d===1?' dia':' dies')+' i peso '+w+' quilos',hi:'hola',careHint:'Llegeix què demana Leo i toca el dibuix correcte',salonHint:'Toca Leo per fer-li moixaines, arrossega’l o toca el terra perquè camini. Mira què et demana a dalt.',myThings:'Les meves coses',themesT:'Parets i terres',newChest:'Cofre nou!',chestSay:'Has guanyat un cofre. Obre’l a la teva caseta.',tapChest:'Toca un cofre per obrir-lo!',noChest:'Guanya cofres donant menjar a Leo i acabant partides.',dragHint:'Toca una cosa per posar-la a la caseta. Arrossega-la per moure-la, o cap avall per desar-la.',gotIt:'Has aconseguit',allOwned:'Ja ho tens tot! Té tres estrelles',h_train:'Posa els vagons en ordre',h_feed:'Forma la paraula per donar menjar a Leo',h_catch:'Atrapa les síl·labes en ordre',h_sentence:'Llegeix i tria la paraula que falta',h_trace:'Ressegueix la lletra sense sortir-te',h_story:'Llegeix cada paraula i toca-la per escoltar-la',traceOut:'Has sortit de la lletra. Esborra i torna-ho a provar',traceMore:'Ressegueix una mica més la lletra',traceGood:'Bon traç! Ja el pots comprovar',
   noVoice:'🔈 Este móvil no tiene la voz en catalán activada, así que las palabras se oyen sílaba a sílaba. Para tener voz completa: Ajustes del teléfono → Idioma → <b>Texto a voz</b> → descarga la voz en catalán. También puedes grabar tu voz (mantén pulsado ⚙️).'}
 };
 const t=k=>T[state.lang][k];
@@ -1283,7 +1357,7 @@ function nextPrize(){prizeTimer=null;const p=prizeQ.shift();if(!p){curPrize=null
 $('prizeBody').onclick=()=>{if(!curPrize)return;const v=$('prizeBody').querySelector('.vbig');if(v){const c=v.className;v.className='vbig';void v.offsetWidth;v.className=c}if(curPrize.sound)curPrize.sound()};
 $('prizeClose').onclick=()=>{stopAll();$('prize').classList.remove('on');curPrize=null;
   if(prizeQ.length){setTimeout(nextPrize,250);return}
-  if(afterPrize){const f=afterPrize;afterPrize=null;f()}else if(['juntar','adivina','escucha','inicio','formar','globos','parejas','tren','alimentar','atrapar','frases','trazar'].includes(cur))nextRound();else show(cur,{quiet:true,keep:true})};
+  if(afterPrize){const f=afterPrize;afterPrize=null;f()}else if(['juntar','adivina','escucha','inicio','formar','globos','parejas','tren','alimentar','atrapar','frases','trazar','unir'].includes(cur))nextRound();else if(cur==='habitacion'){if(!careBusy)renderRoom()}else show(cur,{quiet:true,keep:true})};
 function win(key,firstTry){
   buzz(24);
   state.stars++;state.okTot++;state.tries++;if(firstTry)state.first++;
@@ -1868,7 +1942,7 @@ const DECOR=[
 // =================== CASA TAMAGOTCHI ===================
 // Habitaciones: cada una cuida una necesidad de Leo (y en todas se lee)
 const ROOMS=[
- {id:'salon',ico:'🛋️',es:'Salón',ca:'Sala',need:'love',wall:'w0',floor:'f0',win:1,props:[['📺',74,46,20],['🖼️',22,44,15]]},
+ {id:'salon',ico:'🛋️',es:'Salón',ca:'Sala',need:'love',wall:'w0',floor:'f0',win:1,props:[['🖼️',22,44,15]]},
  {id:'cocina',ico:'🍳',es:'Cocina',ca:'Cuina',need:'food',wall:'w4',floor:'f3',win:1,counter:1,props:[['🍳',78,60,13],['🧺',90,60,11]]},
  {id:'bano',ico:'🛁',es:'Baño',ca:'Bany',need:'clean',wall:'w7',floor:'f3',props:[['🛁',78,96,40],['🧴',14,58,9]]},
  {id:'dormitorio',ico:'🛏️',es:'Dormitorio',ca:'Habitació',need:'energy',wall:'w6',floor:'f1',win:2,props:[['🛏️',26,96,44],['🪴',88,90,14]]},
@@ -1986,7 +2060,7 @@ function placeDefault(e){const d=decorOf(e);const k=d?d[3]:'f';const RS=curRS();
   RS.placed.push({e,x:Math.round(x),y:Math.round(y)});}
 function itemSize(k,y,W){const base=W*(k==='w'?.15:k==='p'?.15:.19);if(k==='w')return base;return base*(.72+.55*Math.max(0,Math.min(1,(y-58)/40)))}
 function renderRoom(){
-  normRoom();petDecay();save();applyWorld();
+  endActivities();normRoom();petDecay();save();applyWorld();
   const R=curR(),RS=curRS(),room=$('room'),W=room.clientWidth||340;
   const wall=THEMES.find(x=>x[0]===RS.wall)||THEMES[0],floor=THEMES.find(x=>x[0]===RS.floor)||THEMES.find(x=>x[1]==='floor');
   room.querySelector('.hwall').style.background=wall[4];room.querySelector('.hfloor').style.background=floor[4];
@@ -2002,7 +2076,12 @@ function renderRoom(){
   const asleepHere=!!P.asleep&&R.id==='dormitorio';
   $('night').classList.toggle('on',asleepHere);mas.classList.toggle('sleep',asleepHere);mas.classList.toggle('gone',!!P.asleep&&!asleepHere);
   if(asleepHere)mas.style.left='';
-  if(R.id==='dormitorio'){const sw=el('button','lswitch'+(P.asleep?' off':''),'');sw.onclick=toggleLight;$('roomProps').appendChild(sw)}
+  if(R.id==='dormitorio'){const sw=el('button','lswitch'+(P.asleep?' off':''),'');sw.onclick=toggleLight;$('roomProps').appendChild(sw);
+    const bk=el('button','iprop book',artHTML('📖'));bk.style.left='46%';bk.style.top='93%';bk.onclick=e=>{e.stopPropagation();openStory()};$('roomProps').appendChild(bk)}
+  if(R.id==='salon'){const tv=el('button','tv','<div class="scr"><div class="toon"></div></div>');tv.onclick=e=>{e.stopPropagation();watchTV()};$('roomProps').appendChild(tv);
+    const bk=el('button','iprop book',artHTML('📖'));bk.style.left='14%';bk.style.top='94%';bk.onclick=e=>{e.stopPropagation();openStory()};$('roomProps').appendChild(bk);
+    const rd=el('button','iprop radio',artHTML('📻'));rd.style.left='88%';rd.style.top='93%';rd.onclick=e=>{e.stopPropagation();dance()};$('roomProps').appendChild(rd)}
+  mas.appendChild(el('span','shadow'));
   if(isNight()){room.querySelectorAll('.hwindow').forEach(w=>w.classList.add('nightw'));if(R.id==='jardin')room.querySelector('.hwall').style.background='radial-gradient(#fff9 8%,transparent 10%) 0 0/36px 36px,linear-gradient(#25306b,#5b6bc0)'}
   // ¿Ha crecido?
   const stg=petStage();if(P.stage&&P.stage!==stg){queuePrize({title:t('grown'),body:`<div class="vbig a-jump"><img class="leo-art" src="assets/illustrations/leo-mascot.png" alt="Leo" style="width:150px"></div><p class="pname">${cap(t('stages')[stg])}</p>`,sound:()=>run(async a=>{await playFx('fanfare');if(a())await sayIt(t('grown'))})})}P.stage=stg;
@@ -2039,6 +2118,7 @@ function renderRoom(){
   careBusy=false;awaitLight=false;
   if(P.asleep&&!asleepHere)sleepingBubble();else if(asleepHere){$('leoBubble').className='bubble';$('careOpts').innerHTML='';$('careHint').textContent=t('sleepHint')}
   else if(P.sick)newRequest(true);else if(R.need==='love')salonBubble();else newRequest();
+  if(!P.wish&&!P.asleep)newWish(true);renderWish();setupLeoControl();
   // Cofres, cosas, paredes
   const cb=$('chestBar');cb.innerHTML='';
   state.box.pending.forEach((type,i)=>{const b=el('button','chestBtn',chestHTML(type,'small wiggle'));b.onclick=()=>openChest(i);cb.appendChild(b)});
@@ -2063,6 +2143,7 @@ function renderNeeds(){const n=$('needs');n.innerHTML='';
   NEEDS.forEach(([k,ico])=>{const v=Math.round(state.pet[k]);const col=v>=60?'#5fcf6a':v>=35?'#ffc93c':'#ff6b6b';
     const b=el('button','need'+(v<35?' low':''),`<span>${ico}</span><i><b style="width:${v}%;background:${col}"></b></i>`);
     b.onclick=()=>{const R=ROOMS.find(x=>x.need===k);if(R)goRoom(R.id)};n.appendChild(b)});
+  renderWish();
   const st=el('button','need stat',`<span>📋</span><small>${state.pet.weight.toFixed(1)} kg</small>`);st.onclick=openStatus;n.appendChild(st)}
 // Partículas (corazones, burbujas, zzz…) alrededor de Leo
 function burst(emoji,n,{dist=90,up=60,dur=1.4,size=26}={}){
@@ -2071,13 +2152,9 @@ function burst(emoji,n,{dist=90,up=60,dur=1.4,size=26}={}){
   for(let i=0;i<n;i++){const s=el('div','pfx',emoji);const a=Math.random()*Math.PI*2;
     s.style.left=cx+'px';s.style.top=cy+'px';s.style.fontSize=size+'px';s.style.setProperty('--dx',Math.cos(a)*dist*Math.random()+'px');s.style.setProperty('--dy',(Math.sin(a)*dist*.5-up-Math.random()*up)+'px');
     s.style.animationDuration=dur+Math.random()*.6+'s';s.style.animationDelay=Math.random()*.4+'s';room.appendChild(s);setTimeout(()=>s.remove(),(dur+1.2)*1000)}}
-function petLeo(){
-  if(careBusy)return;const mas=$('roomMascot');bump(mas,'jump');burst('❤️',7);playFx('magic');
-  state.pet.love=Math.min(100,state.pet.love+8);save();renderNeeds();
-  const P=t('petSay');run(()=>sayIt(P[Math.floor(Math.random()*P.length)]));
-}
 // Salón: Leo dice qué necesita (y hay que leerlo)
 function salonBubble(){
+  $('leoBubble').className='bubble';$('careOpts').innerHTML='';$('careHint').textContent=t('salonHint');return;
   $('careOpts').innerHTML='';$('careHint').textContent=t('salonHint');
   const P=state.pet,bub=$('leoBubble');bub.className='bubble on';placeBubble();
   const low=NEEDS.filter(([k])=>k!=='love').map(([k,ico])=>[k,ico,P[k]]).sort((a,b)=>a[2]-b[2])[0];
@@ -2130,64 +2207,141 @@ async function giveCare(x,btn,dropped){
   careBusy=true;btn.classList.add('ok');stopAll();if(!dropped)await flyTo(btn);
   $('careOpts').innerHTML='';$('leoBubble').className='bubble';
   state.cnt.care=(state.cnt.care||0)+1;P.love=Math.min(100,P.love+4);
-  let m=win('c:'+careName(careReq),careFirst);
-  if(state.cnt.care%8===0){giveChest('wood');chestPrize('wood');m=true}
+  const reqNow=careReq,first=careFirst;const reward=()=>{let mm=win('c:'+careName(reqNow),first);if(state.cnt.care%8===0){giveChest('wood');chestPrize('wood');mm=true}return mm};let m=false;
   const k=sick?'sick':R.need;
   if(k==='sick'){burst('✨',10,{size:22});await playFx('magic');P.sick=false;P.clean=Math.max(P.clean,45);mas.classList.remove('sick');emote('😊');await sayIt(t('cured'))}
   else if(k==='food'){const sweet=SWEET.includes(x[0]);mas.classList.add('eat');emote('😋');burst('✨',5,{size:18});await playFx('chomp');mas.classList.remove('eat');
     P.food=Math.min(100,P.food+(sweet?15:28));P.weight+=sweet?.4:.2;if(sweet)P.fun=Math.min(100,P.fun+10);P.toPoop=(P.toPoop||0)+1;
     await sayIt(t('yum'));if(P.toPoop>=3){P.toPoop=0;setTimeout(doPoop,14000)}}
-  else if(k==='clean'){await scrubGame(x[0]);P.clean=100;mas.classList.remove('dirty');emote('🥰');await sayIt(t('cleanSay'))}
-  else if(k==='energy'){emote('🥱',2500);await playFx('yawn');await sayIt(t('yawnSay'));awaitLight=true;$('careHint').textContent=t('lightHint');document.querySelector('.lswitch')?.classList.add('pulse');careBusy=false;save();renderNeeds();return}
-  else if(k==='fun'){if(x[0]==='🫧')await bubbleGame();else await ballGame(x[0]);P.fun=Math.min(100,P.fun+35);P.weight=Math.max(2.6,P.weight-.15);emote('🤩');await sayIt(t('funSay'))}
-  save();renderNeeds();careBusy=false;
+  else if(k==='clean'){if(!await scrubGame(x[0])){careBusy=false;return}P.clean=100;mas.classList.remove('dirty');emote('🥰');await sayIt(t('cleanSay'))}
+  else if(k==='energy'){emote('🥱',2500);await playFx('yawn');await sayIt(t('yawnSay'));reward();awaitLight=true;$('careHint').textContent=t('lightHint');document.querySelector('.lswitch')?.classList.add('pulse');careBusy=false;save();renderNeeds();return}
+  else if(k==='fun'){if(!(x[0]==='🫧'?await bubbleGame():await ballGame(x[0]))){careBusy=false;return}P.fun=Math.min(100,P.fun+35);P.weight=Math.max(2.6,P.weight-.15);emote('🤩');await sayIt(t('funSay'))}
+  m=reward();save();renderNeeds();careBusy=false;fulfilWish(k);
   if(cur!=='habitacion'||curR()!==R)return;
   if(!m){if(R.need==='love'&&!P.sick)salonBubble();else newRequest(P.sick)}
 }
 // Mimos
 function petLeo(){
-  if(careBusy||state.pet.asleep)return;const mas=$('roomMascot');bump(mas,'jump');burst('❤️',7);playFx('magic');emote('🥰');
+  if(careBusy||state.pet.asleep)return;const mas=$('roomMascot');bump(mas,'jump');if(fulfilWish('abrazo')){mas.classList.add('hug');setTimeout(()=>mas.classList.remove('hug'),1400);return}burst('❤️',7);playFx('magic');emote('🥰');
   state.pet.love=Math.min(100,state.pet.love+8);save();renderNeeds();
   const Pp=t('petSay');run(()=>sayIt(Pp[Math.floor(Math.random()*Pp.length)]));
 }
+
+// ===== Actividades en curso: se cancelan al cambiar de habitación (así nada se queda colgado) =====
+let actTok=0,actEnd=null;
+function endActivities(){actTok++;const room=$('room');if(room)room.querySelectorAll('.ballToy,.ballCount,.pompa,.tool,.storyBox,.emote').forEach(x=>x.remove());
+  if(room)room.classList.remove('scrubbing','tvOn');if(actEnd){const f=actEnd;actEnd=null;f(false)}careBusy=false;$('roomMascot')?.classList.remove('dance','watch','held','walk')}
+function activity(fn){const tok=++actTok;return new Promise(res=>{let done=false;const fin=ok=>{if(done)return;done=true;if(actEnd===fin)actEnd=null;res(ok)};actEnd=fin;fn(fin,()=>tok===actTok&&!done)})}
+// ===== Mover a Leo: arrastrarle con el dedo o tocar el suelo para que vaya andando =====
+function walkTo(x,cb){const mas=$('roomMascot');if(!mas)return;x=Math.max(10,Math.min(90,x));const d=Math.abs(x-petX);mas.classList.toggle('flip',x<petX);
+  mas.style.transitionDuration=Math.max(.5,d*.045)+'s';petX=x;mas.style.left=x+'%';placeBubble();mas.classList.add('walk');
+  clearTimeout(walkTo.t);walkTo.t=setTimeout(()=>{mas.classList.remove('walk');mas.style.transitionDuration='';cb&&cb()},Math.max(500,d*45))}
+function setupLeoControl(){
+  const room=$('room'),mas=$('roomMascot');
+  mas.onclick=null;
+  mas.onpointerdown=e=>{
+    if(state.pet.asleep||careBusy||room.classList.contains('scrubbing'))return;e.preventDefault();e.stopPropagation();
+    const r=room.getBoundingClientRect(),sx=e.clientX,sy=e.clientY;let moved=false;
+    const mv=ev=>{if(!moved&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>10){moved=true;mas.classList.add('held');playFx('boing')}
+      if(!moved)return;const x=Math.max(6,Math.min(94,(ev.clientX-r.left)/r.width*100));mas.style.transitionDuration='0s';mas.classList.toggle('flip',x<petX);petX=x;mas.style.left=x+'%';placeBubble()};
+    const up=()=>{document.removeEventListener('pointermove',mv);document.removeEventListener('pointerup',up);
+      if(!moved){petLeo();return}
+      mas.style.transitionDuration='';mas.classList.remove('held');bump(mas,'land');playFx('pop');
+      if(petX<9){petX=82;goRoomBy(-1)}else if(petX>91){petX=18;goRoomBy(1)}};
+    document.addEventListener('pointermove',mv);document.addEventListener('pointerup',up);
+  };
+  room.onpointerdown=e=>{
+    if(e.target.closest('button,.hitem,.storyBox')||state.pet.asleep||careBusy||room.classList.contains('scrubbing'))return;
+    const r=room.getBoundingClientRect();if((e.clientY-r.top)/r.height<.55)return;
+    const x=(e.clientX-r.left)/r.width*100;const dot=el('div','tapdot','');dot.style.left=x+'%';dot.style.top=(e.clientY-r.top)+'px';room.appendChild(dot);setTimeout(()=>dot.remove(),600);
+    walkTo(x);
+  };
+}
+function goRoomBy(d){const i=ROOMS.findIndex(x=>x.id===state.room.cur);goRoom(ROOMS[(i+ROOMS.length+d)%ROOMS.length].id)}
+// ===== Deseos de Leo: te pide cosas por escrito (ver la tele, un cuento, bailar, comer…) =====
+const WISHES={tele:['📺','salon'],cuento:['📖','salon'],bailar:['🎵','salon'],abrazo:['🤗',null],food:['🍎','cocina'],clean:['🛁','bano'],energy:['🌙','dormitorio'],fun:['⚽','jardin']};
+let nextWishAt=0;
+function newWish(quiet){const P=state.pet;const low=['food','energy','clean','fun'].filter(k=>P[k]<55).sort((a,b)=>P[a]-P[b])[0];
+  const opts=['tele','cuento','bailar','abrazo','fun'];let w=low||opts[Math.floor(Math.random()*opts.length)];if(w===P.lastWish&&!low)w=opts[(opts.indexOf(w)+1)%opts.length];
+  P.wish=w;P.lastWish=w;save();if(!quiet&&cur==='habitacion'){renderWish();playFx('beep');emote('💭');run(()=>sayIt(t('wantsRead')))}}
+function renderWish(){const P=state.pet,box=$('wish');if(!box)return;const w=P.wish;if(!w||P.asleep){box.className='wish';return}
+  const R=curR(),[ico,room]=WISHES[w];if(room===R.id&&['food','clean','energy','fun'].includes(w)&&!P.sick){box.className='wish';return}
+  const txt=t('wishTxt')[w];box.className='wish on';
+  box.innerHTML=`<span>💭</span><span class="bw">${fmt(txt)}</span><button class="bsay">🔊</button>`+(room&&room!==R.id?`<button class="wgo">➡️ ${ROOMS.find(x=>x.id===room).ico}</button>`:'');
+  box.querySelector('.bsay').onclick=e=>{e.stopPropagation();run(()=>tts(txt,.85))};
+  const g=box.querySelector('.wgo');if(g)g.onclick=e=>{e.stopPropagation();goRoom(room)}}
+function fulfilWish(w){const P=state.pet;if(P.wish!==w)return false;P.wish=null;P.love=Math.min(100,P.love+12);nextWishAt=Date.now()+25000+Math.random()*20000;save();
+  burst('❤️',9);emote('🥰');win('wish:'+w,true);renderWish();renderNeeds();setTimeout(()=>run(()=>sayIt(t('thanks'))),900);return true}
+// ===== La tele =====
+function watchTV(){if(careBusy||state.pet.asleep)return;const room=$('room'),mas=$('roomMascot');careBusy=true;
+  const toon=room.querySelector('.toon');if(toon)toon.innerHTML=['🐰','🦊','🐻'].map((e,i)=>`<span style="animation-delay:${i*.7}s">${artHTML(e)}</span>`).join('')+`<b>${artHTML('🌈')}</b>`;
+  room.classList.add('tvOn');playFx('click');
+  walkTo(55,()=>{mas.classList.add('watch')});
+  activity((fin,alive)=>{let n=0;const music=()=>{if(!alive())return;playFx(['piano','sparkle','magic'][n%3]);if(n%2===0)emote(['😆','😂','🤩'][n%3]);n++;if(n<6)setTimeout(music,1200);else fin(true)};setTimeout(music,600)})
+  .then(ok=>{room.classList.remove('tvOn');mas.classList.remove('watch');careBusy=false;if(!ok)return;const P=state.pet;P.fun=Math.min(100,P.fun+15);P.energy=Math.max(15,P.energy-3);save();renderNeeds();if(!fulfilWish('tele'))run(()=>sayIt(t('tvSay')))})}
+// ===== El cuento: Leo te pide que le leas una frase =====
+const STORY={es:['mi mamá me mima','el pato nada en el lago','Leo come una manzana','la luna sale de noche','el gato duerme en la cama','papá lee un cuento','la rana salta','me gusta el helado','el sol sale por la mañana','la vaca da leche','Leo tiene un osito','el tren va muy rápido'],
+  ca:['la mama em mima','l’ànec neda al llac','Leo menja una poma','la lluna surt de nit','el gat dorm al llit','el papa llegeix un conte','la granota salta','m’agrada el gelat','el sol surt al matí','la vaca fa llet','Leo té un osset','el tren va molt ràpid']};
+function openStory(){if(careBusy||state.pet.asleep)return;const room=$('room'),mas=$('roomMascot');careBusy=true;stopAll();
+  const L=STORY[state.lang]||STORY.es,s=L[Math.floor(Math.random()*L.length)];
+  const box=el('div','storyBox',`<div class="sbook">${artHTML('📖')}</div><p class="stxt">${fmt(s)}</p><div class="sbtns"><button class="big ssay">🔊</button><button class="big go sok">✔️</button></div><small>${t('storyHint')}</small>`);
+  room.appendChild(box);walkTo(50);emote('👂',2500);
+  activity((fin,alive)=>{box.querySelector('.ssay').onclick=e=>{e.stopPropagation();run(()=>tts(s,.8))};
+    box.querySelector('.sok').onclick=e=>{e.stopPropagation();fin(true)}})
+  .then(async ok=>{box.remove();careBusy=false;if(!ok)return;bump(mas,'jump');burst('⭐',8,{size:22});playFx('fanfare');const P=state.pet;P.love=Math.min(100,P.love+8);P.fun=Math.min(100,P.fun+8);save();renderNeeds();
+    await run(async a=>{await tts(s,.9);if(!a())return;if(!fulfilWish('cuento'))await sayIt(t('storyThanks'))})})}
+// ===== Bailar con la radio =====
+function dance(){if(careBusy||state.pet.asleep)return;const mas=$('roomMascot');careBusy=true;stopAll();mas.classList.add('dance');
+  activity((fin,alive)=>{let n=0;const beat=()=>{if(!alive())return;notes(AC?AC.currentTime+.02:0,[[523+((n*7)%5)*60,.18],[659,.12]],'triangle',.22);if(n%2===0)burst('🎵',2,{size:22,dur:1.2});n++;if(n<12)setTimeout(beat,420);else fin(true)};ctx();beat()})
+  .then(ok=>{mas.classList.remove('dance');careBusy=false;if(!ok)return;const P=state.pet;P.fun=Math.min(100,P.fun+15);P.weight=Math.max(2.6,P.weight-.1);save();renderNeeds();emote('🤩');if(!fulfilWish('bailar'))run(()=>sayIt(t('funSay')))})}
+
 // Baño: frotar a Leo con el dedo hasta llenarlo de espuma
-function scrubGame(tool){return new Promise(res=>{
-  const room=$('room');let n=0,last=0,done=false;$('careHint').textContent=t('scrubHint');room.classList.add('scrubbing');
+function scrubGame(tool){return activity((fin,alive)=>{
+  const room=$('room');let n=0,last=0;$('careHint').textContent=t('scrubHint');room.classList.add('scrubbing');
   const tl=el('div','tool',artHTML(tool));room.appendChild(tl);
-  const r0=()=>room.getBoundingClientRect();
-  const mv=e=>{const r=r0();tl.style.left=(e.clientX-r.left)+'px';tl.style.top=(e.clientY-r.top)+'px';
+  const mv=e=>{if(!alive()){cleanup();return}const r=room.getBoundingClientRect();tl.style.left=(e.clientX-r.left)+'px';tl.style.top=(e.clientY-r.top)+'px';
     if(e.type==='pointermove'&&!e.buttons&&e.pointerType==='mouse')return;if(!overLeo(e.clientX,e.clientY))return;
     const now=performance.now();if(now-last<60)return;last=now;n++;
     const b=el('div','pfx','🫧');b.style.left=(e.clientX-r.left)+'px';b.style.top=(e.clientY-r.top)+'px';b.style.fontSize=(16+Math.random()*16)+'px';b.style.setProperty('--dx',(Math.random()-.5)*40+'px');b.style.setProperty('--dy',(-20-Math.random()*40)+'px');room.appendChild(b);setTimeout(()=>b.remove(),1600);
     if(n%5===0)tone([[900+Math.random()*500,.05]],'sine',.12);
     if(n>=22)finish()};
-  const finish=async()=>{if(done)return;done=true;room.removeEventListener('pointermove',mv);room.removeEventListener('pointerdown',mv);room.classList.remove('scrubbing');tl.remove();
-    $('careHint').textContent='';burst('💧',14,{dist:120,up:-60,dur:1.2,size:22});await playFx('splash');burst('✨',8,{size:20});res()};
-  room.addEventListener('pointermove',mv);room.addEventListener('pointerdown',mv);setTimeout(finish,25000);
+  const cleanup=()=>{room.removeEventListener('pointermove',mv);room.removeEventListener('pointerdown',mv);room.classList.remove('scrubbing');tl.remove()};
+  const finish=async()=>{cleanup();if(!alive())return;$('careHint').textContent='';burst('💧',14,{dist:120,up:-60,dur:1.2,size:22});await playFx('splash');burst('✨',8,{size:20});fin(true)};
+  room.addEventListener('pointermove',mv);room.addEventListener('pointerdown',mv);setTimeout(()=>{if(alive())finish()},20000);
 })}
-// Jardín: que el juguete no caiga al suelo
-function ballGame(toyE){return new Promise(res=>{
-  const room=$('room'),W=room.clientWidth,H=room.clientHeight,ground=H*.88;let x=W*petX/100,y=H*.35,vx=0,vy=-200,count=0,done=false,pause=false,prev=performance.now();
-  const toy=el('button','ballToy',artHTML(toyE));const cnt=el('div','ballCount','0 / 5');room.append(toy,cnt);$('careHint').textContent=t('ballHint');
-  toy.onpointerdown=e=>{e.preventDefault();e.stopPropagation();if(done||pause)return;vy=-560-Math.random()*90;vx=(Math.random()-.5)*260;count++;cnt.textContent=count+' / 5';playFx('pop');bump(cnt,'pop');
-    if(count>=5){done=true;setTimeout(async()=>{toy.remove();cnt.remove();burst('⭐',8,{size:22});$('careHint').textContent='';res()},500)}};
-  function f(now){if(done||cur!=='habitacion'){if(!done){toy.remove();cnt.remove();res()}return}const dt=Math.min(.04,(now-prev)/1000);prev=now;
-    if(!pause){vy+=820*dt;x+=vx*dt;y+=vy*dt;if(x<30){x=30;vx=-vx}if(x>W-30){x=W-30;vx=-vx}if(y<40){y=40;vy=Math.abs(vy)*.3}
-      if(y>ground){y=ground;pause=true;playFx('boing');petX=Math.max(20,Math.min(80,x/W*100));$('roomMascot').style.left=petX+'%';
-        setTimeout(()=>{x=W*petX/100;y=H*.4;vx=0;vy=-260;pause=false},900)}}
+// Jardín: que el juguete no caiga (fácil: basta con tocar cerca, y si cae 3 veces Leo lo atrapa y se acaba igual)
+function ballGame(toyE){return activity((fin,alive)=>{
+  const room=$('room'),W=room.clientWidth,H=room.clientHeight,ground=H*.86,GOAL=3;let x=W*petX/100,y=H*.35,vx=0,vy=-160,count=0,drops=0,done=false,pause=false,prev=performance.now();
+  const toy=el('div','ballToy',artHTML(toyE));const cnt=el('div','ballCount','');const upd=()=>cnt.innerHTML='⭐'.repeat(count)+'<span style="opacity:.25">'+'⭐'.repeat(GOAL-count)+'</span>';upd();
+  room.append(toy,cnt);$('careHint').textContent=t('ballHint');
+  const end=ok=>{if(done)return;done=true;room.removeEventListener('pointerdown',hit,true);setTimeout(()=>{toy.remove();cnt.remove();$('careHint').textContent='';if(alive())fin(ok)},450)};
+  const hit=e=>{if(done||pause)return;const r=room.getBoundingClientRect();const d=Math.hypot(e.clientX-r.left-x,e.clientY-r.top-y);if(d>Math.max(75,W*.17))return;
+    e.preventDefault();e.stopPropagation();vy=-470-Math.random()*60;vx=(Math.random()-.5)*200;count++;upd();playFx('pop');bump(toy,'boop2');burst('✨',3,{size:16,dur:.8});
+    if(count>=GOAL){burst('⭐',8,{size:22});end(true)}};
+  room.addEventListener('pointerdown',hit,true);
+  function f(now){if(done)return;if(!alive()||cur!=='habitacion'){done=true;room.removeEventListener('pointerdown',hit,true);toy.remove();cnt.remove();return}
+    const dt=Math.min(.04,(now-prev)/1000);prev=now;
+    if(!pause){vy+=520*dt;x+=vx*dt;y+=vy*dt;if(x<40){x=40;vx=Math.abs(vx)}if(x>W-40){x=W-40;vx=-Math.abs(vx)}if(y<50){y=50;vy=Math.abs(vy)*.3}
+      if(y>ground){y=ground;pause=true;drops++;playFx('boing');walkTo(x/W*100);
+        if(drops>=3){emote('😄');end(true);return}
+        setTimeout(()=>{if(done)return;x=W*petX/100;y=H*.45;vx=0;vy=-200;pause=false},1100)}}
     toy.style.left=x+'px';toy.style.top=y+'px';requestAnimationFrame(f)}
-  requestAnimationFrame(f);setTimeout(()=>{if(!done){done=true;toy.remove();cnt.remove();res()}},45000);
+  requestAnimationFrame(f);setTimeout(()=>{if(!done&&alive())end(true)},25000);
 })}
-// Jardín: explotar pompas
-function bubbleGame(){return new Promise(res=>{
-  const room=$('room');let left=8;$('careHint').textContent=t('bubbleHint');
-  for(let i=0;i<8;i++){const b=el('button','pompa','');b.style.left=(10+Math.random()*75)+'%';b.style.top=(12+Math.random()*55)+'%';b.style.animationDelay=(Math.random()*2)+'s';
-    b.onpointerdown=e=>{e.preventDefault();e.stopPropagation();b.classList.add('popd');tone([[1100+Math.random()*600,.06]],'sine',.18);setTimeout(()=>b.remove(),300);left--;if(left===0){$('careHint').textContent='';res()}};room.appendChild(b)}
-  setTimeout(()=>{room.querySelectorAll('.pompa').forEach(b=>b.remove());if(left>0){left=0;res()}},30000);
+// Jardín: explotar pompas (basta con tocar cerca)
+function bubbleGame(){return activity((fin,alive)=>{
+  const room=$('room');let left=6;$('careHint').textContent=t('bubbleHint');const bs=[];
+  for(let i=0;i<6;i++){const b=el('div','pompa','');b.style.left=(12+Math.random()*70)+'%';b.style.top=(14+Math.random()*50)+'%';b.style.animationDelay=(Math.random()*2)+'s';room.appendChild(b);bs.push(b)}
+  const hit=e=>{if(!alive()){room.removeEventListener('pointerdown',hit,true);return}
+    const b=bs.find(b=>{if(b.classList.contains('popd'))return false;const r=b.getBoundingClientRect();return Math.hypot(e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)<Math.max(50,r.width*.9)});
+    if(!b)return;e.preventDefault();e.stopPropagation();b.classList.add('popd');tone([[1100+Math.random()*600,.06]],'sine',.18);burst('✨',2,{size:14,dur:.7});setTimeout(()=>b.remove(),300);left--;
+    if(left===0){room.removeEventListener('pointerdown',hit,true);$('careHint').textContent='';fin(true)}};
+  room.addEventListener('pointerdown',hit,true);
+  setTimeout(()=>{if(!alive())return;room.removeEventListener('pointerdown',hit,true);bs.forEach(b=>b.remove());$('careHint').textContent='';fin(true)},20000);
 })}
 // Dormitorio: interruptor de la luz
 function toggleLight(){
-  const P=state.pet,mas=$('roomMascot');playFx('click');
+  const P=state.pet,mas=$('roomMascot');playFx('click');if(!P.asleep&&awaitLight)fulfilWish('energy');
   if(P.asleep){P.asleep=false;save();$('night').classList.remove('on');mas.classList.remove('sleep');document.querySelector('.lswitch')?.classList.remove('off');
     run(async()=>{await wait(400);if(P.energy<60){emote('😪');await sayIt(t('stillSleepy'))}else{emote('😃');bump(mas,'jump');await sayIt(t('morning'))}});setTimeout(()=>{if(cur==='habitacion')renderRoom()},2600);return}
   if(!awaitLight&&P.energy>=80){emote('🙅');run(()=>sayIt(t('fullTxt').energy));return}
@@ -2209,14 +2363,17 @@ function openStatus(){const P=state.pet,stg=petStage();const happy=Math.round((P
     <div class="petstat"><div><b>${petDays()}</b>${t('statDays')}</div><div><b>${P.weight.toFixed(1)}</b>kg</div><div><b>${cap(t('stages')[stg])}</b>${t('statStage')}</div></div>
     <p class="pname">${'❤️'.repeat(happy)}${'🤍'.repeat(5-happy)}</p>`,sound:()=>run(()=>sayIt(t('statSay')(petDays(),P.weight.toFixed(1).replace('.',','))))});
 }
+document.addEventListener('pointerdown',()=>{window._lastTouch=Date.now()},true);
 // Leo vive solo: pasea, bosteza, te llama cuando necesita algo
 let tickN=0;
 setInterval(()=>{
   if(cur!=='habitacion'||document.hidden)return;tickN++;const P=state.pet,mas=$('roomMascot');
   if(tickN%17===0){petDecay();save();renderNeeds()}
   if(P.asleep){if(curR().id==='dormitorio'&&tickN%2===0)burst('💤',1,{dist:20,up:70,dur:2.4});return}
-  if(careBusy||document.querySelector('.ballToy,.pompa,.tool'))return;
-  if(Math.random()<.65){const nx=Math.max(22,Math.min(78,petX+(Math.random()-.5)*40));mas.classList.toggle('flip',nx<petX);petX=nx;mas.style.left=petX+'%';placeBubble();mas.classList.add('walk');setTimeout(()=>mas.classList.remove('walk'),1500)}
+  if(!P.wish&&Date.now()>nextWishAt){newWish();return}
+  if(careBusy||mas.classList.contains('held')||document.querySelector('.ballToy,.pompa,.tool,.storyBox'))return;
+  if(Date.now()-(window._lastTouch||0)<6000)return;
+  if(Math.random()<.55){walkTo(Math.max(18,Math.min(82,petX+(Math.random()-.5)*44)))}
   else{const r=Math.random();if(r<.3)bump(mas,'jump');else if(P.energy<45&&r<.6){emote('🥱');playFx('yawn')}else if(P.food<40&&r<.8){emote('🍽️');playFx('tummy')}else if(P.poops.length)emote('😖')}
   if(P.sick&&tickN%5===0){emote('🤧');playFx('sneeze')}
   const urgent=['food','clean','energy','fun'].some(k=>P[k]<30)||P.poops.length||P.sick;

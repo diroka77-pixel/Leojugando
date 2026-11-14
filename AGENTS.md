@@ -64,6 +64,10 @@ En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: ma
 - Jardín: minijuegos tras leer: que el juguete no caiga (`ballGame`) o explotar pompas (`bubbleGame`).
 - Resfriado suave si está muy sucio: se cura leyendo la palabra (medicina, miel, bufanda, termómetro).
 - Crece con los días (bebé, pequeño, mayor) y tiene peso; ficha con 📋.
+- Leo se mueve con el dedo: arrastrarle (si se suelta en un borde, pasa a la habitación de al lado) o tocar el suelo para que vaya andando (`walkTo`).
+- Deseos (`state.pet.wish`, `WISHES`): Leo pide por escrito ver la tele, un cuento, bailar, un abrazo o lo que más necesite. Se cumplen tocando la tele, el libro (lee una frase de `STORY` en voz alta), la radio o a Leo, o cuidándole en su habitación. Dan estrella y cariño.
+- Las actividades (frotar, minijuegos, tele, cuento, baile) van con `activity()` y se cancelan con `endActivities()` al cambiar de habitación: nada puede quedarse colgado.
+- Ojo: los botones con `transform` necesitan su propia regla `:active`, porque la regla general `button:active{transform:translateY(3px)}` los mueve y el toque se pierde.
 - En el salón, el bocadillo dice por escrito lo que más necesita ("TENGO HAMBRE") y al tocarlo lleva a esa habitación.
 
 ## Mi casita y cofres
