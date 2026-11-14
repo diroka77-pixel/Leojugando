@@ -57,6 +57,13 @@ En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: ma
 - `ROOMS`: salón (mimos), cocina (comida), baño (limpieza), dormitorio (sueño) y jardín (juego). Cada una tiene sus muebles fijos (`props`), su pared y su suelo, y sus objetos colocados (`state.room.rooms[id]`).
 - `state.pet`: necesidades de Leo (0-100). Bajan con el tiempo (`petDecay`) pero nunca de 15: Leo nunca lo pasa mal ni se muere.
 - Cuidar = leer: Leo pide algo escrito en su bocadillo (`CARE`) y hay que tocar el dibujo correcto. El 🔊 lo lee en voz alta como ayuda. Cada 8 cuidados, cofre de madera. Alimentar también da de comer a Leo.
+- Leo vive solo (bucle cada 3,5 s): pasea, bosteza, le suena la tripa y pita como un Tamagotchi cuando algo está bajo.
+- Comida: se arrastra el dibujo hasta Leo (o se toca). Las golosinas (`SWEET`) dan más diversión y más peso. Si está lleno, lo dice y no pide nada. Cada 3 comidas hace caca 💩 (también con el tiempo); se limpia tocándola.
+- Baño: tras leer, se frota a Leo con el dedo (`scrubGame`) y se aclara con agua.
+- Dormitorio: tras leer, Leo bosteza y hay que apagar la luz con el interruptor. Duerme de verdad: `state.pet.asleep` y la energía sube con el tiempo real; de noche (20-7 h) tiene más sueño.
+- Jardín: minijuegos tras leer: que el juguete no caiga (`ballGame`) o explotar pompas (`bubbleGame`).
+- Resfriado suave si está muy sucio: se cura leyendo la palabra (medicina, miel, bufanda, termómetro).
+- Crece con los días (bebé, pequeño, mayor) y tiene peso; ficha con 📋.
 - En el salón, el bocadillo dice por escrito lo que más necesita ("TENGO HAMBRE") y al tocarlo lleva a esa habitación.
 
 ## Mi casita y cofres
