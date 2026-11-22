@@ -642,6 +642,19 @@ img{-webkit-user-drag:none;user-drag:none}
 .house .ballToy,.house .ballCount,.house .tool,.house .pompa{z-index:958}
 .house .lswitch,.house .tv{z-index:20}
 
+
+/* Nivel cole */
+.blocks.tiny{gap:6px}.blocks.tiny .blk{min-width:52px;height:68px;font-size:clamp(24px,7.4vw,32px);padding:0 6px}
+.blocks.tiny.merged{gap:0}
+.art.noart{display:grid;place-items:center;font-size:44px;width:100%;height:100%}
+.flashCard{background:var(--card);border-radius:30px;box-shadow:var(--sh);min-height:130px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px;font-weight:700;letter-spacing:1px;transition:transform .2s}
+.flashCard.show{animation:pop .35s}
+.flashCard.gone{font-size:56px!important;color:var(--yellow);background:#fff8e0}
+.flashCard.ok{background:#eefbe9}
+.flashCard .fs0{color:var(--ink)}.flashCard .fs1{color:var(--blue)}
+textarea{width:100%;font-family:inherit;font-size:18px;border-radius:14px;border:2px solid #e2d8ec;padding:10px;background:#fff;user-select:text}
+.colePrev{font-size:15px;color:var(--ink);line-height:1.6}
+
 .confetti{position:fixed;top:-20px;width:12px;height:16px;border-radius:3px;z-index:40;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
@@ -693,6 +706,7 @@ img{-webkit-user-drag:none;user-drag:none}
     <div class="menu-title"><span>🎮</span><span data-t="games">Juego</span></div>
     <button class="mc c9" data-go="globos"><span class="ico">🎈</span><span data-t="m_balloon">Globos</span></button>
     <button class="mc c10" data-go="parejas"><span class="ico">🃏</span><span data-t="m_pairs">Parejas</span></button>
+    <button class="mc c9" data-go="flash"><span class="ico">⚡</span><span data-t="m_flash">Palabra flash</span></button>
     <button class="mc c1" data-go="unir"><span class="ico">🔗</span><span data-t="m_match">Relacionar</span></button>
     <button class="mc c4" data-go="tren"><span class="ico">🚂</span><span data-t="m_train">Tren</span></button>
     <button class="mc c3" data-go="alimentar"><span class="ico">😋</span><span data-t="m_feed">Alimentar</span></button>
@@ -843,6 +857,15 @@ img{-webkit-user-drag:none;user-drag:none}
   <p class="hint trace-hint" id="traceHint" data-t="h_trace">Repasa la letra sin salirte</p>
 </section>
 
+<!-- PALABRA FLASH -->
+<section class="screen" id="s-flash">
+  <h2 class="game-title" data-t="m_flash">Palabra flash</h2>
+  <div class="flashCard" id="flCard"></div>
+  <p class="hint" id="flHint"></p>
+  <div class="opts optsw" id="flOpts"></div>
+  <div class="row"><button class="big" id="flPeek">👀</button></div>
+</section>
+
 <!-- RELACIONAR -->
 <section class="screen" id="s-unir">
   <h2 class="game-title" data-t="m_match">Relacionar</h2>
@@ -889,6 +912,7 @@ img{-webkit-user-drag:none;user-drag:none}
       <button class="tab on" data-tab="prog">Progreso</button>
       <button class="tab" data-tab="let">Letras</button>
       <button class="tab" data-tab="voz">Grabar mi voz</button>
+      <button class="tab" data-tab="cole">Cole</button>
       <button class="tab" data-tab="fam">Familia</button>
       <button class="tab" data-tab="aj">Ajustes</button>
     </div>
@@ -915,6 +939,16 @@ img{-webkit-user-drag:none;user-drag:none}
       <div class="chips" id="recChips"></div>
       <div id="recList"></div>
     </div>
+    <div class="pane" id="p-cole">
+      <p>Escribe las palabras y frases que está trabajando en el cole (una por línea, en el idioma activo). Se separan en sílabas solas; si quieres marcarlas tú, usa guiones: <b>cas-ta-nyes</b>. Salen más a menudo en el nivel <b>Palabras largas</b> y las frases forman un cuento.</p>
+      <p id="coleLang"></p>
+      <div class="set"><span>Palabras</span></div>
+      <textarea id="coleW" rows="6" placeholder="tardor&#10;castanyes&#10;semiaquàtics"></textarea>
+      <div class="set"><span>Frases</span></div>
+      <textarea id="coleS" rows="4" placeholder="El cocodril caça en silenci."></textarea>
+      <p id="colePrev" class="colePrev"></p>
+      <div class="row"><button class="big go" id="coleSave">💾 Guardar</button></div>
+    </div>
     <div class="pane" id="p-fam">
       <p><b>Perfiles infantiles</b></p>
       <div class="profile-row"><select id="profileSel"></select><button class="tg" id="profileAdd">＋</button><button class="tg" id="profileRename">✏️</button></div>
@@ -932,7 +966,7 @@ img{-webkit-user-drag:none;user-drag:none}
       <div class="set"><span>Hablar al empezar cada juego</span><button class="tg" id="instrBtn"></button></div>
       <div class="set"><span>Vibración suave</span><button class="tg" id="hapticBtn"></button></div>
       <div class="set"><span>Duración de partida</span><select id="sessionLen"><option value="3">3 juegos</option><option value="5">5 juegos</option><option value="7">7 juegos</option></select></div>
-      <div class="set"><span>Nivel de lectura</span><select id="readingLevel"><option value="auto">Automático</option><option value="syllables">Sílabas</option><option value="words">Palabras</option><option value="sentences">Frases</option></select></div>
+      <div class="set"><span>Nivel de lectura</span><select id="readingLevel"><option value="auto">Automático</option><option value="syllables">Sílabas</option><option value="words">Palabras</option><option value="sentences">Frases</option><option value="advanced">Palabras largas (nivel cole)</option></select></div>
       <div class="set"><span>Mundo visual</span><select id="worldSel"><option value="meadow">Pradera</option><option value="forest">Bosque</option><option value="sea">Mar</option><option value="space">Espacio</option></select></div>
       <div class="set"><span>Progreso</span><button class="tg" id="resetBtn">Empezar de cero</button></div>
     </div>
@@ -1053,6 +1087,65 @@ const LANGS={
  ca:{order:CA_ORDER,hard:CA_HARD,names:CA_NAMES,lpic:CA_LPIC,words:[...mkWords(CA_WORDS),...mkWords(CA_ADV_WORDS,2)],tts:'ca-ES',re:/^ca/i,pref:/ca[-_]ES/i,loc:'ca'}
 };
 let ORDER,HARD,NAMES,LPIC,WORDS,LANG;
+const ADV_THEMES=[{"k": "cocodril", "ico": "🐊", "es": "El cocodrilo", "ca": "El cocodril"}, {"k": "tardor", "ico": "🍂", "es": "El otoño", "ca": "La tardor"}, {"k": "hivern", "ico": "❄️", "es": "El invierno", "ca": "L’hivern"}, {"k": "nadal", "ico": "🎄", "es": "La Navidad", "ca": "El Nadal"}, {"k": "mar", "ico": "🌊", "es": "El mar", "ca": "El mar"}, {"k": "dino", "ico": "🦖", "es": "Los dinosaurios", "ca": "Els dinosaures"}];
+const ADV_WORDS={"es": [["rep-til", "", "cocodril"], ["co-co-dri-lo", "🐊", "cocodril"], ["pa-tas", "🐾", "cocodril"], ["ga-rras", "", "cocodril"], ["co-la", "", "cocodril"], ["es-ca-mas", "", "cocodril"], ["o-ví-pa-ro", "🥚", "cocodril"], ["car-ní-vo-ro", "🥩", "cocodril"], ["se-mi-a-cuá-ti-cos", "", "cocodril"], ["man-dí-bu-las", "", "cocodril"], ["dien-tes", "🦷", "cocodril"], ["si-len-cio", "🤫", "cocodril"], ["o-to-ño", "🍂", "tardor"], ["cas-ta-ñas", "🌰", "tardor"], ["cas-ta-ñe-ra", "", "tardor"], ["ho-jas", "🍁", "tardor"], ["al-men-dras", "", "tardor"], ["ca-ra-co-les", "🐌", "tardor"], ["pi-ño-nes", "", "tardor"], ["se-tas", "🍄", "tardor"], ["nue-ces", "", "tardor"], ["gra-na-da", "", "tardor"], ["mem-bri-llo", "", "tardor"], ["pa-ne-lle-tes", "", "tardor"], ["na-ran-ja", "🟠", "tardor"], ["ma-rrón", "🟤", "tardor"], ["a-ma-ri-llo", "🟡", "tardor"], ["ro-jo", "🔴", "tardor"], ["in-vier-no", "❄️", "hivern"], ["a-bri-go", "🧥", "hivern"], ["frí-o", "🥶", "hivern"], ["he-la-da", "", "hivern"], ["es-tu-fa", "", "hivern"], ["chi-me-ne-a", "", "hivern"], ["pa-ti-nes", "⛸️", "hivern"], ["tri-ne-o", "🛷", "hivern"], ["co-pos", "", "hivern"], ["go-rro", "", "hivern"], ["cho-co-la-te", "", "hivern"], ["na-vi-dad", "🎄", "nadal"], ["be-lén", "", "nadal"], ["tu-rrón", "", "nadal"], ["vi-llan-ci-cos", "🎶", "nadal"], ["re-yes", "🤴", "nadal"], ["ca-me-llos", "", "nadal"], ["cam-pa-ni-llas", "🔔", "nadal"], ["guir-nal-da", "", "nadal"], ["ár-bol", "", "nadal"], ["man-da-ri-na", "", "nadal"], ["o-cé-a-no", "🌊", "mar"], ["me-du-sa", "🪼", "mar"], ["pe-ces", "🐟", "mar"], ["con-chas", "🐚", "mar"], ["a-re-na", "🏖️", "mar"], ["del-fi-nes", "🐬", "mar"], ["ti-bu-ro-nes", "🦈", "mar"], ["sub-ma-ri-no", "", "mar"], ["pul-pos", "🐙", "mar"], ["ga-vio-ta", "", "mar"], ["di-no-sau-rios", "🦖", "dino"], ["ti-ra-no-sau-rio", "", "dino"], ["fó-si-les", "🦴", "dino"], ["her-bí-vo-ros", "🌿", "dino"], ["e-nor-mes", "", "dino"], ["ex-tin-gui-dos", "", "dino"], ["vol-ca-nes", "🌋", "dino"], ["hue-sos", "", "dino"], ["me-te-o-ri-to", "☄️", "dino"], ["hue-llas", "🐾", "dino"]], "ca": [["rèp-til", "", "cocodril"], ["co-co-dril", "🐊", "cocodril"], ["po-tes", "🐾", "cocodril"], ["ur-pes", "", "cocodril"], ["cu-a", "", "cocodril"], ["es-ca-tes", "", "cocodril"], ["o-ví-par", "🥚", "cocodril"], ["car-ní-vor", "🥩", "cocodril"], ["se-mi-a-quà-tics", "", "cocodril"], ["man-dí-bu-les", "", "cocodril"], ["dents", "🦷", "cocodril"], ["si-len-ci", "🤫", "cocodril"], ["tar-dor", "🍂", "tardor"], ["cas-ta-nyes", "🌰", "tardor"], ["cas-ta-nya-da", "", "tardor"], ["cas-ta-nye-ra", "", "tardor"], ["fu-lles", "🍁", "tardor"], ["a-met-lles", "", "tardor"], ["car-gols", "🐌", "tardor"], ["pi-nyons", "", "tardor"], ["bo-lets", "🍄", "tardor"], ["nous", "", "tardor"], ["ma-gra-na", "", "tardor"], ["co-dony", "", "tardor"], ["pa-ne-llets", "", "tardor"], ["ta-ron-ja", "🟠", "tardor"], ["mar-ró", "🟤", "tardor"], ["groc", "🟡", "tardor"], ["ver-mell", "🔴", "tardor"], ["hi-vern", "❄️", "hivern"], ["ni-not", "⛄", "hivern"], ["a-bric", "🧥", "hivern"], ["fred", "🥶", "hivern"], ["ge-la-da", "", "hivern"], ["es-tu-fa", "", "hivern"], ["xe-me-ne-i-a", "", "hivern"], ["pa-tins", "⛸️", "hivern"], ["tri-neu", "🛷", "hivern"], ["flocs", "", "hivern"], ["gor-ro", "", "hivern"], ["na-dal", "🎄", "nadal"], ["pes-se-bre", "", "nadal"], ["tor-rons", "", "nadal"], ["tió", "🪵", "nadal"], ["na-da-les", "🎶", "nadal"], ["reis", "🤴", "nadal"], ["ca-me-lls", "", "nadal"], ["cam-pa-ne-tes", "🔔", "nadal"], ["neu-les", "", "nadal"], ["man-da-ri-na", "", "nadal"], ["o-ce-à", "🌊", "mar"], ["me-du-sa", "🪼", "mar"], ["pei-xos", "🐟", "mar"], ["pet-xi-nes", "🐚", "mar"], ["sor-ra", "🏖️", "mar"], ["do-fins", "🐬", "mar"], ["tau-rons", "🦈", "mar"], ["sub-ma-rí", "", "mar"], ["pops", "🐙", "mar"], ["o-na-des", "", "mar"], ["ga-vi-na", "", "mar"], ["di-no-sau-res", "🦖", "dino"], ["ti-ra-no-sau-re", "", "dino"], ["fòs-sils", "🦴", "dino"], ["her-bí-vors", "🌿", "dino"], ["e-nor-mes", "", "dino"], ["ex-tin-gits", "", "dino"], ["vol-cans", "🌋", "dino"], ["os-sos", "", "dino"], ["me-te-o-rit", "☄️", "dino"], ["pet-ja-des", "🐾", "dino"]]};
+// Separador de sílabas (castellano / catalán). Respeta guiones si el adulto los escribe.
+function syllabify(word,lang){
+  const w=word.toLowerCase();if(w.includes('-'))return w.split('-').filter(Boolean);
+  const V='aeiouáéíóúàèòïü',strong='aeoáéóàèòíúï',isV=c=>V.includes(c);
+  // unidades: dígrafos consonánticos como una sola consonante
+  const units=[];
+  for(let i=0;i<w.length;){
+    const two=w.slice(i,i+2),nx=w[i+2]||'';
+    if(lang==='ca'&&w.slice(i,i+3)==='l·l'){units.push({t:'C',s:'l·',split:true});units.push({t:'C',s:'l'});i+=3;continue}
+    if((two==='qu'||two==='gu')&&'eiéíèï'.includes(nx)){units.push({t:'C',s:two});i+=2;continue}
+    if((two==='qu'||two==='gu')&&lang==='ca'&&'aoàò'.includes(nx)){units.push({t:'C',s:two});i+=2;continue} // qua, guo...
+    if(two==='ch'&&lang!=='ca'||two==='ll'||two==='ny'&&lang==='ca'||two==='rr'&&lang!=='ca'){units.push({t:'C',s:two});i+=2;continue}
+    const c=w[i];units.push({t:isV(c)?'V':(/[a-zñç·]/.test(c)?'C':'X'),s:c});i++;
+  }
+  // núcleos: unir vocales en diptongo
+  const isWeak=c=>'iuü'.includes(c);
+  const nuc=[];
+  for(const u of units){const last=nuc[nuc.length-1];
+    if(u.t==='V'&&last&&last.t==='V'){const a=last.s.slice(-1),b=u.s;
+      let dip=false;
+      if(isWeak(a)&&isWeak(b)&&a!==b)dip=true; // ui, iu
+      else if(isWeak(a)&&!isWeak(b))dip=lang!=='ca'; // ia, ie, io, ua... (en catalán hiato)
+      else if(!isWeak(a)&&isWeak(b))dip=true; // ai, ei, au, eu, oi...
+      if(a==='ü')dip=true;
+      if(dip&&last.s.length<3){last.s+=b;continue}}
+    nuc.push({...u});}
+  // reparto de consonantes entre núcleos
+  const clusters=['pl','pr','bl','br','cl','cr','fl','fr','gl','gr','tr','dr'];
+  const out=[];let cur='',i=0;const n=nuc.length;
+  const vIdx=nuc.map((u,k)=>u.t==='V'?k:-1).filter(k=>k>=0);
+  if(!vIdx.length)return [w];
+  let start=0;
+  for(let v=0;v<vIdx.length;v++){
+    const vi=vIdx[v],next=vIdx[v+1];
+    if(next===undefined){out.push(nuc.slice(start).map(u=>u.s).join(''));break}
+    const cons=nuc.slice(vi+1,next);let k=cons.length;let take; // cuántas consonantes se van con la sílaba siguiente
+    if(k===0)take=0;else if(k===1)take=1;
+    else{const lastTwo=cons.slice(-2).map(u=>u.s).join('');take=clusters.includes(lastTwo)?2:1;
+      if(lang!=='ca'&&lastTwo==='tl'&&k===2)take=1;}
+    const cut=next-take;out.push(nuc.slice(start,cut).map(u=>u.s).join(''));start=cut;
+  }
+  return out.filter(Boolean);
+}
+
+// Palabras de nivel cole: palabras largas y trabadas (nivel 3). Algunas no tienen dibujo: van a juegos de leer sin dibujo.
+function mkAdv(lang){const seen=new Set(LANGS[lang].words.map(w=>w.word)),usedE=new Set(LANGS[lang].words.map(w=>w.emoji).filter(Boolean));
+  return ADV_WORDS[lang].filter(([s])=>{const w=s.replace(/-/g,'');if(seen.has(w))return false;seen.add(w);return true})
+    .map(([s,e,th])=>{const em=e&&!usedE.has(e)?e:null;if(em)usedE.add(em);return {syl:s.split('-'),word:s.replace(/-/g,''),emoji:em,level:3,theme:th}})}
+['es','ca'].forEach(l=>{LANGS[l].adv=mkAdv(l)});
+// Palabras y frases del cole que escribe el adulto (en Ajustes → Cole)
+function schoolOf(lang){const sc=(state.lp[lang]&&state.lp[lang].school)||{};return sc}
+function emojiFor(word,lang){const pl=plain(word.toLowerCase());const all=[...LANGS[lang].words,...(LANGS[lang].adv||[])];
+  const f=all.find(w=>w.emoji&&(plain(w.word)===pl||plain(w.word)===pl.replace(/e?s$/,'')||plain(w.word)+'s'===pl));return f?f.emoji:null}
+function schoolWords(lang){const raw=(schoolOf(lang).w||'').split(/[\n,;]+/).map(x=>x.trim()).filter(Boolean);const seen=new Set();
+  return raw.map(x=>x.replace(/[.!?¿¡"]/g,'').trim()).filter(x=>x&&!/\s/.test(x)&&!seen.has(x.toLowerCase())&&seen.add(x.toLowerCase())).map(x=>{const syl=syllabify(x,lang);return {syl,word:syl.join(''),emoji:emojiFor(syl.join(''),lang),level:3,school:true}})}
+function schoolSents(lang){return (schoolOf(lang).s||'').split(/\n+/).map(x=>x.trim()).filter(Boolean)}
+
 const T={
  es:{path:'Camino de letras',welcome:'¿Qué quieres practicar?',playNow:'Jugar ahora',playNowSub:'Una partida corta preparada por Leo',practice:'Aprendo',games:'Juego',m_snd:'Sonidos',m_syl:'Sílabas',m_join:'Juntar',m_what:'¿Qué es?',m_listen:'Escucha',m_album:'Pegatinas',m_train:'Tren',m_feed:'Alimentar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibujar',m_story:'Cuentos',m_room:'Mi casita',
   adults:'Mayores: mantén pulsado ⚙️ para ajustes y grabar tu voz',b_sound:'🔊 Sonido',b_play:'▶️ ¡A jugar!',b_all:'🔊 Todas',b_join:'🤝 ¡Juntar!',
@@ -1066,7 +1159,7 @@ const T={
   praise:['¡Muy bien!','¡Genial!','¡Bravo!','¡Lo has leído!','¡Qué bien lees!','¡Fenomenal!','¡Eso es!'],
   almost:'Casi. Vamos a leerla despacio',again:'Escucha otra vez',wonStk:'¡Has ganado una pegatina!',done:n=>'¡Lo has conseguido! Ya sabes la '+n,
   thisIs:n=>n?'Esta es la '+n+'. Suena así.':'Escucha cómo suena.',vowels:'Estas son las vocales. Escucha.',hello:'Hola, vamos a leer',
-  trainT:'Completa el tren',feedT:'Leo tiene hambre',catchT:'Atrapa las sílabas',sentenceT:'Completa la frase',traceT:'Dibuja la letra',storyT:'Leo un cuento',roomT:'Mi casita',m_match:'Relacionar',h_match:'Une cada palabra con su dibujo',wantsRead:'Leo quiere algo. ¡Lee qué es!',notThat:'Eso no. Lee otra vez',yum:'¡Ñam, ñam! ¡Qué rico!',cleanSay:'¡Qué limpio estoy!',night:'Buenas noches',morning:'¡Buenos días! Ya no tengo sueño',funSay:'¡Qué divertido!',petSay:['¡Qué cosquillas!','¡Te quiero mucho!','¡Me encanta estar contigo!','¡Ji, ji, ji!'],needTxt:{food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},plantSay:'¡Crece, plantita!',starsSay:'¡Cuántas estrellas!',mirrorSay:'¡Qué guapo estoy!',peekaboo:'¡Cucú!',wearSay:'¡Mira qué bien me queda!',clockSay:h=>h===1?'Es la una':'Son las '+h,wishTxt:{tele:'quiero ver la tele',cuento:'léeme un cuento',bailar:'quiero bailar',abrazo:'dame un abrazo',food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},thanks:'¡Gracias! ¡Te quiero!',tvSay:'¡Qué dibujos tan divertidos!',storyHint:'Lee la frase en voz alta a Leo y toca ✔️',storyThanks:'¡Qué cuento tan bonito!',fullTxt:{food:'¡estoy lleno!',clean:'¡estoy limpio!',energy:'no tengo sueño',fun:'estoy cansado'},fullHint:'Leo no necesita nada aquí. Mira las barras de arriba.',scrubHint:'¡Frota a Leo con el dedo!',lightHint:'Leo tiene sueño. ¡Apaga la luz con el interruptor!',sleepingTxt:'leo está durmiendo',sleepHint:'Leo duerme. Toca el interruptor del dormitorio para despertarle.',stillSleepy:'¡Aún tengo sueño!',yawnSay:'Aaah… tengo sueño',ballHint:'¡Toca el juguete para que no caiga!',bubbleHint:'¡Explota las pompas!',sickHint:'Leo está resfriado. Lee qué necesita para curarse.',cured:'¡Ya estoy bien! Gracias',poopTxt:'hay caca',poopClean:'¡Todo limpio!',grown:'¡Leo ha crecido!',stages:{bebe:'bebé',pequeno:'pequeño',mayor:'mayor'},statDays:'días',statStage:'etapa',statSay:(d,w)=>'Tengo '+d+(d===1?' día':' días')+' y peso '+w+' kilos',hi:'hola',careHint:'Lee lo que pide Leo y toca el dibujo correcto',salonHint:'Toca a Leo para hacerle mimos, arrástralo o toca el suelo para que camine. Mira lo que te pide arriba.',myThings:'Mis cosas',themesT:'Paredes y suelos',newChest:'¡Cofre nuevo!',chestSay:'Has ganado un cofre. Ábrelo en tu casita.',tapChest:'¡Toca un cofre para abrirlo!',noChest:'Hay un cofre cada día, cada 10 estrellas, al dar de comer a Leo, al terminar partidas y con cada logro.',dragHint:'Toca una cosa para ponerla en la casa. Tócala allí y Leo la usará. Arrástrala para moverla, o hacia abajo para guardarla. Los gorros y gafas se los pone Leo.',gotIt:'Has conseguido',allOwned:'¡Ya lo tienes todo! Toma tres estrellas',h_train:'Pon los vagones en orden',h_feed:'Forma la palabra para alimentar a Leo',h_catch:'Atrapa las sílabas en orden',h_sentence:'Lee y elige la palabra que falta',h_trace:'Repasa la letra sin salirte',h_story:'Lee cada palabra y toca para escucharla',traceOut:'Te has salido. Borra y prueba otra vez',traceMore:'Recorre un poco más la letra',traceGood:'¡Buen trazo! Ya puedes comprobarlo',
+  trainT:'Completa el tren',feedT:'Leo tiene hambre',catchT:'Atrapa las sílabas',sentenceT:'Completa la frase',traceT:'Dibuja la letra',storyT:'Leo un cuento',roomT:'Mi casita',m_flash:'Palabra flash',s_flash:'Mira bien la palabra antes de que desaparezca',flLook:'¡Mira bien la palabra!',flPick:'¿Cuál era?',m_match:'Relacionar',h_match:'Une cada palabra con su dibujo',wantsRead:'Leo quiere algo. ¡Lee qué es!',notThat:'Eso no. Lee otra vez',yum:'¡Ñam, ñam! ¡Qué rico!',cleanSay:'¡Qué limpio estoy!',night:'Buenas noches',morning:'¡Buenos días! Ya no tengo sueño',funSay:'¡Qué divertido!',petSay:['¡Qué cosquillas!','¡Te quiero mucho!','¡Me encanta estar contigo!','¡Ji, ji, ji!'],needTxt:{food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},plantSay:'¡Crece, plantita!',starsSay:'¡Cuántas estrellas!',mirrorSay:'¡Qué guapo estoy!',peekaboo:'¡Cucú!',wearSay:'¡Mira qué bien me queda!',clockSay:h=>h===1?'Es la una':'Son las '+h,wishTxt:{tele:'quiero ver la tele',cuento:'léeme un cuento',bailar:'quiero bailar',abrazo:'dame un abrazo',food:'tengo hambre',clean:'quiero bañarme',energy:'tengo sueño',fun:'quiero jugar'},thanks:'¡Gracias! ¡Te quiero!',tvSay:'¡Qué dibujos tan divertidos!',storyHint:'Lee la frase en voz alta a Leo y toca ✔️',storyThanks:'¡Qué cuento tan bonito!',fullTxt:{food:'¡estoy lleno!',clean:'¡estoy limpio!',energy:'no tengo sueño',fun:'estoy cansado'},fullHint:'Leo no necesita nada aquí. Mira las barras de arriba.',scrubHint:'¡Frota a Leo con el dedo!',lightHint:'Leo tiene sueño. ¡Apaga la luz con el interruptor!',sleepingTxt:'leo está durmiendo',sleepHint:'Leo duerme. Toca el interruptor del dormitorio para despertarle.',stillSleepy:'¡Aún tengo sueño!',yawnSay:'Aaah… tengo sueño',ballHint:'¡Toca el juguete para que no caiga!',bubbleHint:'¡Explota las pompas!',sickHint:'Leo está resfriado. Lee qué necesita para curarse.',cured:'¡Ya estoy bien! Gracias',poopTxt:'hay caca',poopClean:'¡Todo limpio!',grown:'¡Leo ha crecido!',stages:{bebe:'bebé',pequeno:'pequeño',mayor:'mayor'},statDays:'días',statStage:'etapa',statSay:(d,w)=>'Tengo '+d+(d===1?' día':' días')+' y peso '+w+' kilos',hi:'hola',careHint:'Lee lo que pide Leo y toca el dibujo correcto',salonHint:'Toca a Leo para hacerle mimos, arrástralo o toca el suelo para que camine. Mira lo que te pide arriba.',myThings:'Mis cosas',themesT:'Paredes y suelos',newChest:'¡Cofre nuevo!',chestSay:'Has ganado un cofre. Ábrelo en tu casita.',tapChest:'¡Toca un cofre para abrirlo!',noChest:'Hay un cofre cada día, cada 10 estrellas, al dar de comer a Leo, al terminar partidas y con cada logro.',dragHint:'Toca una cosa para ponerla en la casa. Tócala allí y Leo la usará. Arrástrala para moverla, o hacia abajo para guardarla. Los gorros y gafas se los pone Leo.',gotIt:'Has conseguido',allOwned:'¡Ya lo tienes todo! Toma tres estrellas',h_train:'Pon los vagones en orden',h_feed:'Forma la palabra para alimentar a Leo',h_catch:'Atrapa las sílabas en orden',h_sentence:'Lee y elige la palabra que falta',h_trace:'Repasa la letra sin salirte',h_story:'Lee cada palabra y toca para escucharla',traceOut:'Te has salido. Borra y prueba otra vez',traceMore:'Recorre un poco más la letra',traceGood:'¡Buen trazo! Ya puedes comprobarlo',
   noVoice:'🔈 Este móvil no tiene la voz en español activada, así que las palabras se oyen sílaba a sílaba. Para tener voz completa: Ajustes del teléfono → Idioma → <b>Texto a voz</b> → descarga la voz en español. También puedes grabar tu voz (mantén pulsado ⚙️).'},
  ca:{path:'Camí de lletres',welcome:'Què vols practicar?',playNow:'Juga ara',playNowSub:'Una partida curta preparada per Leo',practice:'Aprenc',games:'Jugo',m_snd:'Sons',m_syl:'Síl·labes',m_join:'Ajuntar',m_what:'Què és?',m_listen:'Escolta',m_album:'Adhesius',m_train:'Tren',m_feed:'Donar menjar',m_catch:'Atrapar',m_sentence:'Frases',m_trace:'Dibuixar',m_story:'Contes',m_room:'La meva caseta',
   adults:'Grans: mantingueu premut ⚙️ per als ajustos i per gravar la vostra veu',b_sound:'🔊 So',b_play:'▶️ A jugar!',b_all:'🔊 Totes',b_join:'🤝 Ajunta!',
@@ -1080,7 +1173,7 @@ const T={
   praise:['Molt bé!','Genial!','Bravo!','Ho has llegit!','Que bé que llegeixes!','Fantàstic!','Això mateix!'],
   almost:'Gairebé. La llegim a poc a poc',again:'Escolta una altra vegada',wonStk:'Has guanyat un adhesiu!',done:n=>'Ho has aconseguit! Ja saps la '+n,
   thisIs:n=>n?'Aquesta és la '+n+'. Sona així.':'Escolta com sona.',vowels:'Aquestes són les vocals. Escolta.',hello:'Hola, anem a llegir',
-  trainT:'Completa el tren',feedT:'Leo té gana',catchT:'Atrapa les síl·labes',sentenceT:'Completa la frase',traceT:'Dibuixa la lletra',storyT:'Llegeixo un conte',roomT:'La meva caseta',m_match:'Relacionar',h_match:'Uneix cada paraula amb el seu dibuix',wantsRead:'Leo vol una cosa. Llegeix què és!',notThat:'Això no. Torna-ho a llegir',yum:'Nyam, nyam! Que bo!',cleanSay:'Que net que estic!',night:'Bona nit',morning:'Bon dia! Ja no tinc son',funSay:'Que divertit!',petSay:['Quines pessigolles!','T’estimo molt!','M’encanta estar amb tu!','Ji, ji, ji!'],needTxt:{food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},plantSay:'Creix, planteta!',starsSay:'Quantes estrelles!',mirrorSay:'Que guapo que estic!',peekaboo:'Cucut!',wearSay:'Mira que bé que em queda!',clockSay:h=>h===1?'És la una':'Són les '+h,wishTxt:{tele:'vull mirar la tele',cuento:'llegeix-me un conte',bailar:'vull ballar',abrazo:'fes-me una abraçada',food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},thanks:'Gràcies! T’estimo!',tvSay:'Quins dibuixos tan divertits!',storyHint:'Llegeix la frase en veu alta a Leo i toca ✔️',storyThanks:'Quin conte tan bonic!',fullTxt:{food:'estic ple!',clean:'estic net!',energy:'no tinc son',fun:'estic cansat'},fullHint:'Leo no necessita res aquí. Mira les barres de dalt.',scrubHint:'Frega Leo amb el dit!',lightHint:'Leo té son. Apaga el llum amb l’interruptor!',sleepingTxt:'leo està dormint',sleepHint:'Leo dorm. Toca l’interruptor de l’habitació per despertar-lo.',stillSleepy:'Encara tinc son!',yawnSay:'Aaah… tinc son',ballHint:'Toca la joguina perquè no caigui!',bubbleHint:'Rebenta les bombolles!',sickHint:'Leo està refredat. Llegeix què necessita per curar-se.',cured:'Ja estic bé! Gràcies',poopTxt:'hi ha caca',poopClean:'Tot net!',grown:'Leo ha crescut!',stages:{bebe:'nadó',pequeno:'petit',mayor:'gran'},statDays:'dies',statStage:'etapa',statSay:(d,w)=>'Tinc '+d+(d===1?' dia':' dies')+' i peso '+w+' quilos',hi:'hola',careHint:'Llegeix què demana Leo i toca el dibuix correcte',salonHint:'Toca Leo per fer-li moixaines, arrossega’l o toca el terra perquè camini. Mira què et demana a dalt.',myThings:'Les meves coses',themesT:'Parets i terres',newChest:'Cofre nou!',chestSay:'Has guanyat un cofre. Obre’l a la teva caseta.',tapChest:'Toca un cofre per obrir-lo!',noChest:'Hi ha un cofre cada dia, cada 10 estrelles, en donar menjar a Leo, en acabar partides i amb cada assoliment.',dragHint:'Toca una cosa per posar-la a la casa. Toca-la allà i Leo la farà servir. Arrossega-la per moure-la, o cap avall per desar-la. Els barrets i ulleres se’ls posa Leo.',gotIt:'Has aconseguit',allOwned:'Ja ho tens tot! Té tres estrelles',h_train:'Posa els vagons en ordre',h_feed:'Forma la paraula per donar menjar a Leo',h_catch:'Atrapa les síl·labes en ordre',h_sentence:'Llegeix i tria la paraula que falta',h_trace:'Ressegueix la lletra sense sortir-te',h_story:'Llegeix cada paraula i toca-la per escoltar-la',traceOut:'Has sortit de la lletra. Esborra i torna-ho a provar',traceMore:'Ressegueix una mica més la lletra',traceGood:'Bon traç! Ja el pots comprovar',
+  trainT:'Completa el tren',feedT:'Leo té gana',catchT:'Atrapa les síl·labes',sentenceT:'Completa la frase',traceT:'Dibuixa la lletra',storyT:'Llegeixo un conte',roomT:'La meva caseta',m_flash:'Paraula flaix',s_flash:'Mira bé la paraula abans que desaparegui',flLook:'Mira bé la paraula!',flPick:'Quina era?',m_match:'Relacionar',h_match:'Uneix cada paraula amb el seu dibuix',wantsRead:'Leo vol una cosa. Llegeix què és!',notThat:'Això no. Torna-ho a llegir',yum:'Nyam, nyam! Que bo!',cleanSay:'Que net que estic!',night:'Bona nit',morning:'Bon dia! Ja no tinc son',funSay:'Que divertit!',petSay:['Quines pessigolles!','T’estimo molt!','M’encanta estar amb tu!','Ji, ji, ji!'],needTxt:{food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},plantSay:'Creix, planteta!',starsSay:'Quantes estrelles!',mirrorSay:'Que guapo que estic!',peekaboo:'Cucut!',wearSay:'Mira que bé que em queda!',clockSay:h=>h===1?'És la una':'Són les '+h,wishTxt:{tele:'vull mirar la tele',cuento:'llegeix-me un conte',bailar:'vull ballar',abrazo:'fes-me una abraçada',food:'tinc gana',clean:'em vull banyar',energy:'tinc son',fun:'vull jugar'},thanks:'Gràcies! T’estimo!',tvSay:'Quins dibuixos tan divertits!',storyHint:'Llegeix la frase en veu alta a Leo i toca ✔️',storyThanks:'Quin conte tan bonic!',fullTxt:{food:'estic ple!',clean:'estic net!',energy:'no tinc son',fun:'estic cansat'},fullHint:'Leo no necessita res aquí. Mira les barres de dalt.',scrubHint:'Frega Leo amb el dit!',lightHint:'Leo té son. Apaga el llum amb l’interruptor!',sleepingTxt:'leo està dormint',sleepHint:'Leo dorm. Toca l’interruptor de l’habitació per despertar-lo.',stillSleepy:'Encara tinc son!',yawnSay:'Aaah… tinc son',ballHint:'Toca la joguina perquè no caigui!',bubbleHint:'Rebenta les bombolles!',sickHint:'Leo està refredat. Llegeix què necessita per curar-se.',cured:'Ja estic bé! Gràcies',poopTxt:'hi ha caca',poopClean:'Tot net!',grown:'Leo ha crescut!',stages:{bebe:'nadó',pequeno:'petit',mayor:'gran'},statDays:'dies',statStage:'etapa',statSay:(d,w)=>'Tinc '+d+(d===1?' dia':' dies')+' i peso '+w+' quilos',hi:'hola',careHint:'Llegeix què demana Leo i toca el dibuix correcte',salonHint:'Toca Leo per fer-li moixaines, arrossega’l o toca el terra perquè camini. Mira què et demana a dalt.',myThings:'Les meves coses',themesT:'Parets i terres',newChest:'Cofre nou!',chestSay:'Has guanyat un cofre. Obre’l a la teva caseta.',tapChest:'Toca un cofre per obrir-lo!',noChest:'Hi ha un cofre cada dia, cada 10 estrelles, en donar menjar a Leo, en acabar partides i amb cada assoliment.',dragHint:'Toca una cosa per posar-la a la casa. Toca-la allà i Leo la farà servir. Arrossega-la per moure-la, o cap avall per desar-la. Els barrets i ulleres se’ls posa Leo.',gotIt:'Has aconseguit',allOwned:'Ja ho tens tot! Té tres estrelles',h_train:'Posa els vagons en ordre',h_feed:'Forma la paraula per donar menjar a Leo',h_catch:'Atrapa les síl·labes en ordre',h_sentence:'Llegeix i tria la paraula que falta',h_trace:'Ressegueix la lletra sense sortir-te',h_story:'Llegeix cada paraula i toca-la per escoltar-la',traceOut:'Has sortit de la lletra. Esborra i torna-ho a provar',traceMore:'Ressegueix una mica més la lletra',traceGood:'Bon traç! Ja el pots comprovar',
   noVoice:'🔈 Este móvil no tiene la voz en catalán activada, así que las palabras se oyen sílaba a sílaba. Para tener voz completa: Ajustes del teléfono → Idioma → <b>Texto a voz</b> → descarga la voz en catalán. También puedes grabar tu voz (mantén pulsado ⚙️).'}
 };
 const t=k=>T[state.lang][k];
@@ -1142,6 +1235,8 @@ const ACH=[
  ['train','🚂','Maquinista de palabras','Maquinista de paraules',()=>C().train>=10],
  ['feed','🍎','Leo bien alimentado','Leo ben alimentat',()=>C().feed>=10],
  ['match','🔗','10 relacionar','10 relacionar',()=>C().match>=10],
+ ['flash','⚡','Ojo de lince','Ull de linx',()=>C().flash>=20],
+ ['school','🏫','Palabras del cole','Paraules de l’escola',()=>C().words>=120],
  ['care','🏡','Leo bien cuidado','Leo ben cuidat',()=>C().care>=20],
  ['sentence','💬','Primera frase','Primera frase',()=>C().sentences>=1],
  ['story','📚','Tres cuentos leídos','Tres contes llegits',()=>C().stories>=3],
@@ -1164,12 +1259,12 @@ const state={stars:0,upper:true,rate:.85,instr:true,haptic:true,sessionLen:5,rea
   if(!state.lp.ca)state.lp.ca={letters:[...CA_ORDER],st:{},mast:{},voiceURI:''};
   if(!LANGS[state.lang])state.lang='es';
 })();
-const defCnt=()=>({match:0,care:0,words:0,listen:0,build:0,balloons:0,pairs:0,ini:0,train:0,feed:0,catch:0,sentences:0,stories:0,trace:0,sessions:0,streak:0,best:0,days:[],ls:{}});
+const defCnt=()=>({flash:0,match:0,care:0,words:0,listen:0,build:0,balloons:0,pairs:0,ini:0,train:0,feed:0,catch:0,sentences:0,stories:0,trace:0,sessions:0,streak:0,best:0,days:[],ls:{}});
 state.cnt=Object.assign(defCnt(),state.cnt||{});state.ach=state.ach||{};
 (()=>{const d=new Date().toISOString().slice(0,10);if(!state.cnt.days.includes(d)){state.cnt.days.push(d);state.cnt.days=state.cnt.days.slice(-60)}})();
 // letters, st, mast y voiceURI son de cada idioma (el progreso en castellano y en catalán va por separado)
 ['letters','st','mast','voiceURI'].forEach(k=>Object.defineProperty(state,k,{get(){return state.lp[state.lang][k]},set(v){state.lp[state.lang][k]=v},enumerable:false}));
-function setLangData(){LANG=LANGS[state.lang];ORDER=LANG.order;HARD=LANG.hard;NAMES=LANG.names;LPIC=LANG.lpic;WORDS=LANG.words;document.documentElement.lang=state.lang}
+function setLangData(){LANG=LANGS[state.lang];ORDER=LANG.order;HARD=LANG.hard;NAMES=LANG.names;LPIC=LANG.lpic;WORDS=LANG.words.concat(LANG.adv||[],typeof schoolWords==='function'&&state.lp&&state.lp[state.lang]?schoolWords(state.lang):[]);document.documentElement.lang=state.lang}
 setLangData();
 const rk=k=>state.lang==='es'?k:state.lang+':'+k;  // clave de grabación por idioma
 const PROFILE_KEY='leoJugandoProfiles';
@@ -1188,7 +1283,7 @@ const consOf=w=>tok(plain(w).toLowerCase()).filter(ch=>/^(?:[a-zñ]|ny|ll)$/.tes
 const isV=ch=>VOWELS.includes(ch);
 const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
 const artCode=e=>[...e.replace(/\uFE0F/g,'')].map(c=>c.codePointAt(0).toString(16).toUpperCase().padStart(4,'0')).join('-');
-const artHTML=(emoji,alt='')=>`<img class="art" src="assets/pics/openmoji/${artCode(emoji)}.svg" alt="${alt}">`;
+const artHTML=(emoji,alt='')=>emoji?`<img class="art" src="assets/pics/openmoji/${artCode(emoji)}.svg" alt="${alt}">`:`<span class="art noart" aria-label="${alt}">🔊</span>`;
 function setArt(node,emoji,alt=''){node.innerHTML=artHTML(emoji,alt)}
 function setLeo(node){node.innerHTML='<img class="leo-art" src="assets/illustrations/leo-mascot.png" alt="Leo">'}
 function bump(e,cls){e.classList.remove(cls);void e.offsetWidth;e.classList.add(cls)}
@@ -1437,7 +1532,8 @@ let session=null; // {focus, count}
 const focusL=()=>session&&session.focus&&session.focus!=='vocales'?session.focus:null;
 function known(){const k=new Set(state.letters);if(focusL())k.add(focusL());return k}
 function wordOK(w,k=known()){return consOf(w.word).filter(c=>ORDER.includes(c)).every(c=>k.has(c))}
-function pool(){const k=known(),max=effectiveLevel()==='syllables'?1:2;let p=WORDS.filter(w=>(w.level||1)<=max&&wordOK(w,k));if(focusL()){const f=p.filter(w=>consOf(w.word).includes(focusL()));if(f.length>=3)p=f}return p.length>=3?p:WORDS.filter(w=>(w.level||1)<=max)}
+function pool(opts={}){const k=known(),lv=effectiveLevel(),max=lv==='syllables'?1:lv==='advanced'?3:2,needPic=opts.pic!==false;let p=WORDS.filter(w=>(w.level||1)<=max&&wordOK(w,k)&&(!needPic||w.emoji));
+  if(lv==='advanced'){const hard=p.filter(w=>(w.level||1)>=2);if(hard.length>=6)p=hard;const sc=p.filter(w=>w.school);if(sc.length){const k=Math.max(2,Math.ceil(.7*p.length/sc.length));for(let i=0;i<k;i++)p=p.concat(sc)}}if(focusL()){const f=p.filter(w=>consOf(w.word).includes(focusL()));if(f.length>=3)p=f}return p.length>=3?p:WORDS.filter(w=>(w.level||1)<=max&&(!needPic||w.emoji))}
 function sylPool(){if(session&&session.focus==='vocales')return VOWELS.slice();const out=[];const k=[...known()].filter(l=>!isV(l));let ls=focusL()?[focusL()]:k;if(!ls.length)return VOWELS.slice();ls.forEach(l=>(HARD[l]||VOWELS).forEach(v=>out.push(l+v)));return out}
 function weight(key){const s=state.st[key];if(!s)return 2.2;return (1+2.5*s.ko)/(1+.6*s.ok)+.15}
 function pickW(list,keyFn,avoid){
@@ -1448,7 +1544,8 @@ function pickW(list,keyFn,avoid){
 function mark(key,ok){const s=state.st[key]||(state.st[key]={ok:0,ko:0});if(ok){s.ok++;if(s.ko>0&&s.ok%3===0)s.ko--}else s.ko++;save()}
 function similar(target,cands,n){
   const f=consOf(target.word)[0],t=target;
-  return shuffle(cands).filter(w=>w!==t&&w.emoji!==t.emoji&&w.word!==t.word)
+  const seenW=new Set();
+  return shuffle(cands).filter(w=>w!==t&&w.word!==t.word&&(t.emoji?(w.emoji&&w.emoji!==t.emoji):true)&&!seenW.has(w.word)&&seenW.add(w.word))
     .map(w=>[w,(consOf(w.word)[0]===f?2:0)+(w.syl.length===t.syl.length?1:0)+(w.syl[0]===t.syl[0]?1.5:0)+Math.random()*2.2])
     .sort((a,b)=>b[1]-a[1]).slice(0,n).map(x=>x[0]);
 }
@@ -1465,7 +1562,7 @@ function nextPrize(){prizeTimer=null;const p=prizeQ.shift();if(!p){curPrize=null
 $('prizeBody').onclick=()=>{if(!curPrize)return;const v=$('prizeBody').querySelector('.vbig');if(v){const c=v.className;v.className='vbig';void v.offsetWidth;v.className=c}if(curPrize.sound)curPrize.sound()};
 $('prizeClose').onclick=()=>{stopAll();$('prize').classList.remove('on');curPrize=null;
   if(prizeQ.length){setTimeout(nextPrize,250);return}
-  if(afterPrize){const f=afterPrize;afterPrize=null;f()}else if(['juntar','adivina','escucha','inicio','formar','globos','parejas','tren','alimentar','atrapar','frases','trazar','unir'].includes(cur))nextRound();else if(cur==='habitacion'){if(!careBusy)renderRoom()}else show(cur,{quiet:true,keep:true})};
+  if(afterPrize){const f=afterPrize;afterPrize=null;f()}else if(['juntar','adivina','escucha','inicio','formar','globos','parejas','tren','alimentar','atrapar','frases','trazar','unir','flash'].includes(cur))nextRound();else if(cur==='habitacion'){if(!careBusy)renderRoom()}else show(cur,{quiet:true,keep:true})};
 function win(key,firstTry){
   buzz(24);
   state.stars++;if(state.stars%10===0&&typeof giveChest==='function')giveChest('wood');state.okTot++;state.tries++;if(firstTry)state.first++;
@@ -1506,11 +1603,11 @@ function setBar(){const b=$('bar');if(session){b.classList.add('on');$('barFill'
 // =================== NAVEGACIÓN ===================
 let cur='home',lastGame=null;
 let guided=null;
-const SCREENS={home:renderHome,lesson:renderLesson,sonidos:renderSonidos,silabas:renderSilabas,juntar:newJuntar,adivina:newAdivina,escucha:newEscucha,album:renderAlbum,inicio:newInicio,formar:newFormar,globos:startGlobos,parejas:newParejas,tren:newTren,alimentar:newAlimentar,atrapar:newAtrapar,frases:newFrase,trazar:newTrazar,cuentos:newCuento,habitacion:renderRoom,unir:newUnir};
-const INSTR={unir:'h_match',sonidos:'s_snd',silabas:'s_syl',juntar:'s_join',adivina:'s_what',inicio:'s_first',formar:'s_build',parejas:'s_pairs',tren:'h_train',alimentar:'h_feed',atrapar:'h_catch',frases:'h_sentence',trazar:'h_trace',cuentos:'h_story'};
+const SCREENS={home:renderHome,lesson:renderLesson,sonidos:renderSonidos,silabas:renderSilabas,juntar:newJuntar,adivina:newAdivina,escucha:newEscucha,album:renderAlbum,inicio:newInicio,formar:newFormar,globos:startGlobos,parejas:newParejas,tren:newTren,alimentar:newAlimentar,atrapar:newAtrapar,frases:newFrase,trazar:newTrazar,cuentos:newCuento,habitacion:renderRoom,unir:newUnir,flash:newFlash};
+const INSTR={flash:'s_flash',unir:'h_match',sonidos:'s_snd',silabas:'s_syl',juntar:'s_join',adivina:'s_what',inicio:'s_first',formar:'s_build',parejas:'s_pairs',tren:'h_train',alimentar:'h_feed',atrapar:'h_catch',frases:'h_sentence',trazar:'h_trace',cuentos:'h_story'};
 function updateGuide(){const g=$('guide');g.classList.toggle('on',!!guided);if(!guided)return;const d=$('guideDots');d.innerHTML='';for(let i=0;i<guided.total;i++)d.appendChild(el('i','guide-dot '+(i<guided.step?'done':i===guided.step?'now':'')));$('guideCount').textContent=(guided.step+1)+'/'+guided.total}
-function effectiveLevel(){if(state.readingLevel&&state.readingLevel!=='auto')return state.readingLevel;if(state.cnt.sentences>=5||state.cnt.words>=45)return 'sentences';if(state.cnt.words>=15||state.okTot>=30)return 'words';return 'syllables'}
-function guidedGames(){const level=effectiveLevel();if(level==='syllables')return ['escucha','inicio','formar','tren','alimentar','atrapar','globos'];if(level==='words')return ['adivina','unir','escucha','inicio','formar','tren','alimentar','atrapar','parejas','globos'];return ['adivina','unir','formar','tren','alimentar','atrapar','parejas','frases','cuentos']}
+function effectiveLevel(){if(state.readingLevel&&state.readingLevel!=='auto')return state.readingLevel;if(state.cnt.sentences>=12||state.cnt.words>=90)return 'advanced';if(state.cnt.sentences>=5||state.cnt.words>=45)return 'sentences';if(state.cnt.words>=15||state.okTot>=30)return 'words';return 'syllables'}
+function guidedGames(){const level=effectiveLevel();if(level==='advanced')return ['flash','escucha','formar','juntar','unir','adivina','frases','cuentos','alimentar','atrapar','flash','cuentos'];if(level==='syllables')return ['escucha','inicio','formar','tren','alimentar','atrapar','globos'];if(level==='words')return ['adivina','unir','flash','escucha','inicio','formar','tren','alimentar','atrapar','parejas','globos'];return ['adivina','unir','flash','formar','tren','alimentar','atrapar','parejas','frases','cuentos']}
 function startGuided(){const all=guidedGames();guided={step:0,total:Number(state.sessionLen)||5,games:[]};let bag=shuffle(all);while(guided.games.length<guided.total){guided.games.push(...bag);bag=shuffle(all)}guided.games=guided.games.slice(0,guided.total);updateGuide();show(guided.games[0],{quiet:true,keep:true});run(()=>sayIt(state.lang==='ca'?'Comencem. Leo t’acompanya.':'Empezamos. Leo te acompaña.'))}
 function finishGuided(){state.cnt.sessions++;state.pieces=(state.pieces||0)+1;let chest=false;if(state.pieces>=5){state.pieces-=5;chest=true;giveChest('silver')}save();guided=null;updateGuide();checkAch();afterPrize=()=>show('home');queuePrize({title:chest?t('newChest'):(state.lang==='ca'?'Partida completada':'Partida completada'),body:chest?chestHTML('silver','cbig cpop')+`<p class="pname">${t('chestSay')}</p>`:`<div class="vbig a-spin">🧩</div><p class="pname">${state.pieces} / 5</p>`,sound:()=>run(async a=>{await playFx(chest?'fanfare':'sparkle');if(a())await sayIt(chest?t('chestSay'):praise())})})}
 function show(name,opts={}){
@@ -1617,9 +1714,9 @@ $('sAll').onclick=()=>run(async a=>{const cards=[...$('sgrid').children];for(let
 // =================== JUNTAR ===================
 let jw=null,jDone=new Set(),jLast=null;
 function newJuntar(){
-  jw=pickW(pool(),w=>'w:'+w.word,jLast);jLast=jw;jDone=new Set();
+  jw=pickW(pool({pic:false}),w=>'w:'+w.word,jLast);jLast=jw;jDone=new Set();
   const pic=$('jPic');setArt(pic,jw.emoji,jw.word);pic.className='pic hidden';
-  const bl=$('jBlocks');bl.className='blocks'+(jw.syl.length>=4?' small':'');bl.innerHTML='';
+  const bl=$('jBlocks');bl.className='blocks'+(jw.syl.length>=5?' small tiny':jw.syl.length>=4?' small':'');bl.innerHTML='';
   jw.syl.forEach((s,i)=>{
     const b=el('button','blk',fmt(s));
     b.onclick=()=>{if(bl.classList.contains('merged'))return;bump(b,'talk');b.classList.add('done');jDone.add(i);run(a=>playSyl(s,a));
@@ -1678,8 +1775,8 @@ function newEscucha(opts={}){
     items.forEach(s=>{const b=el('button','opt s',fmt(s));b.onclick=()=>pick(b,s===target);o.appendChild(b)});
     eItem={play:a=>playSyl(target,a),key,reveal:null};
   }else{
-    target=pickW(pool(),w=>'w:'+w.word,eLast);eLast=target;key='w:'+target.word;
-    items=shuffle([target,...similar(target,pool().length>=6?pool():WORDS,2)]);o.className='opts optsw';$('eHint').textContent=t('h_lword');
+    const ep=pool({pic:false});target=pickW(ep,w=>'w:'+w.word,eLast);eLast=target;key='w:'+target.word;
+    items=shuffle([target,...similar(target,ep.length>=6?ep:WORDS,2)]);o.className='opts optsw';$('eHint').textContent=t('h_lword');
     items.forEach(w=>{const b=el('button','opt w',fmt(w.word));b.onclick=()=>pick(b,w===target,()=>{b.innerHTML=fmt(w.word)+' '+artHTML(w.emoji,w.word)});o.appendChild(b)});
     eItem={play:a=>playWord(target,a),key};
   }
@@ -1744,14 +1841,14 @@ $('iSay').onclick=$('iPic').onclick=()=>run(a=>playWord(iw,a));
 // =================== FORMAR LA PALABRA ===================
 let fw=null,fLast=null,fIdx=0,fFirst=true,fDone=false;
 function newFormar(opts={}){
-  const p=pool(),multi=p.filter(w=>w.syl.length>=2);
+  const p=pool({pic:false}),multi=p.filter(w=>w.syl.length>=2);
   fw=pickW(multi.length>=3?multi:p,w=>'w:'+w.word,fLast);fLast=fw;fIdx=0;fFirst=true;fDone=false;
   const pic=$('fPic');setArt(pic,fw.emoji,fw.word);bump(pic,'reveal');
-  const sl=$('fSlots');sl.className='blocks'+(fw.syl.length>=4?' small':'');sl.innerHTML='';
+  const sl=$('fSlots');sl.className='blocks'+(fw.syl.length>=5?' small tiny':fw.syl.length>=4?' small':'');sl.innerHTML='';
   fw.syl.forEach(()=>sl.appendChild(el('div','blk slot','')));
   const pieces=[...fw.syl];
   if(fw.syl.length<=3){const ex=shuffle(sylPool().filter(s=>!fw.syl.map(plain).includes(plain(s))))[0];if(ex)pieces.push(ex)}
-  const pc=$('fPieces');pc.className='blocks'+(pieces.length>=4?' small':'');pc.innerHTML='';
+  const pc=$('fPieces');pc.className='blocks'+(pieces.length>=5?' small tiny':pieces.length>=4?' small':'');pc.innerHTML='';
   shuffle(pieces).forEach(s=>{const b=el('button','blk',fmt(s));
     b.onclick=()=>{
       if(fDone||b.classList.contains('used'))return;
@@ -1805,6 +1902,26 @@ function startGlobos(opts={}){
 }
 $('gSay').onclick=()=>{bump($('gSay'),'pop');run(a=>playSyl(gT,a))};
 
+
+
+// =================== PALABRA FLASH ⚡: la palabra aparece un momento y desaparece; ¿cuál era? ===================
+let flW=null,flFirst=true,flLock=true,flLast=null,flTimer=null;
+function flSize(w){return Math.min(64,Math.floor(560/Math.max(4,w.word.length)))+'px'}
+function flShow(ms,then){const c=$('flCard');c.className='flashCard show';c.innerHTML=flW.syl.map((s,i)=>`<span class="fs${i%2}">${fmt(s)}</span>`).join('');c.style.fontSize=flSize(flW);
+  clearTimeout(flTimer);flTimer=setTimeout(()=>{if(cur!=='flash')return;c.className='flashCard gone';c.innerHTML='⚡';then&&then()},ms)}
+function newFlash(opts={}){
+  const p=pool({pic:false}),multi=p.filter(w=>w.syl.length>=2);flW=pickW(multi.length>=4?multi:p,w=>'w:'+w.word,flLast);flLast=flW;flFirst=true;flLock=true;
+  const ms=state.flashMs||2600;$('flOpts').innerHTML='';$('flHint').textContent=t('flLook');
+  flShow(ms,()=>{$('flHint').textContent=t('flPick');flLock=false;const o=$('flOpts');o.innerHTML='';
+    shuffle([flW,...similar(flW,p.length>=6?p:WORDS,2)]).forEach(w=>{const b=el('button','opt w',fmt(w.word));b.style.fontSize=Math.min(36,Math.floor(380/w.word.length))+'px';
+      b.onclick=()=>{if(flLock||b.classList.contains('no'))return;
+        if(w===flW){flLock=true;b.classList.add('ok');state.cnt.flash=(state.cnt.flash||0)+1;state.flashMs=Math.max(900,(state.flashMs||2600)-(flFirst?150:0));
+          const c=$('flCard');c.className='flashCard show ok';c.innerHTML=fmt(flW.word);const m=win('w:'+flW.word,flFirst);
+          run(async a=>{await playWord(flW,a);if(m||!a())return;await sayIt(praise());await wait(300);if(a())nextRound()})}
+        else{b.classList.add('no');if(flFirst)lose('w:'+flW.word);flFirst=false;state.flashMs=Math.min(3600,(state.flashMs||2600)+300);save();
+          run(async a=>{for(const s of flW.syl){if(!a())return;await playSyl(s,a);await wait(250)}});flLock=true;flShow(state.flashMs,()=>{flLock=false})}};o.appendChild(b)})});
+}
+$('flPeek').onclick=()=>{if(!flW)return;flFirst=false;const was=flLock;flLock=true;flShow(1600,()=>{flLock=was&&!$('flOpts').children.length?true:false})};
 
 // =================== RELACIONAR ===================
 let mDone=0,mN=3,mFirst=true,mLock=false;
@@ -1928,9 +2045,10 @@ const SENTENCES={
  es:[['Mi mamá me','mima','👩‍👧',['mira','toma']],['El mono','salta','🐒',['nada','come']],['La rana','salta','🐸',['lava','mira']],['El pato','nada','🦆',['come','salta']],['La vaca','come','🐄',['mira','nada']],['El gato se','lava','🐱',['tapa','mima']],['La nena toma','sopa','👧',['luna','mano']],['Papá mira la','luna','👨',['sopa','casa']]],
  ca:[['La mama em','mima','👩‍👧',['mira','toma']],['El mico','salta','🐒',['neda','menja']],['La granota','salta','🐸',['mira','renta']],['L’ànec','neda','🦆',['menja','salta']],['La vaca','menja','🐄',['mira','neda']],['El gat es','renta','🐱',['mima','salta']],['La nena menja','sopa','👧',['lluna','mà']],['El papa mira la','lluna','👨',['sopa','casa']]]
 };
+SENTENCES.es.push(...[["El cocodrilo pone unos 40", "huevos", "🥚", ["dientes", "patas"], true], ["El cocodrilo caza en", "silencio", "🐊", ["agua", "cola"], true], ["En la castañada hacemos", "panellets", "🌰", ["setas", "nueces"], true], ["En otoño caen las", "hojas", "🍁", ["castañas", "setas"], true], ["En invierno hace mucho", "frío", "🥶", ["calor", "sol"], true], ["Los Reyes Magos traen", "regalos", "🎁", ["turrones", "hojas"], true], ["En la arena hay", "conchas", "🐚", ["medusas", "delfines"], true], ["Hoy encontramos sus", "fósiles", "🦴", ["volcanes", "huevos"], true]]);SENTENCES.ca.push(...[["El cocodril pon uns 40", "ous", "🥚", ["dents", "potes"], true], ["El cocodril caça en", "silenci", "🐊", ["aigua", "cua"], true], ["Per la castanyada fem", "panellets", "🌰", ["bolets", "cargols"], true], ["A la tardor cauen les", "fulles", "🍁", ["nous", "castanyes"], true], ["A l’hivern fa molt de", "fred", "🥶", ["calor", "sol"], true], ["Els Reis porten", "regals", "🎁", ["torrons", "fulles"], true], ["A la sorra hi ha", "petxines", "🐚", ["meduses", "dofins"], true], ["Avui en trobem els", "fòssils", "🦴", ["volcans", "ous"], true]]);
 let sentence=null,sentenceFirst=true,sentenceLock=false;
 function newFrase(opts={}){
-  const all=SENTENCES[state.lang]||SENTENCES.es;const knownSet=new Set(state.letters);const allowed=all.filter(x=>consOf(plain((x[0]+' '+x[1]).toLowerCase())).every(c=>knownSet.has(c)));sentence=shuffle(allowed.length?allowed:all)[0];sentenceFirst=true;sentenceLock=false;const full=sentence[0]+' '+sentence[1];$('sentenceText').innerHTML=`<span class="scene">${artHTML(sentence[2],full)}</span>${fmt(sentence[0])} <span class="gap">?</span>`;
+  const adv=effectiveLevel()==='advanced';const all=(SENTENCES[state.lang]||SENTENCES.es).filter(x=>!!x[4]===adv);const knownSet=new Set(state.letters);const allowed=all.filter(x=>consOf(plain((x[0]+' '+x[1]).toLowerCase())).filter(c=>ORDER.includes(c)).every(c=>knownSet.has(c)));sentence=shuffle(allowed.length?allowed:all)[0];sentenceFirst=true;sentenceLock=false;const full=sentence[0]+' '+sentence[1];$('sentenceText').innerHTML=`<span class="scene">${artHTML(sentence[2],full)}</span>${fmt(sentence[0])} <span class="gap">?</span>`;
   const p=$('sentencePics');p.innerHTML='';shuffle([sentence[1],...sentence[3]]).forEach(w=>{const ok=w===sentence[1],b=el('button','sentence-pic',fmt(w));b.onclick=()=>{if(sentenceLock||b.classList.contains('no'))return;if(ok){sentenceLock=true;b.classList.add('ok');$('sentenceText').innerHTML=`<span class="scene">${artHTML(sentence[2],full)}</span>${fmt(sentence[0])} <span class="gap">${fmt(sentence[1])}</span>`;state.cnt.sentences++;const m=win('sent:'+full,sentenceFirst);run(async a=>{await sayIt(full);if(m||!a())return;await sayIt(praise());await wait(300);if(a())nextRound()})}else{b.classList.add('no');if(sentenceFirst)lose('sent:'+full);sentenceFirst=false;run(()=>sayIt(state.lang==='ca'?'Llegeix-la una altra vegada':'Léela otra vez'))}};p.appendChild(b)});
 }
 
@@ -1949,13 +2067,16 @@ const STORIES={
   {title:'Passa el tren',pages:[['El tren passa.','🚂'],['Leo mira el tren.','🚂'],['El tren pita i se’n va.','🚂']],q:'Què mira Leo?',a:[['El tren','🚂',1],['La lluna','🌙',0]]}
  ]
 };
+STORIES.es.push(...[{"title": "El cocodrilo", "pages": [["El cocodrilo caza en silencio.", "🐊"], ["El cocodrilo más grande mide 7 metros.", "📏"], ["El cocodrilo puede tener hasta 100 dientes.", "🦷"], ["El cocodrilo pone unos 40 huevos.", "🥚"], ["Aguanta una hora bajo el agua.", "🌊"]], "q": "¿Qué pone el cocodrilo?", "a": [["Huevos", "🥚", 1], ["Manzanas", "🍎", 0]], "adv": true, "theme": "cocodril"}, {"title": "El otoño", "pages": [["En la castañada hacemos panellets.", "🌰"], ["En otoño ni frío ni calor.", "🍂"], ["Las hojas son naranjas, marrones, amarillas y rojas.", "🍁"]], "q": "¿Qué hacemos en la castañada?", "a": [["Panellets", "🍪", 1], ["Helados", "🍨", 0]], "adv": true, "theme": "tardor"}, {"title": "El invierno", "pages": [["En invierno hace mucho frío.", "🥶"], ["Hacemos un muñeco de nieve.", "⛄"], ["Me pongo la bufanda y los guantes.", "🧣"]], "q": "¿Qué hacemos con la nieve?", "a": [["Un muñeco", "⛄", 1], ["Una sopa", "🍲", 0]], "adv": true, "theme": "hivern"}, {"title": "La Navidad", "pages": [["En Navidad comemos turrón.", "🍬"], ["Cantamos villancicos.", "🎶"], ["Los Reyes Magos traen regalos.", "🎁"]], "q": "¿Quién trae regalos?", "a": [["Los Reyes", "🤴", 1], ["El cocodrilo", "🐊", 0]], "adv": true, "theme": "nadal"}, {"title": "El mar", "pages": [["El delfín salta sobre las olas.", "🐬"], ["La medusa es transparente.", "🪼"], ["En la arena hay conchas.", "🐚"]], "q": "¿Qué hay en la arena?", "a": [["Conchas", "🐚", 1], ["Turrones", "🍬", 0]], "adv": true, "theme": "mar"}, {"title": "Los dinosaurios", "pages": [["Los dinosaurios vivían hace muchos años.", "🦖"], ["Algunos comían plantas.", "🌿"], ["Hoy encontramos sus fósiles.", "🦴"]], "q": "¿Qué comían algunos dinosaurios?", "a": [["Plantas", "🌿", 1], ["Pizza", "🍕", 0]], "adv": true, "theme": "dino"}]);STORIES.ca.push(...[{"title": "El cocodril", "pages": [["El cocodril caça en silenci.", "🐊"], ["El cocodril més gran fa 7 metres.", "📏"], ["El cocodril pot tenir fins a 100 dents.", "🦷"], ["El cocodril pon uns 40 ous.", "🥚"], ["Aguanta una hora sota l’aigua.", "🌊"]], "q": "Què pon el cocodril?", "a": [["Ous", "🥚", 1], ["Pomes", "🍎", 0]], "adv": true, "theme": "cocodril"}, {"title": "La tardor", "pages": [["Per la castanyada fem panellets.", "🌰"], ["A la tardor ni fred ni calor.", "🍂"], ["Taronja, marró, groc i vermell.", "🍁"]], "q": "Què fem per la castanyada?", "a": [["Panellets", "🍪", 1], ["Gelats", "🍨", 0]], "adv": true, "theme": "tardor"}, {"title": "L’hivern", "pages": [["A l’hivern fa molt de fred.", "🥶"], ["Fem un ninot de neu.", "⛄"], ["Em poso la bufanda i els guants.", "🧣"]], "q": "Què fem amb la neu?", "a": [["Un ninot", "⛄", 1], ["Una sopa", "🍲", 0]], "adv": true, "theme": "hivern"}, {"title": "El Nadal", "pages": [["Per Nadal fem cagar el tió.", "🪵"], ["Mengem torrons i neules.", "🍬"], ["Els Reis porten regals.", "🎁"]], "q": "Qui porta regals?", "a": [["Els Reis", "🤴", 1], ["El cocodril", "🐊", 0]], "adv": true, "theme": "nadal"}, {"title": "El mar", "pages": [["El dofí salta sobre les onades.", "🐬"], ["La medusa és transparent.", "🪼"], ["A la sorra hi ha petxines.", "🐚"]], "q": "Què hi ha a la sorra?", "a": [["Petxines", "🐚", 1], ["Torrons", "🍬", 0]], "adv": true, "theme": "mar"}, {"title": "Els dinosaures", "pages": [["Els dinosaures vivien fa molts anys.", "🦖"], ["Alguns menjaven plantes.", "🌿"], ["Avui en trobem els fòssils.", "🦴"]], "q": "Què menjaven alguns dinosaures?", "a": [["Plantes", "🌿", 1], ["Pizza", "🍕", 0]], "adv": true, "theme": "dino"}]);
 let story=null,storyPage=0,storyRead=new Set(),storyFirst=true,storyLocked=false;
-function newCuento(){const all=STORIES[state.lang]||STORIES.es;story=shuffle(all.filter(s=>s!==story))[0]||all[0];storyPage=0;storyFirst=true;storyLocked=false;renderStoryPage()}
+function newCuento(){const adv=effectiveLevel()==='advanced';let all=(STORIES[state.lang]||STORIES.es).filter(s=>!!s.adv===adv);
+  const ss=schoolSents(state.lang);if(adv&&ss.length){const sch={title:state.lang==='ca'?'De l’escola':'Del cole',pages:ss.map(x=>[x,emojiFor((x.match(/[\wàáèéíïòóúüçñ·]{4,}/gi)||[]).sort((a,b)=>b.length-a.length)[0]||'',state.lang)||'🏫']),school:true,adv:true};all=all.concat(sch,sch)}
+  if(!all.length)all=STORIES[state.lang]||STORIES.es;story=shuffle(all.filter(s=>s.title!==(story&&story.title)))[0]||all[0];storyPage=0;storyFirst=true;storyLocked=false;renderStoryPage()}
 function renderStoryPage(){
  const dots=$('storyPages');dots.innerHTML='';story.pages.forEach((_,i)=>dots.appendChild(el('i','story-dot'+(i===storyPage?' on':''))));$('storyTitle').textContent=fmt(story.title);$('storyQuestion').textContent='';$('storyAnswers').innerHTML='';$('storyNext').style.display='';storyRead=new Set();
  const [line,emoji]=story.pages[storyPage];setArt($('storyScene'),emoji,line);const words=line.split(/\s+/);const row=$('storyLine');row.innerHTML='';words.forEach((word,i)=>{const clean=word.replace(/[.,!?¿¡’']/g,'');const b=el('button','story-word',fmt(word));b.onclick=()=>{b.classList.add('read');storyRead.add(i);run(()=>sayIt(clean));if(storyRead.size===words.length)$('storyNext').disabled=false};row.appendChild(b)});$('storyNext').disabled=true;
 }
-$('storyNext').onclick=()=>{if(storyPage<story.pages.length-1){storyPage++;renderStoryPage();return}showStoryQuestion()};
+$('storyNext').onclick=()=>{if(storyPage<story.pages.length-1){storyPage++;renderStoryPage();return}if(!story.q){$('storyNext').style.display='none';state.cnt.stories++;const m=win('story:'+story.title,true);run(async a=>{await sayIt(praise());await wait(350);if(!m&&a())nextRound()});return}showStoryQuestion()};
 function showStoryQuestion(){
  $('storyNext').style.display='none';$('storyLine').innerHTML='';$('storyQuestion').textContent=fmt(story.q);const ans=$('storyAnswers');ans.innerHTML='';story.a.forEach(([label,emoji,ok])=>{const b=el('button','story-answer',artHTML(emoji,label)+'<br>'+fmt(label));b.onclick=()=>{if(storyLocked||b.classList.contains('no'))return;run(()=>sayIt(label));if(ok){storyLocked=true;b.classList.add('ok');state.cnt.stories++;const m=win('story:'+story.title,storyFirst);run(async alive=>{await sayIt(story.q+' '+label);if(m||!alive())return;await sayIt(praise());await wait(350);if(alive())nextRound()})}else{b.classList.add('no');storyFirst=false;run(()=>sayIt(state.lang==='ca'?'Torna a mirar el conte':'Vuelve a mirar el cuento'))}};ans.appendChild(b)})
 }
@@ -2726,6 +2847,15 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;
 $('installBtn').onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice.catch(()=>{});deferred=null;$('installBtn').classList.remove('on')};
 window.addEventListener('appinstalled',()=>$('installBtn').classList.remove('on'));
 if(!isNativeApp()&&'serviceWorker' in navigator){try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}}
+
+
+// =================== PANEL: PALABRAS DEL COLE ===================
+function renderCole(){const sc=schoolOf(state.lang);$('coleW').value=sc.w||'';$('coleS').value=sc.s||'';$('coleLang').innerHTML='Idioma: <b>'+(state.lang==='ca'?'Català':'Castellano')+'</b> (se cambia en Ajustes).';colePreview()}
+function colePreview(){const tmp={w:$('coleW').value,s:$('coleS').value};const keep=state.lp[state.lang].school;state.lp[state.lang].school=tmp;const ws=schoolWords(state.lang);state.lp[state.lang].school=keep;
+  $('colePrev').innerHTML=ws.length?ws.map(w=>w.syl.map(fmt).join('·')).join(' &nbsp; '):''}
+$('coleW').oninput=colePreview;
+$('coleSave').onclick=()=>{state.lp[state.lang].school={w:$('coleW').value,s:$('coleS').value};save();setLangData();colePreview();$('coleSave').textContent='✔️ Guardado';setTimeout(()=>$('coleSave').textContent='💾 Guardar',1800)};
+document.querySelector('[data-tab="cole"]').addEventListener('click',renderCole);
 
 // =================== IDIOMA ===================
 function applyLang(){document.querySelectorAll('[data-t]').forEach(e=>{const v=t(e.dataset.t);if(typeof v==='string')e.textContent=v});$('langSel').value=state.lang}

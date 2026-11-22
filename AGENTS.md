@@ -70,6 +70,13 @@ En el Camino, `nextRound()` va alternando todos los juegos. Panel de mayores: ma
 - Ojo: los botones con `transform` necesitan su propia regla `:active`, porque la regla general `button:active{transform:translateY(3px)}` los mueve y el toque se pierde.
 - En el salón, el bocadillo dice por escrito lo que más necesita ("TENGO HAMBRE") y al tocarlo lleva a esa habitación.
 
+## Nivel cole (palabras largas)
+- Nivel de lectura `advanced` ("Palabras largas (nivel cole)"): en automático llega con 90 palabras o 12 frases leídas. Usa palabras de nivel 3 (`ADV_WORDS`, por temas: cocodrilo, otoño, invierno, Navidad, mar, dinosaurios) y deja de usar las fáciles.
+- Muchas palabras de nivel 3 no tienen dibujo (`emoji:null`): solo van a juegos que no lo necesitan (`pool({pic:false})`: Flash, Escucha, Formar, Juntar). `pool()` sin opciones devuelve solo palabras con dibujo.
+- Cada tema tiene cuento (`STORIES` con `adv:true`) y frases con hueco (`SENTENCES`, quinto campo `true`).
+- Pestaña "Cole" del panel de mayores: el adulto escribe las palabras y frases de la ficha del cole. `syllabify()` las separa en sílabas (respeta guiones si los pone), `emojiFor()` busca dibujo si lo hay, y en el nivel cole salen mucho más a menudo. Las frases forman el cuento "Del cole".
+- Juego `flash` (Palabra flash ⚡): la palabra se ve un momento y desaparece; hay que elegirla entre tres parecidas. El tiempo baja con los aciertos (`state.flashMs`, de 2,6 s a 0,9 s) y sube con los fallos.
+
 ## Casa en 2,5D y objetos usables
 - Cada habitación tiene pared del fondo, paredes laterales y suelo en perspectiva. Coordenadas de suelo `fx` (0-100, izquierda-derecha) y `fz` (0-100, delante-fondo): `proj()` las pasa a pantalla (posición, escala y orden) y `unproj()` al revés. Objetos de pared: `wx`,`wy` con `wallPos()`.
 - Leo (`petX`,`petZ`, guardado en `state.pet.pos`) se mueve con la cruceta (◀ ▶ ▲ al fondo ▼ adelante), el botón de saltar, tocando el suelo o arrastrándole.

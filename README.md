@@ -10,6 +10,8 @@ App para aprender a leer jugando, pensada para niños de 3 a 6 años que aprende
 - 🔠 **¿Cómo empieza?:** oye la palabra y elige su primera letra.
 - 🧱 **Formar:** ordena las sílabas para formar la palabra del dibujo.
 - 🎈 **Globos:** explota los globos con la sílaba que oyes.
+- ⚡ **Palabra flash:** la palabra aparece un momento y desaparece; ¿cuál era?
+- 🏫 **Palabras del cole:** los mayores escriben las palabras y frases de la ficha del cole y la app juega con ellas.
 - 🃏 **Parejas:** juego de memoria de palabras y dibujos.
 - 🛤️ **Camino de letras** con repaso inteligente de lo que más cuesta.
 - ▶️ **Jugar ahora:** prepara automáticamente partidas cortas de 3, 5 o 7 juegos.
